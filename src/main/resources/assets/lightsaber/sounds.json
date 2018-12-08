@@ -1,0 +1,37 @@
+{
+    "item.lightsaber.lightsaber_on": {
+        "category": "item",
+        "subtitle": "item.lightsaber.lightsaber_on",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/lightsaber_on_01", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_on_02", "stream": true } ]
+    },
+    "item.lightsaber.lightsaber_off": {
+        "category": "item",
+        "subtitle": "item.lightsaber.lightsaber_off",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/lightsaber_off_01", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_off_02", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_off_03", "stream": true } ]
+    },
+    "item.lightsaber.lightsaber_swing": {
+        "category": "item",
+        "subtitle": "item.lightsaber.lightsaber_swing",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/lightsaber_swing_01", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_swing_02", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_swing_03", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_swing_04", "stream": true } ]
+    },
+    "item.lightsaber.darksaber_on": {
+        "category": "item",
+        "subtitle": "item.lightsaber.darksaber_on",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/darksaber_on", "stream": true } ]
+    },
+    "item.lightsaber.darksaber_off": {
+        "category": "item",
+        "subtitle": "item.lightsaber.darksaber_off",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/darksaber_off_01", "stream": true }, { "name": "lightsaber:item/lightsaber/darksaber_off_02", "stream": true } ]
+    },
+    "item.lightsaber.darksaber_swing": {
+        "category": "item",
+        "subtitle": "item.lightsaber.darksaber_off",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/darksaber_swing_01", "stream": true }, { "name": "lightsaber:item/lightsaber/darksaber_swing_02", "stream": true } ]
+    },
+    "misc.hello_there": {
+        "category": "voice",
+        "subtitle": "misc.hello_there",
+        "sounds": [ { "name": "lightsaber:misc/hello_there", "stream": true } ]
+    }
+}

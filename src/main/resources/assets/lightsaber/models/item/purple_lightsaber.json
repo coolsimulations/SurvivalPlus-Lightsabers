@@ -1,0 +1,110 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "0": "ic2:blocks/resource/steel_block",
+        "1": "ic2:blocks/resource/lead_block",
+        "2": "survivalplus:blocks/sapphire"
+    },
+     "display": {
+        "gui": {
+            "rotation": [ 0, -10, -35 ],
+            "translation": [ -5, -6.5, 0 ],
+            "scale": [ 0.9, 0.9, 0.9 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Handle",
+            "from": [ 7.0, 8.0, 8.0 ], 
+            "to": [ 9.0, 13.5, 10.0 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 12.0, 0.0, 6.0, 15.5 ] },
+                "east": { "texture": "#0", "uv": [ 16.0, 0.0, 10.0, 15.5 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 15.5 ] },
+                "west": { "texture": "#0", "uv": [ 6.0, 0.0, 12.0, 15.5 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 6.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 6.0, 6.0 ] }
+            }
+        },
+        {
+            "name": "Button",
+            "from": [ 7.5, 9.0, 10.0 ], 
+            "to": [ 8.5, 12.5, 10.5 ], 
+            "faces": {
+                "north": { "texture": "#-1", "uv": [ 0.0, 0.0, 2.0, 3.5 ] },
+                "east": { "texture": "#1", "uv": [ 4.0, 0.0, 3.5, 3.5 ] },
+                "south": { "texture": "#1", "uv": [ 0.0, 0.0, 2.0, 3.5 ] },
+                "west": { "texture": "#1", "uv": [ 3.0, 0.0, 3.5, 3.5 ] },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 2.0, 0.5 ] },
+                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 2.0, 0.5 ] }
+            }
+        },
+        {
+            "name": "Emitter",
+            "from": [ 6.5, 13.5, 7.5 ], 
+            "to": [ 9.5, 14.0, 8.0 ], 
+            "shade": false,
+            "faces": {
+                "north": { "texture": "#1", "uv": [ 10.0, 1.5, 0.0, 0.5 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 1.0, 2.0, 3.0 ] },
+                "south": { "texture": "#1", "uv": [ 10.0, 1.5, 0.0, 0.5 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 1.0, 2.0, 3.0 ] },
+                "up": { "texture": "#1", "uv": [ 10.0, 1.5, 0.0, 2.5 ] },
+                "down": { "texture": "#1", "uv": [ 10.0, 7.5, 0.0, 6.5 ] }
+            }
+        },
+        {
+            "name": "Emitter 3",
+            "from": [ 6.5, 13.5, 10.0 ], 
+            "to": [ 9.5, 14.0, 10.5 ], 
+            "shade": false,
+            "faces": {
+                "north": { "texture": "#1", "uv": [ 10.0, 1.5, 0.0, 0.5 ] },
+                "east": { "texture": "#1", "uv": [ 0.0, 1.0, 2.0, 3.0 ] },
+                "south": { "texture": "#1", "uv": [ 10.0, 4.5, 0.0, 3.5 ] },
+                "west": { "texture": "#1", "uv": [ 0.0, 1.0, 2.0, 3.0 ] },
+                "up": { "texture": "#1", "uv": [ 10.0, 5.5, 0.0, 4.5 ] },
+                "down": { "texture": "#1", "uv": [ 10.0, 6.5, 0.0, 5.5 ] }
+            }
+        },
+        {
+            "name": "Emitter2",
+            "from": [ 6.5, 13.5, 8.0 ], 
+            "to": [ 7.0, 14.0, 10.0 ], 
+            "faces": {
+                "north": { "texture": "#-1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+                "east": { "texture": "#1", "uv": [ 10.0, 8.5, 2.0, 7.5 ] },
+                "south": { "texture": "#-1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+                "west": { "texture": "#1", "uv": [ 8.0, 1.5, 0.0, 0.5 ] },
+                "up": { "texture": "#1", "uv": [ 2.5, 14.0, 0.0, 6.0 ] },
+                "down": { "texture": "#1", "uv": [ 2.5, 6.5, 0.0, 2.5 ] }
+            }
+        },
+        {
+            "name": "Emitter4",
+            "from": [ 9.0, 13.5, 8.0 ], 
+            "to": [ 9.5, 14.0, 10.0 ], 
+            "faces": {
+                "north": { "texture": "#-1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+                "east": { "texture": "#1", "uv": [ 10.0, 8.5, 2.0, 7.5 ] },
+                "south": { "texture": "#-1", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+                "west": { "texture": "#1", "uv": [ 8.0, 1.5, 0.0, 0.5 ] },
+                "up": { "texture": "#1", "uv": [ 2.5, 14.0, 0.0, 6.0 ] },
+                "down": { "texture": "#1", "uv": [ 2.5, 6.5, 0.0, 2.5 ] }
+            }
+        },
+        {
+            "name": "Energy",
+            "from": [ 7.0, 13.5, 8.0 ], 
+            "to": [ 9.0, 26.5, 10.0 ], 
+            "faces": {
+                "north": { "texture": "#2", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+                "east": { "texture": "#2", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+                "south": { "texture": "#2", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+                "west": { "texture": "#2", "uv": [ 0.0, 0.0, 2.0, 13.0 ] },
+                "up": { "texture": "#2", "uv": [ 0.0, 0.0, 2.0, 2.0 ] },
+                "down": { "texture": "#-1", "uv": [ 0.0, 0.0, 2.0, 2.0 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "0": "ic2:blocks/resource/lead_block"
+    },
+    "elements": [
+        {
+            "name": "Button",
+            "from": [ 7.5, 8.0, 8.0 ], 
+            "to": [ 8.5, 11.5, 8.5 ], 
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 3.5 ] },
+                "east": { "texture": "#0", "uv": [ 4.0, 0.0, 3.5, 3.5 ] },
+                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 3.5 ] },
+                "west": { "texture": "#0", "uv": [ 3.0, 0.0, 3.5, 3.5 ] },
+                "up": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 0.5 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 0.5 ] }
+            }
+        }
+    ]
+}
