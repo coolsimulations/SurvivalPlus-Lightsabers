@@ -24,10 +24,9 @@ public class ItemLightsaberHilt extends Item{
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn){
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand handIn){
 		
 		
-		ItemStack itemStackIn = playerIn.getHeldItem(handIn);
     	Item item = itemStackIn.getItem();
     	NBTTagCompound tag = item.getNBTShareTag(itemStackIn);
     	

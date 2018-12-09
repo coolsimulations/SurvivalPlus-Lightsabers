@@ -50,7 +50,7 @@ public class LightsaberVillagers {
     public static class JediLevel1 implements ITradeList {
 
     	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+    		public void modifyMerchantRecipeList(MerchantRecipeList recipeList, Random random) {
     		
     		if(OreDictionary.getOres("gemAmethyst").size() > 0) {
     			for(int i = 0; i < OreDictionary.getOres("gemAmethyst").size(); i++) {
@@ -86,7 +86,7 @@ public class LightsaberVillagers {
     public static class JediLevel2 implements ITradeList {
 
     	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+    		public void modifyMerchantRecipeList(MerchantRecipeList recipeList, Random random) {
     		
     		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 13), new ItemStack(Items.BOOK, 7), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.SWIFTNESS)));
     		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 19), new ItemStack(Items.BOOK, 12), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.LONG_LEAPING)));
@@ -99,9 +99,9 @@ public class LightsaberVillagers {
     public static class JediLevel3 implements ITradeList {
 
     	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+    		public void modifyMerchantRecipeList(MerchantRecipeList recipeList, Random random) {
     		
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 30), new ItemStack(Items.BOOK, 20), new ItemStack(Items.TOTEM)));
+    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 30), new ItemStack(Items.BOOK, 20), new ItemStack(Items.GOLDEN_APPLE, 10)));
     		
     	}
     }
@@ -109,7 +109,7 @@ public class LightsaberVillagers {
     public static class SithLevel1 implements ITradeList {
 
     	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+    		public void modifyMerchantRecipeList(MerchantRecipeList recipeList, Random random) {
     		
     		if(OreDictionary.getOres("gemRuby").size() > 0) {
     			for(int i = 0; i < OreDictionary.getOres("gemRuby").size(); i++) {
@@ -125,7 +125,7 @@ public class LightsaberVillagers {
     public static class SithLevel2 implements ITradeList {
 
     	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+    		public void modifyMerchantRecipeList(MerchantRecipeList recipeList, Random random) {
     		
     		World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
     		
@@ -141,7 +141,7 @@ public class LightsaberVillagers {
     public static class SithLevel3 implements ITradeList {
 
     	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+    	public void modifyMerchantRecipeList(MerchantRecipeList recipeList, Random random) {
     		
     		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 25), new ItemStack(Blocks.TNT, 30), new ItemStack(Items.DRAGON_BREATH)));
     		

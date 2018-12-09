@@ -13,7 +13,7 @@ public class VillageJediHutHandler implements VillagerRegistry.IVillageCreationH
 
     @Override
     public StructureVillagePieces.PieceWeight getVillagePieceWeight(Random random, int i){
-        return new StructureVillagePieces.PieceWeight(StructureVillageJediHut.class, 5, MathHelper.getInt(random, 0, 1 + i));
+        return new StructureVillagePieces.PieceWeight(StructureVillageJediHut.class, 5, MathHelper.getRandomIntegerInRange(random, 0, 1 + i));
     }
 
     @Override

@@ -43,9 +43,8 @@ public class ItemLightsaber extends Item{
     }
     
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn){
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand handIn){
 		
-        ItemStack itemStackIn = playerIn.getHeldItem(handIn);
     	Item item = itemStackIn.getItem();
     	NBTTagCompound tag = item.getNBTShareTag(itemStackIn);
     	
@@ -152,17 +151,11 @@ public class ItemLightsaber extends Item{
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack)
     {
     	if(stack.getItem() == LightsaberItems.darksaber){
-    		entityLiving.world.playSound((EntityPlayer) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
+    		entityLiving.worldObj.playSound((EntityPlayer) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	} else {
-    		entityLiving.world.playSound((EntityPlayer) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
+    		entityLiving.worldObj.playSound((EntityPlayer) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	}
         return false;
-    }
-    
-    @Override
-    public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player)
-    {
-        return !(this instanceof ItemLightsaber);
     }
 
     /**
@@ -240,8 +233,8 @@ public class ItemLightsaber extends Item{
 
         if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
         {
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, 0));
-            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.2000000476837158D, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.2000000476837158D, 0));
         }
 
         return multimap;

@@ -53,7 +53,7 @@ public class StructureVillageJediHut extends StructureVillagePieces.Village
       */
      protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_)
      {
-         super.readStructureFromNBT(tagCompound, p_143011_2_);
+         super.readStructureFromNBT(tagCompound);
      }
 
      public static StructureVillageJediHut createPiece(StructureVillagePieces.Start start, List<StructureComponent> p_175858_1_, Random rand, int p_175858_3_, int p_175858_4_, int p_175858_5_, EnumFacing facing, int p_175858_7_)
@@ -95,7 +95,7 @@ public class StructureVillageJediHut extends StructureVillagePieces.Village
          this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 2, 0, structureBoundingBoxIn); //Door Air
          this.setBlockState(worldIn, Blocks.STONE_BUTTON.getDefaultState().withProperty(BlockButton.FACING, EnumFacing.SOUTH), 3, 2, -1, structureBoundingBoxIn); //Door Button
          this.setBlockState(worldIn, Blocks.STONE_BUTTON.getDefaultState().withProperty(BlockButton.FACING, EnumFacing.NORTH), 3, 2, 1, structureBoundingBoxIn); //Door Inner Button
-         this.createVillageDoor(worldIn, structureBoundingBoxIn, randomIn, 2, 1, 0, EnumFacing.NORTH);
+         this.func_189927_a(worldIn, structureBoundingBoxIn, randomIn, 2, 1, 0, EnumFacing.NORTH);
          this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 4, 0, 3, 4, 0, iblockstate1, iblockstate1, false); //Front Top
          this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 6, 5, 3, 6, iblockstate3, iblockstate3, false); //Back Wall
          this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 4, 6, 3, 4, 6, iblockstate1, iblockstate1, false); //Back Top
@@ -174,11 +174,11 @@ public class StructureVillageJediHut extends StructureVillagePieces.Village
      }
      
      @Override
-     protected void createVillageDoor(World p_189927_1_, StructureBoundingBox p_189927_2_, Random p_189927_3_, int p_189927_4_, int p_189927_5_, int p_189927_6_, EnumFacing p_189927_7_)
+     protected void func_189927_a(World p_189927_1_, StructureBoundingBox p_189927_2_, Random p_189927_3_, int p_189927_4_, int p_189927_5_, int p_189927_6_, EnumFacing p_189927_7_)
      {
          if (!this.isZombieInfested)
          {
-             this.generateDoor(p_189927_1_, p_189927_2_, p_189927_3_, p_189927_4_, p_189927_5_, p_189927_6_, EnumFacing.NORTH, Blocks.IRON_DOOR);
+             this.func_189915_a(p_189927_1_, p_189927_2_, p_189927_3_, p_189927_4_, p_189927_5_, p_189927_6_, EnumFacing.NORTH, Blocks.IRON_DOOR);
          }
      }
 }

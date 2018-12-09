@@ -38,17 +38,17 @@ public class LightsaberEventHandler {
         {
             player.addStat(LightsaberAchievements.achievementInstall);
             
-            if(!player.world.isRemote) {
+            if(!player.worldObj.isRemote) {
             	
             	TextComponentTranslation installInfo = new TextComponentTranslation("achievement.lightsaber.install.display1");
             	installInfo.getStyle().setColor(TextFormatting.GOLD);
-				player.sendMessage(installInfo);
+				player.addChatMessage(installInfo);
 
             }
         }
         
         if(LightsaberUpdateHandler.isOld == true && SPConfig.disableUpdateCheck == false) {
-        	player.sendMessage(LightsaberUpdateHandler.updateInfo);
+        	player.addChatMessage(LightsaberUpdateHandler.updateInfo);
         }
     }
 	
