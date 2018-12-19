@@ -30,7 +30,7 @@ public class LightsaberShapedRecipes {
 	        	
 	        	addRecipe(new ItemStack(LightsaberItems.focusing_lens), new Object[]{"CGC","QGQ","CQC", 'G', IC2Items.getItem("glass", "reinforced"), 'Q', "gemQuartz", 'C', "casingTitanium"});
 	        	addRecipe(new ItemStack(LightsaberItems.inert_power_insulator), new Object[]{"RBR","RBR","RBR", 'B', IC2Items.getItem("advanced_re_battery"), 'R', IC2Items.getItem("crafting", "rubber")});
-	        	addRecipe(new ItemStack(LightsaberItems.activation_stud), new Object[]{"TIT","BCB","TIT", 'B', Blocks.STONE_BUTTON, 'C', IC2Items.getItem("crafting", "advanced_circuit"), 'I', "plateIron", 'T', "casingTitanium"});
+	        	addRecipe(new ItemStack(LightsaberItems.activation_stud), new Object[]{"TIT","BCB","TIT", 'B', Blocks.STONE_BUTTON, 'C', "circuitAdvanced", 'I', "plateIron", 'T', "casingTitanium"});
 	        	addRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new Object[]{"IEI","NFA","TPT", 'P', LightsaberItems.pommel_cap, 'I', "casingTitanium", 'F', LightsaberItems.focusing_lens, 'T', "plateTitanium", 'E', LightsaberItems.blade_emitter, 'A', LightsaberItems.activation_stud, 'N', LightsaberItems.inert_power_insulator});
         		addRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new Object[]{"IEI","AFN","TPT", 'P', LightsaberItems.pommel_cap, 'I', "casingTitanium", 'F', LightsaberItems.focusing_lens, 'T', "plateTitanium", 'E', LightsaberItems.blade_emitter, 'A', LightsaberItems.activation_stud, 'N', LightsaberItems.inert_power_insulator});
 	        	
