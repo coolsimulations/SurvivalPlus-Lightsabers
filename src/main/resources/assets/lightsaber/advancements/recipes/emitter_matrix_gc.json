@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:emitter_matrix_gc"
+    ]
+  },
+  "criteria": {
+    "has_compressed_aluminum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+            "ore": "compressedAluminum"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:emitter_matrix_gc"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_compressed_aluminum",
+      "has_the_recipe"
+    ]
+  ]
+}

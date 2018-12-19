@@ -1,17 +1,15 @@
 package net.coolsimulations.Lightsaber.init;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.common.util.EnumHelper;
 import net.coolsimulations.Lightsaber.Lightsaber;
-import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber.LightsaberMaterial;
 import net.coolsimulations.Lightsaber.item.ItemLightsaberHilt;
 import net.coolsimulations.SurvivalPlus.api.SPItems;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class LightsaberItems {
 	
@@ -30,7 +28,7 @@ public class LightsaberItems {
 	public static Item purple_lightsaber_hilt;
 	public static Item white_lightsaber_hilt;
 	public static Item darksaber_hilt;
-	
+	 
 	public static Item red_lightsaber;
 	public static Item blue_lightsaber;
 	public static Item green_lightsaber;
@@ -70,28 +68,28 @@ public class LightsaberItems {
 	public static void register()
 	{
 		
-		GameRegistry.register(pommel_cap);
-		GameRegistry.register(focusing_lens);
-		GameRegistry.register(blade_emitter);
-		GameRegistry.register(emitter_matrix);
-		GameRegistry.register(inert_power_insulator);
-		GameRegistry.register(activation_stud);
-		GameRegistry.register(lightsaber_hilt);
-		GameRegistry.register(darksaber_lens);
+		registerItem(pommel_cap);
+		registerItem(focusing_lens);
+		registerItem(blade_emitter);
+		registerItem(emitter_matrix);
+		registerItem(inert_power_insulator);
+		registerItem(activation_stud);
+		registerItem(lightsaber_hilt);
+		registerItem(darksaber_lens);
 		
-		GameRegistry.register(red_lightsaber_hilt);
-		GameRegistry.register(blue_lightsaber_hilt);
-		GameRegistry.register(green_lightsaber_hilt);
-		GameRegistry.register(purple_lightsaber_hilt);
-		GameRegistry.register(white_lightsaber_hilt);
-		GameRegistry.register(darksaber_hilt);
+		registerItem(red_lightsaber_hilt);
+		registerItem(blue_lightsaber_hilt);
+		registerItem(green_lightsaber_hilt);
+		registerItem(purple_lightsaber_hilt);
+		registerItem(white_lightsaber_hilt);
+		registerItem(darksaber_hilt);
 		
-		GameRegistry.register(red_lightsaber);
-		GameRegistry.register(blue_lightsaber);
-		GameRegistry.register(green_lightsaber);
-		GameRegistry.register(purple_lightsaber);
-		GameRegistry.register(white_lightsaber);
-		GameRegistry.register(darksaber);
+		registerItem(red_lightsaber);
+		registerItem(blue_lightsaber);
+		registerItem(green_lightsaber);
+		registerItem(purple_lightsaber);
+		registerItem(white_lightsaber);
+		registerItem(darksaber);
 	}
 	
 	public static void registerRenders()
@@ -120,8 +118,21 @@ public class LightsaberItems {
 		registerRender(darksaber);
 	}
 	
+	public static void registerItem(Item item) {
+		
+		Lightsaber.ITEMS.add(item);
+	}
+	
+	public static void registerItems(IForgeRegistry<Item> registry) {
+		
+	for (Item item : Lightsaber.ITEMS)
+    {
+        registry.register(item);
+    	}
+	}
+	
 	public static void registerRender(Item item)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 }

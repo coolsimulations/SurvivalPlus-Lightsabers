@@ -1,0 +1,28 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ICI",
+    "IBI",
+    "TTT"
+  ],
+  "key": {
+    "B": {
+      "item": "ic2:re_battery"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "plateDenseIron"
+    },
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "plateDenseTitanium"
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "circuitAdvanced"
+    }
+  },
+  "result": {
+    "item": "lightsaber:pommel_cap"
+  }
+}

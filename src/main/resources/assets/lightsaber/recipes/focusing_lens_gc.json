@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CGC",
+    "QGQ",
+    "CQC"
+  ],
+  "key": {
+    "G": {
+      "item": "galacticraftcore:space_glass_strong",
+      "data": 32767
+    },
+    "Q": {
+      "type": "forge:ore_dict",
+      "ore": "gemQuartz"
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "compressedAluminum"
+    }
+  },
+  "result": {
+    "item": "lightsaber:focusing_lens"
+  }
+}

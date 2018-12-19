@@ -1,0 +1,29 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CTC",
+    "WDW",
+    "CTC"
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "plateLead"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "circuitBasic"
+    },
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "plateTitanium"
+    },
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    }
+  },
+  "result": {
+    "item": "lightsaber:emitter_matrix"
+  }
+}

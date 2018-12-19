@@ -1,0 +1,32 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "OSO",
+    "QGQ",
+    "OEO"
+  ],
+  "key": {
+    "O": {
+      "type": "forge:ore_dict",
+      "ore": "obsidian"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlassBlack"
+    },
+    "Q": {
+      "type": "forge:ore_dict",
+      "ore": "gemQuartz"
+    },
+    "E": {
+      "item": "minecraft:dragon_egg"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "gemSpinel"
+    }
+  },
+  "result": {
+    "item": "lightsaber:darksaber_lens"
+  }
+}

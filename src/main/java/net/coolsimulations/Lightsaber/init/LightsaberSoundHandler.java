@@ -5,6 +5,7 @@ import java.util.Random;
 import net.coolsimulations.Lightsaber.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class LightsaberSoundHandler {
 	
@@ -32,14 +33,14 @@ public class LightsaberSoundHandler {
 		darksaber_swing = register("item.lightsaber.darksaber_swing");
 		
 		hello_there = register("misc.hello_there");
-	}
+	}	
 	
 	public static SoundEvent register(String name){
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
 		SoundEvent e = new SoundEvent(location);
+		e.setRegistryName(name);
 		
-		SoundEvent.REGISTRY.register(size, location, e);
-		size++;
+		ForgeRegistries.SOUND_EVENTS.register(e);
 		return e;
 	}
 

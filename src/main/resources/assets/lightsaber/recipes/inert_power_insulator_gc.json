@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "RBR",
+    "SBS",
+    "RBR"
+  ],
+  "key": {
+    "B": {
+      "item": "galacticraftcore:battery",
+      "data": 100
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "slimeball"
+    },
+    "R": {
+      "item": "minecraft:wool",
+      "data": 32767
+    }
+  },
+  "result": {
+    "item": "lightsaber:inert_power_insulator"
+  }
+}

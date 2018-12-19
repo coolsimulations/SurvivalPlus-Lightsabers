@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:darksaber_lens_ic2_gc"
+    ]
+  },
+  "criteria": {
+    "has_obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+            "ore": "gemSpinel"
+          }
+        ]
+      }
+    },
+    "has_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:dragon_egg"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:darksaber_lens_ic2_gc"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_obsidian",
+      "has_egg",
+      "has_the_recipe"
+    ]
+  ]
+}

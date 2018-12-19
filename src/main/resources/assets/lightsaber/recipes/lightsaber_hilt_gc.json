@@ -1,0 +1,37 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "lightsaber_hilt",
+  "pattern": [
+    "IEI",
+    "NFA",
+    "TPT"
+  ],
+  "key": {
+    "P": {
+      "item": "lightsaber:pommel_cap"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "compressedAluminum"
+    },
+    "F": {
+      "item": "lightsaber:focusing_lens"
+    },
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "ingotTitanium"
+    },
+    "E": {
+      "item": "lightsaber:blade_emitter"
+    },
+    "A": {
+      "item": "lightsaber:activation_stud"
+    },
+    "N": {
+      "item": "lightsaber:inert_power_insulator"
+    }
+  },
+  "result": {
+    "item": "lightsaber:lightsaber_hilt"
+  }
+}

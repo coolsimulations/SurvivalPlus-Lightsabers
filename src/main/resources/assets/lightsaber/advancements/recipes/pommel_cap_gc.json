@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:pommel_cap_gc"
+    ]
+  },
+  "criteria": {
+    "has_compressed_steel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+            "ore": "compressedSteel"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:pommel_cap_gc"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_compressed_steel",
+      "has_the_recipe"
+    ]
+  ]
+}

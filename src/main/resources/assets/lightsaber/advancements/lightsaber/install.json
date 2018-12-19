@@ -1,0 +1,20 @@
+{
+    "display": {
+        "icon": {
+            "item": "lightsaber:lightsaber_hilt"
+        },
+        "title": {
+            "translate": "advancements.lightsaber.install"
+        },
+        "description": {
+            "translate": "advancements.lightsaber.install.desc"
+        }
+    },
+    "parent": "survivalplus:survivalplus/root",
+    "criteria": {
+        "tick": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "requirements": [["tick"]]
+}

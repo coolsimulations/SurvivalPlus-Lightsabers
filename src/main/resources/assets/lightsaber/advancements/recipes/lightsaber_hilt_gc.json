@@ -1,0 +1,78 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:lightsaber_hilt_gc",
+      "lightsaber:lightsaber_hilt_gc_alt"
+    ]
+  },
+  "criteria": {
+    "has_pommel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lightsaber:pommel_cap"
+          }
+        ]
+      }
+    },
+    "has_focusing_lens": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lightsaber:focusing_lens"
+          }
+        ]
+      }
+    },
+    "has_blade_emitter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lightsaber:blade_emitter"
+          }
+        ]
+      }
+    },
+    "has_activation_stud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lightsaber:activation_stud"
+          }
+        ]
+      }
+    },
+    "has_inert_power_insulator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lightsaber:inert_power_insulator"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:lightsaber_hilt_gc",
+        "recipe": "lightsaber:lightsaber_hilt_gc_alt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pommel",
+      "has_focusing_lens",
+      "has_blade_emitter",
+      "has_activation_stud",
+      "has_inert_power_insulator",
+      "has_the_recipe"
+    ]
+  ]
+}

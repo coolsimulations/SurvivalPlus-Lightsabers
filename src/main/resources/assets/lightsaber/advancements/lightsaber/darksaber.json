@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "lightsaber:darksaber_hilt"
+        },
+        "title": {
+            "translate": "advancements.lightsaber.darksaber"
+        },
+        "description": {
+            "translate": "advancements.lightsaber.darksaber.desc"
+        }
+    },
+    "parent": "lightsaber:lightsaber/install",
+    "criteria": {
+        "darksaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:darksaber_hilt"
+                    }
+                ]
+            }
+        }
+    }
+}

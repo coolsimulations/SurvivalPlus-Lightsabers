@@ -33,10 +33,10 @@ misc.hello_there=Hello There
 entity.Villager.jedi=Jedi
 entity.Villager.sith=Sith
 
-achievement.lightsaber.install=Hello There!
-achievement.lightsaber.install.desc=Download and Install SurvivalPlus Lightsabers
-achievement.lightsaber.install.display1=coolsim thanks you for downloading SurvivalPlus Lightsabers!
-achievement.lightsaber.lightsaber=An Elegant Weapon
-achievement.lightsaber.lightsaber.desc=Craft a Lightsaber
-achievement.lightsaber.darksaber=Is that a Lightsaber?
-achievement.lightsaber.darksaber.desc=Craft a Darksaber Lens
+advancements.lightsaber.install=Hello There!
+advancements.lightsaber.install.desc=Download and Install SurvivalPlus Lightsabers
+advancements.lightsaber.install.display1=coolsim thanks you for downloading SurvivalPlus Lightsabers!
+advancements.lightsaber.lightsaber=An Elegant Weapon
+advancements.lightsaber.lightsaber.desc=Obtain a Lightsaber
+advancements.lightsaber.darksaber=Is that a Lightsaber?
+advancements.lightsaber.darksaber.desc=Obtain a Darksaber

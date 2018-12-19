@@ -17,9 +17,9 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.IForgeRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class LightsaberVillagers {
 	
@@ -101,7 +101,7 @@ public class LightsaberVillagers {
     	@Override
     	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
     		
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 30), new ItemStack(Items.BOOK, 20), new ItemStack(Items.TOTEM)));
+    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 30), new ItemStack(Items.BOOK, 20), new ItemStack(Items.TOTEM_OF_UNDYING)));
     		
     	}
     }

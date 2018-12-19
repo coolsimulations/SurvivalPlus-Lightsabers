@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:inert_power_insulator_ic2"
+    ]
+  },
+  "criteria": {
+    "has_rubber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "ic2:crafting",
+            "data": 0
+          }
+        ]
+      }
+    },
+    "has_battery": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "ic2:advanced_re_battery",
+            "data": 26
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:inert_power_insulator_ic2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rubber",
+      "has_battery",
+      "has_the_recipe"
+    ]
+  ]
+}

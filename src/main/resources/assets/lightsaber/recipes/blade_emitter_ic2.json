@@ -1,0 +1,31 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "TGT",
+    "BMB",
+    "TCT"
+  ],
+  "key": {
+    "M": {
+      "item": "lightsaber:emitter_matrix"
+    },
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "plateTitanium"
+    },
+    "G": {
+      "item": "ic2:glass",
+      "data": 0
+    },
+    "B": {
+      "item": "ic2:re_battery"
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "circuitBasic"
+    }
+  },
+  "result": {
+    "item": "lightsaber:blade_emitter"
+  }
+}

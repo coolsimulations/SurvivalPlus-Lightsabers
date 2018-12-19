@@ -1,6 +1,8 @@
 package net.coolsimulations.Lightsaber;
 
-import net.coolsimulations.Lightsaber.init.LightsaberAchievements;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
@@ -8,7 +10,7 @@ import net.coolsimulations.Lightsaber.init.LightsaberVillagers;
 import net.coolsimulations.Lightsaber.init.StructureVillageJediHut;
 import net.coolsimulations.Lightsaber.init.VillageJediHutHandler;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
-import net.coolsimulations.Lightsaber.recipes.LightsaberShapedRecipes;
+import net.minecraft.item.Item;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -28,6 +30,8 @@ public class Lightsaber {
 	@Mod.Instance(Reference.MOD_ID)
 	public static Lightsaber instance;
 	
+	public static final List<Item> ITEMS = new ArrayList<Item>();
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -38,8 +42,6 @@ public class Lightsaber {
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageJediHutHandler());
 		MapGenStructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure");
 		LightsaberVillagers.registerVillagers();
-		LightsaberAchievements.regsiterAchievements();
-		LightsaberAchievements.registerPage();
 	}
 	
 	@EventHandler
@@ -54,7 +56,6 @@ public class Lightsaber {
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		System.out.println("Post Init");
-		LightsaberShapedRecipes.loadRecipes();
 		
 	}
 }

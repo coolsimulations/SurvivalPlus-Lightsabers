@@ -1,0 +1,75 @@
+{
+    "display": {
+        "icon": {
+            "item": "lightsaber:red_lightsaber_hilt"
+        },
+        "title": {
+            "translate": "advancements.lightsaber.lightsaber"
+        },
+        "description": {
+            "translate": "advancements.lightsaber.lightsaber.desc"
+        }
+    },
+    "parent": "lightsaber:lightsaber/install",
+    "criteria": {
+        "red_lightsaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:red_lightsaber_hilt"
+                    }
+                ]
+            }
+        },
+        "blue_lightsaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:blue_lightsaber_hilt"
+                    }
+                ]
+            }
+        },
+        "green_lightsaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:green_lightsaber_hilt"
+                    }
+                ]
+            }
+        },
+        "purple_lightsaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:purple_lightsaber_hilt"
+                    }
+                ]
+            }
+        },
+        "white_lightsaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:white_lightsaber_hilt"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "red_lightsaber_hilt",
+            "blue_lightsaber_hilt",
+            "green_lightsaber_hilt",
+            "purple_lightsaber_hilt",
+            "white_lightsaber_hilt"
+        ]
+    ]
+}
