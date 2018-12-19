@@ -73,7 +73,7 @@ public class LightsaberShapedRecipes {
 	        	addRecipe(new ItemStack(LightsaberItems.focusing_lens), new Object[]{"CGC","QGQ","CQC", 'G', "blockGlass", 'Q', "gemQuartz", 'C', "ingotTitanium"});
 	        	addRecipe(new ItemStack(LightsaberItems.inert_power_insulator), new Object[]{"RBR","SBS","RBR", 'B', "blockRedstone", 'S', "slimeball", 'R', Blocks.WOOL});
 	        	addRecipe(new ItemStack(LightsaberItems.activation_stud), new Object[]{"TIT","BCB","TIT", 'B', Blocks.STONE_BUTTON, 'C', Items.COMPARATOR, 'I', "ingotIron", 'T', "ingotTitanium"});
-	        	addRecipe(new ItemStack(LightsaberItems.darksaber_lens), new Object[]{"OGO","QGQ","OEO", 'G', "blockGlassBlack", 'Q', "gemQuartz", 'O', "obsidian", 'E', Blocks.DRAGON_EGG});
+	        	addRecipe(new ItemStack(LightsaberItems.darksaber_lens), new Object[]{"OSO","QGQ","OEO", 'G', "blockGlassBlack", 'Q', "gemQuartz", 'O', "obsidian", 'E', Blocks.DRAGON_EGG, 'S', "gemSpinel"});
 	        	addRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new Object[]{"IEI","NFA","TPT", 'P', LightsaberItems.pommel_cap, 'I', "ingotTitanium", 'F', LightsaberItems.focusing_lens, 'T', "blockIron", 'E', LightsaberItems.blade_emitter, 'A', LightsaberItems.activation_stud, 'N', LightsaberItems.inert_power_insulator});
         		addRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new Object[]{"IEI","AFN","TPT", 'P', LightsaberItems.pommel_cap, 'I', "ingotTitanium", 'F', LightsaberItems.focusing_lens, 'T', "blockIron", 'E', LightsaberItems.blade_emitter, 'A', LightsaberItems.activation_stud, 'N', LightsaberItems.inert_power_insulator});
 	        }
