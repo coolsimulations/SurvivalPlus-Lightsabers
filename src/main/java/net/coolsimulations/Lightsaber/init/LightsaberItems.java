@@ -12,6 +12,7 @@ import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber.LightsaberMaterial;
 import net.coolsimulations.Lightsaber.item.ItemLightsaberHilt;
 import net.coolsimulations.SurvivalPlus.api.SPItems;
+import net.coolsimulations.SurvivalPlus.api.SPTabs;
 
 public class LightsaberItems {
 	
@@ -43,21 +44,21 @@ public class LightsaberItems {
 	
 	public static void init() {
 		
-		pommel_cap = new Item().setUnlocalizedName("pommel_cap").setRegistryName("pommel_cap").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		focusing_lens = new Item().setUnlocalizedName("focusing_lens").setRegistryName("focusing_lens").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		blade_emitter = new Item().setUnlocalizedName("blade_emitter").setRegistryName("blade_emitter").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		emitter_matrix = new Item().setUnlocalizedName("emitter_matrix").setRegistryName("emitter_matrix").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		inert_power_insulator = new Item().setUnlocalizedName("inert_power_insulator").setRegistryName("inert_power_insulator").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		activation_stud = new Item().setUnlocalizedName("activation_stud").setRegistryName("activation_stud").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		lightsaber_hilt = new Item().setUnlocalizedName("lightsaber_hilt").setRegistryName("lightsaber_hilt").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
-		darksaber_lens = new Item().setUnlocalizedName("darksaber_lens").setRegistryName("darksaber_lens").setCreativeTab(SPItems.bronze_ingot.getCreativeTab());
+		pommel_cap = new Item().setUnlocalizedName("pommel_cap").setRegistryName("pommel_cap").setCreativeTab(SPTabs.tabMaterials);
+		focusing_lens = new Item().setUnlocalizedName("focusing_lens").setRegistryName("focusing_lens").setCreativeTab(SPTabs.tabMaterials);
+		blade_emitter = new Item().setUnlocalizedName("blade_emitter").setRegistryName("blade_emitter").setCreativeTab(SPTabs.tabMaterials);
+		emitter_matrix = new Item().setUnlocalizedName("emitter_matrix").setRegistryName("emitter_matrix").setCreativeTab(SPTabs.tabMaterials);
+		inert_power_insulator = new Item().setUnlocalizedName("inert_power_insulator").setRegistryName("inert_power_insulator").setCreativeTab(SPTabs.tabMaterials);
+		activation_stud = new Item().setUnlocalizedName("activation_stud").setRegistryName("activation_stud").setCreativeTab(SPTabs.tabMaterials);
+		lightsaber_hilt = new Item().setUnlocalizedName("lightsaber_hilt").setRegistryName("lightsaber_hilt").setCreativeTab(SPTabs.tabMaterials);
+		darksaber_lens = new Item().setUnlocalizedName("darksaber_lens").setRegistryName("darksaber_lens").setCreativeTab(SPTabs.tabMaterials);
 		
-		red_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("red_lightsaber_hilt").setRegistryName("red_lightsaber_hilt").setCreativeTab(SPItems.bronze_sword.getCreativeTab());
-		blue_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("blue_lightsaber_hilt").setRegistryName("blue_lightsaber_hilt").setCreativeTab(SPItems.bronze_sword.getCreativeTab());
-		green_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("green_lightsaber_hilt").setRegistryName("green_lightsaber_hilt").setCreativeTab(SPItems.bronze_sword.getCreativeTab());
-		purple_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("purple_lightsaber_hilt").setRegistryName("purple_lightsaber_hilt").setCreativeTab(SPItems.bronze_sword.getCreativeTab());
-		white_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("white_lightsaber_hilt").setRegistryName("white_lightsaber_hilt").setCreativeTab(SPItems.bronze_sword.getCreativeTab());
-		darksaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("darksaber_hilt").setRegistryName("darksaber_hilt").setCreativeTab(SPItems.bronze_sword.getCreativeTab());
+		red_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("red_lightsaber_hilt").setRegistryName("red_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		blue_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("blue_lightsaber_hilt").setRegistryName("blue_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		green_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("green_lightsaber_hilt").setRegistryName("green_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		purple_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("purple_lightsaber_hilt").setRegistryName("purple_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		white_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("white_lightsaber_hilt").setRegistryName("white_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		darksaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("darksaber_hilt").setRegistryName("darksaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		
 		red_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("red_lightsaber").setRegistryName("red_lightsaber");
 		blue_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("blue_lightsaber").setRegistryName("blue_lightsaber");

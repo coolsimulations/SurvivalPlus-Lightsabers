@@ -2,11 +2,10 @@ package net.coolsimulations.Lightsaber.init;
 
 import java.io.InputStream;
 
+import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -24,14 +23,14 @@ public class LightsaberEventHandler {
 		EntityPlayer player = (EntityPlayer) event.player;
 		
 		try
-	    {
-	      InputStream sound = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("lightsaber", "sounds/misc/hello_there.wav")).getInputStream();
-	      AudioStream audioStream = new AudioStream(sound);
-	      AudioPlayer.player.start(audioStream);
-	    }
-	    catch (Exception e)
-	    {
-	      System.err.println(e);
+    	{
+			InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
+	     	AudioStream audioStream = new AudioStream(sound);
+	     	AudioPlayer.player.start(audioStream);
+	   	}
+	    	catch (Exception e)
+	   	{
+	    	System.err.println(e);
 	    }
 		
 		if (!player.hasAchievement(LightsaberAchievements.achievementInstall))
