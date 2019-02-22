@@ -31,14 +31,14 @@ public class LightsaberEventHandler {
 		NBTTagCompound entityData = player.getEntityData();
 		
 		try
-	    {
-	      InputStream sound = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("lightsaber", "sounds/misc/hello_there.wav")).getInputStream();
-	      AudioStream audioStream = new AudioStream(sound);
-	      AudioPlayer.player.start(audioStream);
-	    }
-	    catch (Exception e)
-	    {
-	      System.err.println(e);
+    	{
+			InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
+	     	AudioStream audioStream = new AudioStream(sound);
+	     	AudioPlayer.player.start(audioStream);
+	   	}
+	    	catch (Exception e)
+	   	{
+	    	System.err.println(e);
 	    }
 		
 		if(!entityData.getBoolean("lightsaber.firstJoin")) {
