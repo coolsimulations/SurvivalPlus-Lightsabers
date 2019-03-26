@@ -123,16 +123,6 @@ public class StructureVillageJediHut extends StructureVillagePieces.Village
          this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 1, 3, 4, 1, 5, iblockstate1.withProperty(BlockStoneSlab.HALF, BlockSlab.EnumBlockHalf.TOP), iblockstate1.withProperty(BlockStoneSlab.HALF, BlockSlab.EnumBlockHalf.TOP), false); //Right Bench
          this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 2, 5, 1, 3, 5, Blocks.GLOWSTONE.getDefaultState(), Blocks.GLOWSTONE.getDefaultState(), false); //Left Light
          this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 2, 5, 4, 3, 5, Blocks.GLOWSTONE.getDefaultState(), Blocks.GLOWSTONE.getDefaultState(), false); //Right Light
-         
-         
-         /**this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 0, 4, 0, iblockstate, iblockstate, false); //Front Right Coloumn
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 1, 0, 9, 4, 0, iblockstate, iblockstate, false); //Front Left Coloumn
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 12, 0, 4, 12, iblockstate, iblockstate, false); //Back Right Coloumn
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 1, 12, 9, 4, 12, iblockstate, iblockstate, false); //Back Left Coloumn
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 0, 8, 4, 0, Blocks.BRICK_BLOCK.getDefaultState(), Blocks.BRICK_BLOCK.getDefaultState(), false); //Front Wall Brick
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 2, 0, 4, 3, 0, iblockstate3, iblockstate3, false); //Front Right Wooden Window Coloumn
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 2, 0, 7, 3, 0, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false); //Front Wall Window
-         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 8, 2, 0, 8, 3, 0, iblockstate3, iblockstate3, false); //Front Left Wooden Window Coloumn**/
 
          if (this.getBlockStateFromPos(worldIn, 2, 0, -1, structureBoundingBoxIn).getMaterial() == Material.AIR && this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn).getMaterial() != Material.AIR)
          {
@@ -144,15 +134,11 @@ public class StructureVillageJediHut extends StructureVillagePieces.Village
              }
          }
 
-         //this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 3, 3, 3, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
-
-         //this.placeTorch(worldIn, EnumFacing.NORTH, 1, 4, 1, structureBoundingBoxIn);
-
-         for (int j = 0; j < 7; ++j) //j < 5 (j = x?)
+         for (int j = 0; j < 7; ++j)
          {
-             for (int i = 0; i < 6; ++i) //i < 5; (5 = z?)
+             for (int i = 0; i < 6; ++i)
              {
-                 this.clearCurrentPositionBlocksUpwards(worldIn, i, 6, j, structureBoundingBoxIn); // i, 6, j 
+                 this.clearCurrentPositionBlocksUpwards(worldIn, i, 6, j, structureBoundingBoxIn); 
                  this.replaceAirAndLiquidDownwards(worldIn, Blocks.NETHER_BRICK.getDefaultState(), i, -1, j, structureBoundingBoxIn);
              }
          }
