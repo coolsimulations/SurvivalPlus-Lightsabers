@@ -39,7 +39,6 @@ public class Lightsaber {
 		MapGenStructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure");
 		LightsaberVillagers.registerVillagers();
 		LightsaberAchievements.regsiterAchievements();
-		LightsaberAchievements.registerPage();
 	}
 	
 	@EventHandler

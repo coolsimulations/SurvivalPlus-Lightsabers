@@ -240,8 +240,6 @@ public class ItemLightsaber extends Item{
         return multimap;
     }
     
-    //LightsaberMaterial
-    
     public static enum LightsaberMaterial
     {
     	Lightsaber(3, 10.0F, 16.0F, 24),

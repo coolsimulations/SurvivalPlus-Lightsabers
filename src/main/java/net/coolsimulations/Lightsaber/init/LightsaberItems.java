@@ -39,9 +39,6 @@ public class LightsaberItems {
 	public static Item white_lightsaber;
 	public static Item darksaber;
 	
-	//public static final Item.ToolMaterial lightsaberToolMaterial = EnumHelper.addToolMaterial("lightsaberToolMaterial", 2, 432, 7.0F, 2.5F, 17);
-
-	
 	public static void init() {
 		
 		pommel_cap = new Item().setUnlocalizedName("pommel_cap").setRegistryName("pommel_cap").setCreativeTab(SPTabs.tabMaterials);
