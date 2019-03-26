@@ -20,15 +20,9 @@ public class LightsaberAchievements {
 		achievementLightsaber = new Achievement("achievement.lightsaber.lightsaber", "lightsaber.lightsaber", -2, 2, new ItemStack(LightsaberItems.red_lightsaber_hilt), achievementInstall).registerStat();
 		achievementDarksaber = new Achievement("achievement.lightsaber.darksaber", "lightsaber.darksaber", -2, -1, new ItemStack(LightsaberItems.darksaber_hilt), achievementInstall).registerStat();
 		
-		//lightsaberPage = new AchievementPage(Reference.MOD_NAME, achievementInstall, achievementLightsaber, achievementDarksaber);
 		SPAchievements.spPage.getAchievements().add(achievementInstall);
 		SPAchievements.spPage.getAchievements().add(achievementLightsaber);
 		SPAchievements.spPage.getAchievements().add(achievementDarksaber);
-	}
-	
-	public static void registerPage()
-	{
-		//AchievementPage.registerAchievementPage(lightsaberPage);
 	}
 
 }
