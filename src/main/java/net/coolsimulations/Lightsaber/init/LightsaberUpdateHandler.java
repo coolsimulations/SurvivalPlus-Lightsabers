@@ -20,7 +20,7 @@ public class LightsaberUpdateHandler {
 	public static void init() {
 		
 		try {
-            URL url = new URL("http://coolsimulations.net/mcmods/lightsaber/versionchecker110.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker110.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersion = s.next();
             s.close();
