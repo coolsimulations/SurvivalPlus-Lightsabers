@@ -44,7 +44,7 @@ public class LightsaberUpdateHandler {
 				updateInfo.getStyle().setColor(TextFormatting.YELLOW);
 				
 				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("sp.update.display2")));
-				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://minecraft.curseforge/projects/survivalplus-lightsabers"));
+				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
 				
 			}
 			
@@ -62,7 +62,7 @@ public class LightsaberUpdateHandler {
 				updateInfo.getStyle().setColor(TextFormatting.YELLOW);
 				
 				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("sp.update.display2")));
-				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://minecraft.curseforge/projects/survivalplus-lightsabers"));
+				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
 				
 			}
 			
