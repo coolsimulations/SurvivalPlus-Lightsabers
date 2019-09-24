@@ -1,61 +1,43 @@
 package net.coolsimulations.Lightsaber;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
+import net.coolsimulations.Lightsaber.init.LightsaberUpdateHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberVillagers;
 import net.coolsimulations.Lightsaber.init.StructureVillageJediHut;
 import net.coolsimulations.Lightsaber.init.VillageJediHutHandler;
+import net.coolsimulations.Lightsaber.proxy.ClientProxy;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
-import net.minecraft.item.Item;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS, dependencies = Reference.DEPENDENCIES, updateJSON = "https://coolsimulations.net/mcmods/lightsaber/versionchecker.json")
+@Mod(value = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Lightsaber {
 	
-	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
-	public static CommonProxy proxy;
+	public static CommonProxy proxy = (CommonProxy) DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 	
-	@Mod.Instance(Reference.MOD_ID)
-	public static Lightsaber instance;
+	private static Lightsaber instance;
 	
-	public static final List<Item> ITEMS = new ArrayList<Item>();
+	public static Lightsaber getInstance()
+	    {
+	        return instance;
+	    }
 	
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		System.out.println("Pre Init");
+	public Lightsaber() {
+		
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
+		LightsaberUpdateHandler.init();
 		LightsaberItems.init();
 		LightsaberItems.register();
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageJediHutHandler());
-		MapGenStructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure");
+		StructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure");
 		LightsaberVillagers.registerVillagers();
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		System.out.println("Init");
-		proxy.init();
 		LightsaberSoundHandler.init();
 	}
 	
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
-		System.out.println("Post Init");
-		
-	}
 }

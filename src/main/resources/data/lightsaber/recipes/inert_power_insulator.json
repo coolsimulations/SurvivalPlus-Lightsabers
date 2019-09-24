@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RBR",
+    "SBS",
+    "RBR"
+  ],
+  "key": {
+    "B": {
+      "tag": "forge:storage_blocks/redstone"
+    },
+    "S": {
+      "item": "minecraft:slime_ball"
+    },
+    "R": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "lightsaber:inert_power_insulator"
+  }
+}

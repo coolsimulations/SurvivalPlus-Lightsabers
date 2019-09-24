@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[25,]"
+issueTrackerURL="http://github.com/coolsimulations/survivalplus-lightsabers/issues/"
+logoFile="logo.png"
+
+[[mods]]
+    modId="lightsaber"
+    version="${version}"
+    updateJSONURL="https://coolsimulations.net/mcmods/lightsaber/versionchecker.json"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"
+    displayName="SurvivalPlus Lightsabers"
+    credits="To leviofpower, Jessen_House, and LachlanZahHut who have all played a vital part in testing this mod throughout its development. Also, credit goes to Star Wars and Lucasfilms for Lightsaber realted concepts and assets. Lightsaber sounds are from Return of the Jedi, The Force Awakens, and The Last Jedi. Darksaber sounds are from Star Wars Rebels as well as Star Wars Clone Wars TV Series."
+    authors="coolsim"
+    description='''
+    This is an offical add-on for SurvivalPlus that adds Lightsabers!
+    '''
+[[dependencies.lightsaber]]
+    modId="forge"
+    mandatory=true
+    versionRange="[25,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.lightsaber]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.13.2]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.lightsaber]]
+    modId="survivalplus"
+    mandatory=true
+    versionRange="[0.1.0]"
+    ordering="BEFORE"
+    side="BOTH"

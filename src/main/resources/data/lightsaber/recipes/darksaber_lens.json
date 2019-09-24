@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OSO",
+    "QGQ",
+    "OEO"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "G": {
+      "item": "minecraft:black_stained_glass"
+    },
+    "Q": {
+      "tag": "forge:gems/quartz"
+    },
+    "E": {
+      "item": "minecraft:dragon_egg"
+    },
+    "S": {
+      "tag": "forge:gems/spinel"
+    }
+  },
+  "result": {
+    "item": "lightsaber:darksaber_lens"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TGT",
+    "BMB",
+    "TCT"
+  ],
+  "key": {
+    "M": {
+      "item": "lightsaber:emitter_matrix"
+    },
+    "T": {
+      "tag": "forge:ingots/titanium"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "B": {
+      "tag": "forge:storage_blocks/redstone"
+    },
+    "C": {
+      "item": "minecraft:repeater"
+    }
+  },
+  "result": {
+    "item": "lightsaber:blade_emitter"
+  }
+}

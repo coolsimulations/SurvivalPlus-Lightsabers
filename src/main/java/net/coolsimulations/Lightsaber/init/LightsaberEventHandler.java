@@ -5,7 +5,6 @@ import java.io.InputStream;
 import net.coolsimulations.Lightsaber.Lightsaber;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -15,7 +14,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 import sun.audio.AudioPlayer;
@@ -27,7 +26,7 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onplayerLogin(PlayerLoggedInEvent event)
     {
-		EntityPlayer player = (EntityPlayer) event.player;
+		EntityPlayer player = (EntityPlayer) event.getPlayer();
 		NBTTagCompound entityData = player.getEntityData();
 		
 		try
@@ -55,21 +54,7 @@ public class LightsaberEventHandler {
 		}
     }
 	
-	@SubscribeEvent
-	public void registerItems(RegistryEvent.Register<Item> event)
-    {
-		LightsaberItems.registerItems(event.getRegistry());
-    }
-
-	@SubscribeEvent
-	public void onModelRegistry(ModelRegistryEvent event)
-    {
-        for(Item item : Lightsaber.ITEMS) {
-        	LightsaberItems.registerRenders();
-        }
-    }
-	
-	@SubscribeEvent
+	/**@SubscribeEvent
     public void registerRecipes(RegistryEvent.Register<IRecipe> event)
     {
 		IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
@@ -140,7 +125,7 @@ public class LightsaberEventHandler {
 			modRegistry.remove(new ResourceLocation(Reference.MOD_ID + ":" + "lightsaber_hilt_alt"));
 			
 		}
-    }
+    }**/
 
 
 }

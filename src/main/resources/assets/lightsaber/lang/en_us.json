@@ -1,0 +1,44 @@
+{
+  "item.lightsaber.pommel_cap":"Pommel Cap",
+  "item.lightsaber.focusing_lens": "Focusing Lens",
+  "item.lightsaber.blade_emitter": "Blade Emitter",
+  "item.lightsaber.inert_power_insulator": "Inert Power Insulator",
+  "item.lightsaber.lightsaber_hilt": "Lightsaber Hilt",
+  "item.lightsaber.activation_stud": "Activation Stud",
+  "item.lightsaber.blade_matrix": "Blade Matrix",
+  "item.lightsaber.emitter_matrix": "Emitter Matrix",
+  "item.lightsaber.darksaber_lens": "Darksaber Lens",
+  
+  "item.lightsaber.red_lightsaber_hilt": "Red Lightsaber Hilt",
+  "item.lightsaber.blue_lightsaber_hilt": "Blue Lightsaber Hilt",
+  "item.lightsaber.green_lightsaber_hilt": "Green Lightsaber Hilt",
+  "item.lightsaber.purple_lightsaber_hilt": "Purple Lightsaber Hilt",
+  "item.lightsaber.white_lightsaber_hilt": "White Lightsaber Hilt",
+  "item.lightsaber.darksaber_hilt": "Darksaber Hilt",
+  
+  "item.lightsaber.red_lightsaber": "Red Lightsaber",
+  "item.lightsaber.blue_lightsaber": "Blue Lightsaber",
+  "item.lightsaber.green_lightsaber": "Green Lightsaber",
+  "item.lightsaber.purple_lightsaber": "Purple Lightsaber",
+  "item.lightsaber.white_lightsaber": "White Lightsaber",
+  "item.lightsaber.darksaber": "Darksaber",
+  
+  "item.lightsaber.lightsaber_on": "Lightsaber Turned On",
+  "item.lightsaber.lightsaber_off": "Lightsaber Turned Off",
+  "item.lightsaber.lightsaber_swing": "Lightsaber Swung",
+  "item.lightsaber.darksaber_on": "Darksaber Turned On",
+  "item.lightsaber.darksaber_off": "Darksaber Turned Off",
+  "item.lightsaber.darksaber_swing": "Darksaber Swung",
+  "misc.hello_there": "Hello There",
+
+  "entity.minecraft.villager.jedi": "Jedi",
+  "entity.minecraft.villager.sith": "Sith",
+
+  "advancements.lightsaber.install": "Hello There!",
+  "advancements.lightsaber.install.desc": "Download and Install SurvivalPlus Lightsabers",
+  "advancements.lightsaber.install.display1": "coolsim thanks you for downloading SurvivalPlus Lightsabers!",
+  "advancements.lightsaber.lightsaber": "An Elegant Weapon",
+  "advancements.lightsaber.lightsaber.desc": "Obtain a Lightsaber",
+  "advancements.lightsaber.darksaber": "Is that a Lightsaber?",
+  "advancements.lightsaber.darksaber.desc": "Obtain a Darksaber"
+}

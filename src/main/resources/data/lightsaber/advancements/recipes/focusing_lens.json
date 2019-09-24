@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:focusing_lens"
+    ]
+  },
+  "criteria": {
+    "has_quarts": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/quartz"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:focusing_lens"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_quarts",
+      "has_the_recipe"
+    ]
+  ]
+}

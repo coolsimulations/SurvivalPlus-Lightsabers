@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CTC",
+    "WDW",
+    "CTC"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/bronze"
+    },
+    "W": {
+      "item": "minecraft:repeater"
+    },
+    "T": {
+      "tag": "forge:ingots/titanium"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "lightsaber:emitter_matrix"
+  }
+}

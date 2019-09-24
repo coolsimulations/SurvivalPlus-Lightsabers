@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "lightsaber_hilt",
+  "pattern": [
+    "IEI",
+    "NFA",
+    "TPT"
+  ],
+  "key": {
+    "P": {
+      "item": "lightsaber:pommel_cap"
+    },
+    "I": {
+      "tag": "forge:ingots/titanium"
+    },
+    "F": {
+      "item": "lightsaber:focusing_lens"
+    },
+    "T": {
+      "tag": "forge:storage_blocks/iron"
+    },
+    "E": {
+      "item": "lightsaber:blade_emitter"
+    },
+    "A": {
+      "item": "lightsaber:activation_stud"
+    },
+    "N": {
+      "item": "lightsaber:inert_power_insulator"
+    }
+  },
+  "result": {
+    "item": "lightsaber:lightsaber_hilt"
+  }
+}

@@ -1,4 +1,4 @@
-package net.coolsimulations.Lightsaber;
+/**package net.coolsimulations.Lightsaber;
 
 import javax.annotation.Nonnull;
 
@@ -35,3 +35,4 @@ public static void loadBlacklist(IIngredientBlacklist jeiHidden){
 	
 
 }
+**/

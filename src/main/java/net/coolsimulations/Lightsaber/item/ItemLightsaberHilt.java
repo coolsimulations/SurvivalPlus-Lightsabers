@@ -19,8 +19,8 @@ import net.minecraft.world.World;
 
 public class ItemLightsaberHilt extends Item{
 	
-	public ItemLightsaberHilt(){
-		maxStackSize = 1;
+	public ItemLightsaberHilt(Item.Properties properties){
+		super(properties.maxStackSize(1));
 	}
 	
 	@Override
@@ -29,25 +29,25 @@ public class ItemLightsaberHilt extends Item{
 		
 		ItemStack itemStackIn = playerIn.getHeldItem(handIn);
     	Item item = itemStackIn.getItem();
-    	NBTTagCompound tag = item.getNBTShareTag(itemStackIn);
+    	NBTTagCompound tag = item.getShareTag(itemStackIn);
     	
     	ItemStack red = new ItemStack(LightsaberItems.red_lightsaber);
-    	red.setTagCompound(tag);
+    	red.setTag(tag);
     	
     	ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber);
-    	blue.setTagCompound(tag);
+    	blue.setTag(tag);
     	
     	ItemStack green = new ItemStack(LightsaberItems.green_lightsaber);
-    	green.setTagCompound(tag);
+    	green.setTag(tag);
     	
     	ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber);
-    	purple.setTagCompound(tag);
+    	purple.setTag(tag);
     	
     	ItemStack white = new ItemStack(LightsaberItems.white_lightsaber);
-    	white.setTagCompound(tag);
+    	white.setTag(tag);
     	
     	ItemStack dark = new ItemStack(LightsaberItems.darksaber);
-    	dark.setTagCompound(tag);
+    	dark.setTag(tag);
 
     	if(item == LightsaberItems.red_lightsaber_hilt){
     		

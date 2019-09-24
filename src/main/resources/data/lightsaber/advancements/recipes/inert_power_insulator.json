@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:inert_power_insulator"
+    ]
+  },
+  "criteria": {
+    "has_slimeball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:slime_ball"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:inert_power_insulator"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_slimeball",
+      "has_the_recipe"
+    ]
+  ]
+}

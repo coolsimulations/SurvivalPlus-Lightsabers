@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CGC",
+    "QGQ",
+    "CQC"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "Q": {
+      "tag": "forge:gems/quartz"
+    },
+    "C": {
+      "tag": "forge:ingots/titanium"
+    }
+  },
+  "result": {
+    "item": "lightsaber:focusing_lens"
+  }
+}
