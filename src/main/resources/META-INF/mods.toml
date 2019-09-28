@@ -5,7 +5,7 @@ logoFile="logo.png"
 
 [[mods]]
     modId="lightsaber"
-    version="${version}"
+    version="0.1.0"
     updateJSONURL="https://coolsimulations.net/mcmods/lightsaber/versionchecker.json"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"
     displayName="SurvivalPlus Lightsabers"
