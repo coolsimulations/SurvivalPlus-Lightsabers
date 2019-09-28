@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:blue_lightsaber_hilt",
+      "lightsaber:green_lightsaber_hilt",
+      "lightsaber:white_lightsaber_hilt",
+      "lightsaber:purple_lightsaber_hilt",
+      "lightsaber:red_lightsaber_hilt",
+      "lightsaber:darksaber_hilt"
+    ]
+  },
+  "criteria": {
+    "has_hilt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lightsaber:lightsaber_hilt"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:blue_lightsaber_hilt",
+        "recipe": "lightsaber:green_lightsaber_hilt",
+        "recipe": "lightsaber:white_lightsaber_hilt",
+        "recipe": "lightsaber:purple_lightsaber_hilt",
+        "recipe": "lightsaber:red_lightsaber_hilt",
+        "recipe": "lightsaber:darksaber_hilt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hilt",
+      "has_the_recipe"
+    ]
+  ]
+}

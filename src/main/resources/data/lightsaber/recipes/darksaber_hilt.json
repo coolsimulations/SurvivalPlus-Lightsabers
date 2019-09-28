@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "lightsaber:lightsaber_hilt"
+    },
+    {
+      "item": "lightsaber:darksaber_lens"
+    }
+  ],
+  "result": {
+    "item": "lightsaber:darksaber_hilt"
+  }
+}

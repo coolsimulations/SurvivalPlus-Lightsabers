@@ -5,21 +5,22 @@ import com.google.common.collect.Multimap;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -37,11 +38,11 @@ public class ItemLightsaber extends Item{
     }
     
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn){
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn){
 		
         ItemStack itemStackIn = playerIn.getHeldItem(handIn);
     	Item item = itemStackIn.getItem();
-    	NBTTagCompound tag = item.getShareTag(itemStackIn);
+    	CompoundNBT tag = item.getShareTag(itemStackIn);
     	
     	ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
     	red.setTag(tag);
@@ -65,11 +66,11 @@ public class ItemLightsaber extends Item{
     		
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, red);
+    			playerIn.setHeldItem(Hand.OFF_HAND, red);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, red);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, red);
 			}
             worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	}
@@ -77,11 +78,11 @@ public class ItemLightsaber extends Item{
     		
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, blue);
+    			playerIn.setHeldItem(Hand.OFF_HAND, blue);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, blue);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 			}
             worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	}
@@ -89,11 +90,11 @@ public class ItemLightsaber extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, green);
+    			playerIn.setHeldItem(Hand.OFF_HAND, green);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, green);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -101,11 +102,11 @@ public class ItemLightsaber extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, purple);
+    			playerIn.setHeldItem(Hand.OFF_HAND, purple);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, purple);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -113,11 +114,11 @@ public class ItemLightsaber extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, white);
+    			playerIn.setHeldItem(Hand.OFF_HAND, white);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, white);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, white);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -125,36 +126,36 @@ public class ItemLightsaber extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, dark);
+    			playerIn.setHeldItem(Hand.OFF_HAND, dark);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, dark);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, itemStackIn);
 	}
     
     @Override
-    public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player)
+    public boolean onDroppedByPlayer(ItemStack item, PlayerEntity player)
     {
         return true; //Meant to be false but bug means that when dropping it it vanishes
     }
     
     @Override
-    public boolean onEntitySwing(ItemStack stack, EntityLivingBase entityLiving)
+    public boolean onEntitySwing(ItemStack stack, LivingEntity entityLiving)
     {
     	if(stack.getItem() == LightsaberItems.darksaber){
-    		entityLiving.world.playSound((EntityPlayer) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
+    		entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	} else {
-    		entityLiving.world.playSound((EntityPlayer) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
+    		entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	}
         return false;
     }
     
     @Override
-    public boolean canPlayerBreakBlockWhileHolding(IBlockState state, World world, BlockPos pos, EntityPlayer player)
+    public boolean canPlayerBreakBlockWhileHolding(BlockState state, World world, BlockPos pos, PlayerEntity player)
     {
         return !player.isCreative();
     }
@@ -167,13 +168,13 @@ public class ItemLightsaber extends Item{
         return this.tier.getAttackDamage();
     }
     
-    public float getDestroySpeed(ItemStack stack, IBlockState state) {
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
 		Block lvt_3_1_ = state.getBlock();
 		if (lvt_3_1_ == Blocks.COBWEB) {
 			return 15.0F;
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
-			return lvt_4_1_ != Material.PLANTS && lvt_4_1_ != Material.VINE && lvt_4_1_ != Material.CORAL
+			return lvt_4_1_ != Material.PLANTS && lvt_4_1_ != Material.TALL_PLANTS && lvt_4_1_ != Material.CORAL
 					&& !state.isIn(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
 		}
 	}
@@ -181,7 +182,7 @@ public class ItemLightsaber extends Item{
     /**
      * Check whether this Item can harvest the given Block
      */
-    public boolean canHarvestBlock(IBlockState blockIn)
+    public boolean canHarvestBlock(BlockState blockIn)
     {
         return blockIn.getBlock() == Blocks.COBWEB;
     }
@@ -215,14 +216,14 @@ public class ItemLightsaber extends Item{
     /**
      * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
      */
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot equipmentSlot)
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot)
     {
 		Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
 		
-		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
+		if (equipmentSlot == EquipmentSlotType.MAINHAND)
 		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) this.attackDamage, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double) -1.2000000476837158D, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) this.attackDamage, Operation.ADDITION));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double) -1.2000000476837158D, Operation.ADDITION));
 		}
 
 		return multimap;

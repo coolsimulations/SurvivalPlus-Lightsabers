@@ -1,103 +1,63 @@
 package net.coolsimulations.Lightsaber.init;
 
-import java.util.Iterator;
-import java.util.Random;
+/**import java.lang.reflect.Method;
+import java.util.Set;
+
+import com.google.common.collect.ImmutableSet;
 
 import net.coolsimulations.Lightsaber.Reference;
-import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
-import net.coolsimulations.SurvivalPlus.api.SPTags;
-import net.minecraft.entity.IMerchant;
-import net.minecraft.entity.passive.EntityVillager.ITradeList;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.village.MerchantRecipe;
-import net.minecraft.village.MerchantRecipeList;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.village.PointOfInterestType;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistry;**/
 
 public class LightsaberVillagers {
 	
-	public static VillagerRegistry.VillagerProfession villagerJedi;
-	public static VillagerRegistry.VillagerProfession villagerSith;
+	/**public static VillagerProfession villagerJedi;
+	public static VillagerProfession villagerSith;
 	
-	public static void registerVillagers() {
-    	IForgeRegistry<VillagerRegistry.VillagerProfession> villagerProfessions = ForgeRegistries.VILLAGER_PROFESSIONS;
+	public static PointOfInterestType holocron;
+	
+	public static void registerVillagers(IForgeRegistry<VillagerProfession> registry) {
+    	IForgeRegistry<VillagerProfession> villagerProfessions = ForgeRegistries.PROFESSIONS;
     	
-		villagerJedi = new VillagerRegistry.VillagerProfession(Reference.MOD_ID + ":jedi", Reference.MOD_ID + ":textures/entity/jedi.png", Reference.MOD_ID + ":textures/entity/zombie_jedi.png");
-		villagerProfessions.register(villagerJedi);
+		//villagerJedi = new VillagerProfession(Reference.MOD_ID + ":jedi", Reference.MOD_ID + ":textures/entity/jedi.png", Reference.MOD_ID + ":textures/entity/zombie_jedi.png");
+    		villagerJedi = new VillagerProfession("jedi", holocron, ImmutableSet.of(), ImmutableSet.of()).setRegistryName(Reference.MOD_ID, "jedi");
+    		registry.register(villagerJedi);
 		
-		villagerSith = new VillagerRegistry.VillagerProfession(Reference.MOD_ID + ":sith", Reference.MOD_ID + ":textures/entity/sith.png", Reference.MOD_ID + ":textures/entity/zombie_sith.png");
-		villagerProfessions.register(villagerSith);
+		//villagerSith = new VillagerProfession(Reference.MOD_ID + ":sith", Reference.MOD_ID + ":textures/entity/sith.png", Reference.MOD_ID + ":textures/entity/zombie_sith.png");
+		//villagerProfessions.register(villagerSith);**/
 		
-		VillagerRegistry.VillagerCareer jediCareer = new VillagerRegistry.VillagerCareer(villagerJedi, "jedi");
-		jediCareer.addTrade(1, new JediLevel1());
-		jediCareer.addTrade(2, new JediLevel2());
-		jediCareer.addTrade(3, new JediLevel3());
-		
-		VillagerRegistry.VillagerCareer sithCareer = new VillagerRegistry.VillagerCareer(villagerSith, "sith");
+		/**VillagerCareer sithCareer = new VillagerCareer(villagerSith, "sith");
 		sithCareer.addTrade(1, new SithLevel1());
 		sithCareer.addTrade(2, new SithLevel2());
-		sithCareer.addTrade(3, new SithLevel3());
+		sithCareer.addTrade(3, new SithLevel3());**/
 
+    /**}
+	
+	public static void registerPointOfIntrestTypes(IForgeRegistry<PointOfInterestType> registry){
+        
+		holocron = new PointOfInterestType("holocron", getAllStates(LightsaberBlocks.holocron), 1, (SoundEvent)null, 1).setRegistryName(Reference.MOD_ID, "holocron");
+		registry.register(holocron);
+		
+		try {
+			  Method func_221052_a = ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "func_221052_a", PointOfInterestType.class);
+			  func_221052_a.invoke(null, holocron);
+			} catch (Exception e) {
+			  e.printStackTrace();
+			}
+		
+    }
+	
+	public static Set<BlockState> getAllStates(Block block) {
+        return ImmutableSet.copyOf(block.getStateContainer().getValidStates());
     }
 
-    public static class JediLevel1 implements ITradeList {
-
-    	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-    		
-    		for(Iterator<Item> iter = SPTags.Items.GEMS_AMETHYST.getAllElements().iterator(); iter.hasNext(); ) {
-    			recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.blue_lightsaber_hilt)));
-    		}
-    		
-    		for(Iterator<Item> iter = SPTags.Items.GEMS_TOPAZ.getAllElements().iterator(); iter.hasNext(); ) {
-    			recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.green_lightsaber_hilt)));
-    		}
-    		
-    		for(Iterator<Item> iter = SPTags.Items.GEMS_PEARL.getAllElements().iterator(); iter.hasNext(); ) {
-    			recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.white_lightsaber_hilt)));
-    		}
-    		
-    		for(Iterator<Item> iter = SPTags.Items.GEMS_SAPPHIRE.getAllElements().iterator(); iter.hasNext(); ) {
-    			recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.purple_lightsaber_hilt)));
-    		}
-    		
-    		if (SPCompatibilityManager.isGCLoaded())
-            {
-    			//recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(GCItems.itemBasicMoon, 1, 2), new ItemStack(LightsaberItems.purple_lightsaber_hilt)));
-            }
-    	}
-    }
-    
-    public static class JediLevel2 implements ITradeList {
-
-    	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-    		
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 13), new ItemStack(Items.BOOK, 7), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), PotionTypes.SWIFTNESS)));
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 19), new ItemStack(Items.BOOK, 12), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), PotionTypes.LONG_LEAPING)));
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 21), new ItemStack(Items.BOOK, 14), PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION), PotionTypes.HEALING)));
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 24), new ItemStack(Items.BOOK, 10), PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION), PotionTypes.REGENERATION)));
-    		
-    	}
-    }
-    
-    public static class JediLevel3 implements ITradeList {
-
-    	@Override
-    	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-    		
-    		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 30), new ItemStack(Items.BOOK, 20), new ItemStack(Items.TOTEM_OF_UNDYING)));
-    		
-    	}
-    }
-    
-    public static class SithLevel1 implements ITradeList {
+    /**public static class SithLevel1 implements ITradeList {
 
     	@Override
     	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
@@ -133,6 +93,6 @@ public class LightsaberVillagers {
     		recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 25), new ItemStack(Blocks.TNT, 30), new ItemStack(Items.DRAGON_BREATH)));
     		
     	}
-    }
+    }**/
 
 }

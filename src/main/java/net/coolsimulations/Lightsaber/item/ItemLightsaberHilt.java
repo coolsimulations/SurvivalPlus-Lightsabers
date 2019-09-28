@@ -6,13 +6,13 @@ import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -24,12 +24,12 @@ public class ItemLightsaberHilt extends Item{
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn){
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn){
 		
 		
 		ItemStack itemStackIn = playerIn.getHeldItem(handIn);
     	Item item = itemStackIn.getItem();
-    	NBTTagCompound tag = item.getShareTag(itemStackIn);
+    	CompoundNBT tag = item.getShareTag(itemStackIn);
     	
     	ItemStack red = new ItemStack(LightsaberItems.red_lightsaber);
     	red.setTag(tag);
@@ -53,11 +53,11 @@ public class ItemLightsaberHilt extends Item{
     		
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, red);
+    			playerIn.setHeldItem(Hand.OFF_HAND, red);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, red);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, red);
 			}
 		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	}
@@ -65,11 +65,11 @@ public class ItemLightsaberHilt extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, blue);
+    			playerIn.setHeldItem(Hand.OFF_HAND, blue);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, blue);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -77,11 +77,11 @@ public class ItemLightsaberHilt extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, green);
+    			playerIn.setHeldItem(Hand.OFF_HAND, green);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, green);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -89,11 +89,11 @@ public class ItemLightsaberHilt extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, purple);
+    			playerIn.setHeldItem(Hand.OFF_HAND, purple);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, purple);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -101,11 +101,11 @@ public class ItemLightsaberHilt extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, white);
+    			playerIn.setHeldItem(Hand.OFF_HAND, white);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, white);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, white);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
@@ -113,14 +113,14 @@ public class ItemLightsaberHilt extends Item{
 
     		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, dark);
+    			playerIn.setHeldItem(Hand.OFF_HAND, dark);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, dark);
+    			playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 			}
     		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_on, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, itemStackIn);
 	}
 }

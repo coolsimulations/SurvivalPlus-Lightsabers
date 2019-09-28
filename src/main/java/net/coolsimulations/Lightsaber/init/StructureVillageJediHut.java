@@ -1,31 +1,31 @@
 package net.coolsimulations.Lightsaber.init;
 
-import java.util.List;
+/**import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockButton;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.BlockSlab;
-import net.minecraft.block.BlockStairs;
+import net.minecraft.block.StoneButtonBlock;
+import net.minecraft.block.DoorBlock;
+import net.minecraft.block.FurnaceBlock;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.SlabType;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.VillagePieces;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;**/
 
-public class StructureVillageJediHut extends VillagePieces.Village
+public class StructureVillageJediHut //extends VillagePieces.Village
 {
     
-    public StructureVillageJediHut()
+    /**public StructureVillageJediHut()
     {
     }
 
@@ -34,20 +34,20 @@ public class StructureVillageJediHut extends VillagePieces.Village
     	 super(start, p_i45569_2_);
          this.setCoordBaseMode(facing);
          this.boundingBox = p_i45569_4_;
-     }
+     }**/
 
      /**
       * (abstract) Helper method to write subclass data to NBT
       */
-     protected void writeStructureToNBT(NBTTagCompound tagCompound)
+     /**protected void writeStructureToNBT(NBTTagCompound tagCompound)
      {
          super.writeStructureToNBT(tagCompound);
-     }
+     }**/
 
      /**
       * (abstract) Helper method to read subclass data from NBT
       */
-     protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_)
+     /**protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_)
      {
          super.readStructureFromNBT(tagCompound, p_143011_2_);
      }
@@ -56,13 +56,13 @@ public class StructureVillageJediHut extends VillagePieces.Village
      {
     	 	MutableBoundingBox structureboundingbox = MutableBoundingBox.getComponentToAddBoundingBox(p_175852_3_, p_175852_4_, p_175852_5_, 0, 0, 0, 6, 5, 7, facing);
          return canVillageGoDeeper(structureboundingbox) && StructurePiece.findIntersecting(p_175852_1_, structureboundingbox) == null ? new StructureVillageJediHut(start, p_175852_7_, rand, structureboundingbox, facing) : null;
-     }
+     }**/
 
      /**
       * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
       * Mineshafts at the end, it adds Fences...
       */
-     public boolean addComponentParts(IWorld worldIn, Random randomIn, MutableBoundingBox structureBoundingBoxIn, ChunkPos pos)
+     /**public boolean addComponentParts(IWorld worldIn, Random randomIn, MutableBoundingBox structureBoundingBoxIn, ChunkPos pos)
      {
          if (this.averageGroundLvl < 0)
          {
@@ -162,5 +162,5 @@ public class StructureVillageJediHut extends VillagePieces.Village
          {
              this.generateDoor(p_189927_1_, p_189927_2_, p_189927_3_, p_189927_4_, p_189927_5_, p_189927_6_, EnumFacing.NORTH, (BlockDoor) Blocks.IRON_DOOR);
          }
-     }
+     }**/
 }

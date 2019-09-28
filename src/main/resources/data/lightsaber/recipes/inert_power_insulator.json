@@ -10,7 +10,7 @@
       "tag": "forge:storage_blocks/redstone"
     },
     "S": {
-      "item": "minecraft:slime_ball"
+      "tag": "forge:slimeballs"
     },
     "R": {
       "tag": "minecraft:wool"

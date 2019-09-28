@@ -7,10 +7,10 @@
   ],
   "key": {
     "O": {
-      "item": "minecraft:obsidian"
+      "tag": "forge:obsidian"
     },
     "G": {
-      "item": "minecraft:black_stained_glass"
+      "tag": "forge:glass/black"
     },
     "Q": {
       "tag": "forge:gems/quartz"

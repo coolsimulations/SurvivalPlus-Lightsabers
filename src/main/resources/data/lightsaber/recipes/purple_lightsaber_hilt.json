@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "coloured_lightsaber_hilt",
+  "ingredients": [
+    {
+      "item": "lightsaber:lightsaber_hilt"
+    },
+    {
+      "tag": "forge:gems/sapphire"
+    }
+  ],
+  "result": {
+    "item": "lightsaber:purple_lightsaber_hilt"
+  }
+}

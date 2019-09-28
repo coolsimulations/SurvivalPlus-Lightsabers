@@ -1,22 +1,31 @@
 package net.coolsimulations.Lightsaber.init;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import net.coolsimulations.Lightsaber.Lightsaber;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
-import net.minecraft.entity.player.EntityPlayer;
+import net.coolsimulations.SurvivalPlus.api.SPTags;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.entity.merchant.villager.VillagerTrades.ITrade;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.PotionUtils;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.village.PointOfInterestType;
+import net.minecraftforge.common.BasicTrade;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import net.minecraftforge.registries.IForgeRegistryModifiable;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -24,10 +33,10 @@ import sun.audio.AudioStream;
 public class LightsaberEventHandler {
 	
 	@SubscribeEvent
-	public void onplayerLogin(PlayerLoggedInEvent event)
+	public void onplayerLogin(PlayerEvent.PlayerLoggedInEvent event)
     {
-		EntityPlayer player = (EntityPlayer) event.getPlayer();
-		NBTTagCompound entityData = player.getEntityData();
+		PlayerEntity player = (PlayerEntity) event.getPlayer();
+		CompoundNBT entityData = player.getPersistentData();
 		
 		try
     	{
@@ -42,17 +51,76 @@ public class LightsaberEventHandler {
 		
 		if(!entityData.getBoolean("lightsaber.firstJoin")) {
 			
-			entityData.setBoolean("lightsaber.firstJoin", true);
+			entityData.putBoolean("lightsaber.firstJoin", true);
 		
 			if(!player.world.isRemote) {
         		
-        		TextComponentTranslation installInfo = new TextComponentTranslation("advancements.lightsaber.install.display1");
+        		TranslationTextComponent installInfo = new TranslationTextComponent("advancements.lightsaber.install.display1");
         		installInfo.getStyle().setColor(TextFormatting.GOLD);
 				player.sendMessage(installInfo);
         		
         	}
 		}
     }
+	
+	/**@SubscribeEvent
+    public static void onPointsOfInterestTypeRegistry(final RegistryEvent.Register<PointOfInterestType> event){
+        LightsaberVillagers.registerPointOfIntrestTypes(event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public static void onVillagerProfessionRegistry(final RegistryEvent.Register<VillagerProfession> event){
+        LightsaberVillagers.registerVillagers(event.getRegistry());
+    }
+    
+    @SubscribeEvent
+	public void villagerTrades(VillagerTradesEvent event) {
+		Int2ObjectMap<List<ITrade>> trades = event.getTrades();
+		List<ITrade> jediLevel1 = new ArrayList<>();
+		List<ITrade> jediLevel2 = new ArrayList<>();
+		List<ITrade> jediLevel3 = new ArrayList<>();
+		List<ITrade> jediLevel4 = new ArrayList<>();
+		List<ITrade> jediLevel5 = new ArrayList<>();
+		
+		for(Iterator<Item> iter = SPTags.Items.GEMS_AMETHYST.getAllElements().iterator(); iter.hasNext(); ) {
+			jediLevel1.add(new BasicTrade(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.blue_lightsaber_hilt), 10, 2, 0.05F));
+		}
+		
+		for(Iterator<Item> iter = SPTags.Items.GEMS_TOPAZ.getAllElements().iterator(); iter.hasNext(); ) {
+			jediLevel1.add(new BasicTrade(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.green_lightsaber_hilt), 10, 2, 0.05F));
+		}
+		
+		for(Iterator<Item> iter = SPTags.Items.GEMS_PEARL.getAllElements().iterator(); iter.hasNext(); ) {
+			jediLevel1.add(new BasicTrade(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.white_lightsaber_hilt), 10, 2, 0.005F));
+		}
+		
+		for(Iterator<Item> iter = SPTags.Items.GEMS_SAPPHIRE.getAllElements().iterator(); iter.hasNext(); ) {
+			jediLevel1.add(new BasicTrade(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(iter.next()), new ItemStack(LightsaberItems.purple_lightsaber_hilt), 10, 2, 0.05F));
+		}
+		
+		if (SPCompatibilityManager.isGCLoaded())
+        {
+			//recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(GCItems.itemBasicMoon, 1, 2), new ItemStack(LightsaberItems.purple_lightsaber_hilt)));
+        }
+		
+		jediLevel2.add(new BasicTrade(new ItemStack(Items.EMERALD, 13), new ItemStack(Items.BOOK, 7), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), Potions.SWIFTNESS), 16, 5, 0.2F));
+		jediLevel2.add(new BasicTrade(new ItemStack(Items.EMERALD, 19), new ItemStack(Items.BOOK, 12), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), Potions.LONG_LEAPING), 16, 5, 0.2F));
+		
+		jediLevel3.add(new BasicTrade(new ItemStack(Items.EMERALD, 21), new ItemStack(Items.BOOK, 14), PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION), Potions.HEALING), 16, 10, 0.3F));
+		jediLevel3.add(new BasicTrade(new ItemStack(Items.EMERALD, 24), new ItemStack(Items.BOOK, 10), PotionUtils.addPotionToItemStack(new ItemStack(Items.SPLASH_POTION), Potions.REGENERATION), 16, 10, 0.3F));
+		
+		jediLevel4.add(new BasicTrade(new ItemStack(Items.EMERALD, 25), new ItemStack(Items.BOOK, 15), new ItemStack(Items.ENCHANTED_GOLDEN_APPLE), 16, 15, 0.3F));
+		
+		jediLevel5.add(new BasicTrade(new ItemStack(Items.EMERALD, 30), new ItemStack(Items.BOOK, 20), new ItemStack(Items.TOTEM_OF_UNDYING), 16, 20, 0.4F));
+		
+		if(event.getType() == LightsaberVillagers.villagerJedi) {
+			trades.put(1, jediLevel1);
+			trades.put(2, jediLevel2);
+			trades.put(3, jediLevel3);
+			trades.put(4, jediLevel4);
+			trades.put(5, jediLevel5);
+		}
+    }**/
 	
 	/**@SubscribeEvent
     public void registerRecipes(RegistryEvent.Register<IRecipe> event)
