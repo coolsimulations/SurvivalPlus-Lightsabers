@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 def mcVersion = "1.12.2"
-def lightsaberVersion = "0.1.0"
+def lightsaberVersion = "0.1.1"
 version = "${mcVersion}-${lightsaberVersion}"
 group = "net.coolsimulations.Lightsaber" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "SurvivalPlus-Lightsabers"
@@ -23,7 +23,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.4.2705"
+    version = "1.12.2-14.23.5.2838"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

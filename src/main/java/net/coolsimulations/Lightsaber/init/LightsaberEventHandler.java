@@ -5,8 +5,10 @@ import java.io.InputStream;
 import net.coolsimulations.Lightsaber.Lightsaber;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
+import net.coolsimulations.SurvivalPlus.api.SPConfig;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,7 +29,7 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onplayerLogin(PlayerLoggedInEvent event)
     {
-		EntityPlayer player = (EntityPlayer) event.player;
+		EntityPlayerMP player = (EntityPlayerMP) event.player;
 		NBTTagCompound entityData = player.getEntityData();
 		
 		try
@@ -41,7 +43,17 @@ public class LightsaberEventHandler {
 	    	System.err.println(e);
 	    }
 		
-		if(!entityData.getBoolean("lightsaber.firstJoin")) {
+		AdvancementManager manager = player.getServer().getAdvancementManager();
+		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));
+		
+		boolean isDone = false;
+		
+		if(install !=null && player.getAdvancements().getProgress(install).hasProgress()) {
+			isDone = true;
+		}
+
+		
+		if(!entityData.getBoolean("lightsaber.firstJoin") && !isDone) {
 			
 			entityData.setBoolean("lightsaber.firstJoin", true);
 		
@@ -53,6 +65,11 @@ public class LightsaberEventHandler {
         		
         	}
 		}
+		
+		if(LightsaberUpdateHandler.isOld == true && SPConfig.disableUpdateCheck == false) {
+        	player.sendMessage(LightsaberUpdateHandler.updateInfo);
+        	player.sendMessage(LightsaberUpdateHandler.updateVersionInfo);
+        }
     }
 	
 	@SubscribeEvent
