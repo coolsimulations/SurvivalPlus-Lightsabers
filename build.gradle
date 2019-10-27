@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
 def mcVersion = "1.13.2"
-def lightsaberVersion = "0.1.0"
+def lightsaberVersion = "0.1.1"
 version = "${mcVersion}-${lightsaberVersion}"
 group = "net.coolsimulations.Lightsaber" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "SurvivalPlus-Lightsabers"
@@ -62,7 +62,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.13.2-25.0.219'
 
-    compile files('libs/SurvivalPlus-API-1.13.2-0.1.0.jar')
+    compile files('libs/SurvivalPlus-API-1.13.2-0.1.1.jar')
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
