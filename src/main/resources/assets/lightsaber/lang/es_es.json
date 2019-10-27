@@ -1,0 +1,44 @@
+{
+  "item.lightsaber.pommel_cap": "Gorro de Pomo",
+  "item.lightsaber.focusing_lens": "Lente de Enfoque",
+  "item.lightsaber.blade_emitter": "Emisor de Cuchillas",
+  "item.lightsaber.inert_power_insulator": "Aislador de Energ\u00eda Inerte",
+  "item.lightsaber.lightsaber_hilt": "Empu\u00f1adura de Sable de Luz",
+  "item.lightsaber.activation_stud": "Stud de Activaci\u00f3n",
+  "item.lightsaber.blade_matrix": "Matriz de Cuchillas",
+  "item.lightsaber.emitter_matrix": "Matriz de Emisor",
+  "item.lightsaber.darksaber_lens": "Lente de Sable Oscuro",
+  
+  "item.lightsaber.red_lightsaber_hilt": "Empu\u00f1adura de Sable de Luz Roja",
+  "item.lightsaber.blue_lightsaber_hilt": "Empu\u00f1adura de Sable de Luz Azul",
+  "item.lightsaber.green_lightsaber_hilt": "Empu\u00f1adura de Sable de Luz Verde",
+  "item.lightsaber.purple_lightsaber_hilt": "Empu\u00f1adura de Sable de Luz P\u00farpura",
+  "item.lightsaber.white_lightsaber_hilt": "Empu\u00f1adura de Sable de Luz Blanca",
+  "item.lightsaber.darksaber_hilt": "Empu\u00f1adura de Sable Oscuro",
+  
+  "item.lightsaber.red_lightsaber": "Sable de Luz Roja",
+  "item.lightsaber.blue_lightsaber": "Sable de Luz Azul",
+  "item.lightsaber.green_lightsaber": "Sable de Luz Verde",
+  "item.lightsaber.purple_lightsaber": "Sable de Luz P\u00farpura",
+  "item.lightsaber.white_lightsaber": "Sable de Luz Blanca",
+  "item.lightsaber.darksaber": "Sable Oscuro",
+  
+  "item.lightsaber.lightsaber_on": "Sable de Luz Encendido",
+  "item.lightsaber.lightsaber_off": "Sable de Luz Apagado",
+  "item.lightsaber.lightsaber_swing": "Sable de Luz Balanceado",
+  "item.lightsaber.darksaber_on": "Sable Oscuro Encendido",
+  "item.lightsaber.darksaber_off": "Sable Oscuro Apagado",
+  "item.lightsaber.darksaber_swing": "Sable Oscuro Balanceado",
+  "misc.hello_there": "Hola a Todos",
+  
+  "entity.minecraft.villager.jedi": "Jedi",
+  "entity.minecraft.villager.sith": "Sith",
+  
+  "advancements.lightsaber.install": "Hola a Todos!",
+  "advancements.lightsaber.install.desc": "Descargue e Instale SurvivalPlus Lightsabers",
+  "advancements.lightsaber.install.display1": "¡coolsim te agradece por descargar SurvivalPlus Lightsabers!",
+  "advancements.lightsaber.lightsaber": "Un arma Elegante",
+  "advancements.lightsaber.lightsaber.desc": "Consigue un Sable de Luz",
+  "advancements.lightsaber.darksaber": "¿Es Eso un Sable de Luz?",
+  "advancements.lightsaber.darksaber.desc": "Consigue un Sable Oscuro"
+}

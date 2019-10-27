@@ -1,30 +1,17 @@
 package net.coolsimulations.Lightsaber.init;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.coolsimulations.Lightsaber.Reference;
-import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
-import net.coolsimulations.SurvivalPlus.api.SPTags;
-import net.minecraft.entity.merchant.villager.VillagerProfession;
-import net.minecraft.entity.merchant.villager.VillagerTrades.ITrade;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.coolsimulations.SurvivalPlus.api.SPConfig;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.potion.Potions;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.village.PointOfInterestType;
-import net.minecraftforge.common.BasicTrade;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -35,7 +22,7 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onplayerLogin(PlayerEvent.PlayerLoggedInEvent event)
     {
-		PlayerEntity player = (PlayerEntity) event.getPlayer();
+		ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
 		CompoundNBT entityData = player.getPersistentData();
 		
 		try
@@ -49,7 +36,16 @@ public class LightsaberEventHandler {
 	    	System.err.println(e);
 	    }
 		
-		if(!entityData.getBoolean("lightsaber.firstJoin")) {
+		AdvancementManager manager = player.getServer().getAdvancementManager();
+		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));
+		
+		boolean isDone = false;
+		
+		if(install !=null && player.getAdvancements().getProgress(install).hasProgress()) {
+			isDone = true;
+		}
+		
+		if(!entityData.getBoolean("lightsaber.firstJoin") && !isDone) {
 			
 			entityData.putBoolean("lightsaber.firstJoin", true);
 		
@@ -61,6 +57,12 @@ public class LightsaberEventHandler {
         		
         	}
 		}
+		
+		if(LightsaberUpdateHandler.isOld == true && SPConfig.disableUpdateCheck.get() == false) {
+        	player.sendMessage(LightsaberUpdateHandler.updateInfo);
+        	player.sendMessage(LightsaberUpdateHandler.updateVersionInfo);
+        }
+
     }
 	
 	/**@SubscribeEvent
