@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 def mcVersion = "1.11.2"
-def lightsaberVersion = "0.1.0"
+def lightsaberVersion = "0.1.1"
 version = "${mcVersion}-${lightsaberVersion}"
 group = "net.coolsimulations.Lightsaber" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "SurvivalPlus-Lightsabers"
