@@ -3,7 +3,7 @@
   "modid": "lightsaber",
   "name": "SurvivalPlus Lightsabers",
   "description": "This is an official add-on for SurvivalPlus that adds Lightsabers!",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "mcversion": "${mcversion}",
   "url": "https://minecraft.curseforge.com/projects/survivalplus-lightsabers",
   "updateUrl": "",

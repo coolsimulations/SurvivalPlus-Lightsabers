@@ -16,7 +16,7 @@
     },
     "T": {
       "type": "forge:ore_dict",
-      "ore": "blockTitanium"
+      "ore": "ingotTitanium"
     },
     "C": {
       "item": "minecraft:comparator"

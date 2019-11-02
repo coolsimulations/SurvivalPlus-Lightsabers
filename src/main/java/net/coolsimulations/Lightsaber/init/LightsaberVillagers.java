@@ -52,9 +52,9 @@ public class LightsaberVillagers {
     	@Override
     	public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
     		
-    		if(OreDictionary.getOres("gemAmethyst").size() > 0) {
-    			for(int i = 0; i < OreDictionary.getOres("gemAmethyst").size(); i++) {
-   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemAmethyst").get(i), new ItemStack(LightsaberItems.blue_lightsaber_hilt)));
+    		if(OreDictionary.getOres("gemSapphire").size() > 0) {
+    			for(int i = 0; i < OreDictionary.getOres("gemSapphire").size(); i++) {
+   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemSapphire").get(i), new ItemStack(LightsaberItems.blue_lightsaber_hilt)));
    				}
     		}
     		
@@ -70,15 +70,15 @@ public class LightsaberVillagers {
    				}
     		}
     		
-    		if(OreDictionary.getOres("gemSapphire").size() > 0) {
-    			for(int i = 0; i < OreDictionary.getOres("gemSapphire").size(); i++) {
-   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemSapphire").get(i), new ItemStack(LightsaberItems.purple_lightsaber_hilt)));
+    		if(OreDictionary.getOres("gemAmethyst").size() > 0) {
+    			for(int i = 0; i < OreDictionary.getOres("gemAmethyst").size(); i++) {
+   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemAmethyst").get(i), new ItemStack(LightsaberItems.purple_lightsaber_hilt)));
    				}
     		}
     		
     		if (SPCompatibilityManager.isGCLoaded())
             {
-    			recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(GCItems.itemBasicMoon, 1, 2), new ItemStack(LightsaberItems.purple_lightsaber_hilt)));
+    			recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), new ItemStack(GCItems.itemBasicMoon, 1, 2), new ItemStack(LightsaberItems.blue_lightsaber_hilt)));
             }
     	}
     }
