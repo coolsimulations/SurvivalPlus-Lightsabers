@@ -1,0 +1,42 @@
+item.pommel_cap.name=Gorro de Pomo
+item.focusing_lens.name=Lente de Enfoque
+item.blade_emitter.name=Emisor de Cuchillas
+item.inert_power_insulator.name=Aislador de Energía Inerte
+item.lightsaber_hilt.name=Empuñadura de Sable de Luz
+item.activation_stud.name=Stud de Activación
+item.blade_matrix.name=Matriz de Cuchillas
+item.emitter_matrix.name=Matriz de Emisor
+item.darksaber_lens.name=Lente de Sable Oscuro
+
+item.red_lightsaber_hilt.name=Empuñadura de Sable de Luz Roja
+item.blue_lightsaber_hilt.name=Empuñadura de Sable de Luz Azul
+item.green_lightsaber_hilt.name=Empuñadura de Sable de Luz Verde
+item.purple_lightsaber_hilt.name=Empuñadura de Sable de Luz Púrpura
+item.white_lightsaber_hilt.name=Empuñadura de Sable de Luz Blanca
+item.darksaber_hilt.name=Empuñadura de Sable Oscuro
+
+item.red_lightsaber.name=Sable de Luz Roja
+item.blue_lightsaber.name=Sable de Luz Azul
+item.green_lightsaber.name=Sable de Luz Verde
+item.purple_lightsaber.name=Sable de Luz Púrpura
+item.white_lightsaber.name=Sable de Luz Blanca
+item.darksaber.name=Sable Oscuro
+
+item.lightsaber.lightsaber_on=Sable de Luz Encendido
+item.lightsaber.lightsaber_off=Sable de Luz Apagado
+item.lightsaber.lightsaber_swing=Sable de Luz Balanceado
+item.lightsaber.darksaber_on=Sable Oscuro Encendido
+item.lightsaber.darksaber_off=Sable Oscuro Apagado
+item.lightsaber.darksaber_swing=Sable Oscuro Balanceado
+misc.hello_there=Hola a Todos
+
+entity.Villager.jedi=Jedi
+entity.Villager.sith=Sith
+
+achievement.lightsaber.install=Hola a Todos!
+achievement.lightsaber.install.desc=Descargue e Instale SurvivalPlus Lightsabers
+achievement.lightsaber.install.display1=¡coolsim te agradece por descargar SurvivalPlus Lightsabers!
+achievement.lightsaber.lightsaber=Un arma Elegante
+achievement.lightsaber.lightsaber.desc=Consigue un Sable de Luz
+achievement.lightsaber.darksaber=¿Es Eso un Sable de Luz?
+achievement.lightsaber.darksaber.desc=Consigue un Sable Oscuro

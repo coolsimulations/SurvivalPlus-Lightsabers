@@ -5,6 +5,7 @@ import java.io.InputStream;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -20,7 +21,7 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onplayerLogin(PlayerLoggedInEvent event)
     {
-		EntityPlayer player = (EntityPlayer) event.player;
+		EntityPlayerMP player = (EntityPlayerMP) event.player;
 		
 		try
     	{
@@ -48,6 +49,7 @@ public class LightsaberEventHandler {
         
         if(LightsaberUpdateHandler.isOld == true && SPConfig.disableUpdateCheck == false) {
         	player.addChatMessage(LightsaberUpdateHandler.updateInfo);
+        	player.addChatMessage(LightsaberUpdateHandler.updateVersionInfo);
         }
     }
 	
