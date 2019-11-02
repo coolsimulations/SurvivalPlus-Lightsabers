@@ -67,7 +67,7 @@ public class LightsaberShapedRecipes {
 	        
 	        if(!SPCompatibilityManager.isIc2Loaded() && !SPCompatibilityManager.isGCLoaded()) {
 	        	
-	        	addRecipe(new ItemStack(LightsaberItems.pommel_cap), new Object[]{"ICI","IBI","TTT", 'B', "blockRedstone", 'I', "blockIron", 'T', "blockTitanium", 'C', Items.COMPARATOR});
+	        	addRecipe(new ItemStack(LightsaberItems.pommel_cap), new Object[]{"ICI","IBI","TTT", 'B', "blockRedstone", 'I', "blockIron", 'T', "ingotTitanium", 'C', Items.COMPARATOR});
 	        	addRecipe(new ItemStack(LightsaberItems.emitter_matrix), new Object[]{"CTC","WDW","CTC", 'C', "ingotBronze", 'W', Items.REPEATER, 'T', "ingotTitanium", 'D', "gemDiamond"});
 	        	addRecipe(new ItemStack(LightsaberItems.blade_emitter), new Object[]{"TGT","BMB","TCT", 'M', LightsaberItems.emitter_matrix, 'T', "ingotTitanium", 'G', "blockGlass", 'B', "blockRedstone", 'C', Items.REPEATER});
 	        	addRecipe(new ItemStack(LightsaberItems.focusing_lens), new Object[]{"CGC","QGQ","CQC", 'G', "blockGlass", 'Q', "gemQuartz", 'C', "ingotTitanium"});
