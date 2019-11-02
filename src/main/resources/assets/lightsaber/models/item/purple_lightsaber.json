@@ -3,7 +3,7 @@
     "textures": {
         "0": "ic2:blocks/resource/steel_block",
         "1": "ic2:blocks/resource/lead_block",
-        "2": "survivalplus:blocks/sapphire"
+        "2": "survivalplus:blocks/amethyst"
     },
      "display": {
         "gui": {
