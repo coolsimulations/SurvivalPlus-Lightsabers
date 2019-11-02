@@ -13,7 +13,7 @@
       "tag": "forge:storage_blocks/iron"
     },
     "T": {
-      "tag": "forge:storage_blocks/titanium"
+      "tag": "forge:ingots/titanium"
     },
     "C": {
       "item": "minecraft:comparator"
