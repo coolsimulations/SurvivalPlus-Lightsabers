@@ -8,6 +8,7 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -19,6 +20,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -27,21 +29,31 @@ import sun.audio.AudioStream;
 public class LightsaberEventHandler {
 	
 	@SubscribeEvent
+	public void onPlayerJoinedServer(FMLNetworkEvent.ClientConnectedToServerEvent event) {
+		Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+			@Override
+			public void run() {
+				if(!SPConfig.disableSunAudio) {
+					try
+					{
+						InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
+						AudioStream audioStream = new AudioStream(sound);
+						AudioPlayer.player.start(audioStream);
+					}
+					catch (Exception e)
+					{
+						System.err.println(e);
+					}
+				}
+			}
+		});
+	}
+	
+	@SubscribeEvent
 	public void onplayerLogin(PlayerLoggedInEvent event)
     {
 		EntityPlayerMP player = (EntityPlayerMP) event.player;
 		NBTTagCompound entityData = player.getEntityData();
-		
-		try
-    	{
-			InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
-	     	AudioStream audioStream = new AudioStream(sound);
-	     	AudioPlayer.player.start(audioStream);
-	   	}
-	    	catch (Exception e)
-	   	{
-	    	System.err.println(e);
-	    }
 		
 		AdvancementManager manager = player.getServer().getAdvancementManager();
 		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));

@@ -1,3 +1,5 @@
+sp.lightsaber.name=SupervivenciaMás Sables de Luz
+
 item.pommel_cap.name=Gorro de Pomo
 item.focusing_lens.name=Lente de Enfoque
 item.blade_emitter.name=Emisor de Cuchillas
@@ -34,8 +36,8 @@ entity.Villager.jedi=Jedi
 entity.Villager.sith=Sith
 
 advancements.lightsaber.install=Hola a Todos!
-advancements.lightsaber.install.desc=Descargue e Instale SurvivalPlus Lightsabers
-advancements.lightsaber.install.display1=¡coolsim te agradece por descargar SurvivalPlus Lightsabers!
+advancements.lightsaber.install.desc=Descargue e Instale SupervivenciaMás Sables de Luz
+advancements.lightsaber.install.display1=¡coolsim te agradece por descargar SupervivenciaMás Sables de Luz!
 advancements.lightsaber.lightsaber=Un arma Elegante
 advancements.lightsaber.lightsaber.desc=Consigue un Sable de Luz
 advancements.lightsaber.darksaber=¿Es Eso un Sable de Luz?

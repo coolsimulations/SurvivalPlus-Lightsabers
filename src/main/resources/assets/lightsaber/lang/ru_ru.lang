@@ -1,0 +1,44 @@
+sp.lightsaber.name=выживаниеплюс  световые мечи
+
+item.pommel_cap.name=Крышка рукояти
+item.focusing_lens.nameФокусировочная линза
+item.blade_emitter.name=Эмиттер клинка
+item.inert_power_insulator.name=Инертный изолятор энергоячейки
+item.lightsaber_hilt.name=Рукоятка светового меча
+item.activation_stud.name=Кнопка активации
+item.blade_matrix.name=Матрица лезвия
+item.emitter_matrix.name=Матрица эмиттера
+item.darksaber_lens.name=Тёмный меч линза
+
+item.red_lightsaber_hilt.name=Красный рукоять световой меч
+item.blue_lightsaber_hilt.name=Синяя рукоять светового меча
+item.green_lightsaber_hilt.name=Зеленый рукоять световой меч
+item.purple_lightsaber_hilt.name=Фиолетовая рукоять светового меча
+item.white_lightsaber_hilt.name=Белый рукоять световой меч
+item.darksaber_hilt.name=рукоять Тёмный меч
+
+item.red_lightsaber.name=Красный световой меч
+item.blue_lightsaber.name=Синий световой меч
+item.green_lightsaber.name=Зеленый световой меч
+item.purple_lightsaber.name=Фиолетовый световой меч
+item.white_lightsaber.name=Белый световой меч
+item.darksaber.name=Тёмный меч
+
+item.lightsaber.lightsaber_on=Световой меч включен
+item.lightsaber.lightsaber_off=Световой меч выключен
+item.lightsaber.lightsaber_swing=Световой меч Свинг
+item.lightsaber.darksaber_on=Тёмный меч включен
+item.lightsaber.darksaber_off=Тёмный меч выключен
+item.lightsaber.darksaber_swing=Тёмный меч Свинг
+misc.hello_there=Привет
+
+entity.Villager.jedi=джедай
+entity.Villager.sith=ситхов
+
+advancements.lightsaber.install=Привет!
+advancements.lightsaber.install.desc=Загрузить и установить выживаниеплюс световые мечи
+advancements.lightsaber.install.display1=coolsim спасибо за загрузку выживаниеплюс  световые мечи!
+advancements.lightsaber.lightsaber=Элегантное оружие
+advancements.lightsaber.lightsaber.desc=Получить световой меч
+advancements.lightsaber.darksaber=Это световой меч?
+advancements.lightsaber.darksaber.desc=Получить Темный Меч
