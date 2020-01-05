@@ -12,6 +12,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +23,7 @@ import sun.audio.AudioStream;
 @SuppressWarnings("restriction")
 public class LightsaberEventHandler {
 	
+	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onPlayerJoinedServer(ClientPlayerNetworkEvent.LoggedInEvent event) {
 		Minecraft.getInstance().deferTask(new Runnable() {
