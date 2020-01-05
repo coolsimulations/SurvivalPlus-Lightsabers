@@ -11,8 +11,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -25,16 +27,18 @@ public class LightsaberEventHandler {
 		EntityPlayerMP player = (EntityPlayerMP) event.getPlayer();
 		NBTTagCompound entityData = player.getEntityData();
 		
-		try
-    	{
-			InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
-	     	AudioStream audioStream = new AudioStream(sound);
-	     	AudioPlayer.player.start(audioStream);
-	   	}
-	    	catch (Exception e)
-	   	{
-	    	System.err.println(e);
-	    }
+		if(!SPConfig.disableSunAudio.get() && FMLEnvironment.dist == Dist.CLIENT) {
+			try
+			{
+				InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
+				AudioStream audioStream = new AudioStream(sound);
+				AudioPlayer.player.start(audioStream);
+			}
+			catch (Exception e)
+			{
+				System.err.println(e);
+			}
+		}
 		
 		AdvancementManager manager = player.getServer().getAdvancementManager();
 		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));

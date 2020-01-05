@@ -1,0 +1,46 @@
+{
+  "sp.lightsaber.name": "\u751f\u5b58\u52a0\u5149\u528d",
+  
+  "item.lightsaber.pommel_cap": "\u978d\u5e3d",
+  "item.lightsaber.focusing_lens": "\u805a\u7126\u93e1",
+  "item.lightsaber.blade_emitter": "\u8449\u7247\u767c\u5c04\u5668",
+  "item.lightsaber.inert_power_insulator": "\u60f0\u6027\u96fb\u529b\u7d55\u7de3\u5b50",
+  "item.lightsaber.lightsaber_hilt": "\u5149\u528d\u528d\u67c4",
+  "item.lightsaber.activation_stud": "\u6fc0\u6d3b\u87ba\u67f1",
+  "item.lightsaber.blade_matrix": "\u5200\u7247\u77e9\u9663",
+  "item.lightsaber.emitter_matrix": "\u767c\u5c04\u77e9\u9663",
+  "item.lightsaber.darksaber_lens": "\u6697\u528d",
+  
+  "item.lightsaber.red_lightsaber_hilt": "\u7d05\u8272\u5149\u528d\u528d\u67c4",
+  "item.lightsaber.blue_lightsaber_hilt": "\u85cd\u8272\u5149\u528d\u528d\u67c4",
+  "item.lightsaber.green_lightsaber_hilt": "\u7da0\u8272\u5149\u528d\u528d\u67c4",
+  "item.lightsaber.purple_lightsaber_hilt": "\u7d2b\u8272\u5149\u528d\u528d\u67c4",
+  "item.lightsaber.white_lightsaber_hilt": "\u767d\u8272\u5149\u528d\u528d\u67c4",
+  "item.lightsaber.darksaber_hilt": "\u9ed1\u6697\u528d\u64ca",
+  
+  "item.lightsaber.red_lightsaber": "\u7d05\u5149\u528d",
+  "item.lightsaber.blue_lightsaber": "\u85cd\u8272\u5149\u528d",
+  "item.lightsaber.green_lightsaber": "\u7da0\u5149\u528d",
+  "item.lightsaber.purple_lightsaber": "\u7d2b\u8272\u5149\u528d",
+  "item.lightsaber.white_lightsaber": "\u767d\u5149\u528d",
+  "item.lightsaber.darksaber": "\u6697\u528d",
+  
+  "item.lightsaber.lightsaber_on": "\u5149\u528d\u5df2\u6253\u958b",
+  "item.lightsaber.lightsaber_off": "\u5149\u528d\u95dc\u9589",
+  "item.lightsaber.lightsaber_swing": "\u5149\u528d\u6416\u64fa",
+  "item.lightsaber.darksaber_on": "\u9ed1\u6697\u528d\u958b\u5553",
+  "item.lightsaber.darksaber_off": "\u9ed1\u6697\u528d\u5df2\u95dc\u9589",
+  "item.lightsaber.darksaber_swing": "\u6697\u528d\u63ee\u6746",
+  "misc.hello_there": "\u4f60\u597d",
+
+  "entity.minecraft.villager.jedi": "\u7d55\u5730",
+  "entity.minecraft.villager.sith": "\u897f\u65af",
+
+  "advancements.lightsaber.install": "\u4f60\u597d\uff01",
+  "advancements.lightsaber.install.desc": "\u4e0b\u8f09\u4e26\u5b89\u88dd\u751f\u5b58\u52a0\u5149\u528d",
+  "advancements.lightsaber.install.display1": "coolsim\u8b1d\u8b1d\u60a8\u7684\u4e0b\u8f09\u751f\u5b58\u52a0\u5149\u528d\uff01",
+  "advancements.lightsaber.lightsaber": "\u512a\u96c5\u7684\u6b66\u5668",
+  "advancements.lightsaber.lightsaber.desc": "\u7372\u5f97\u5149\u528d",
+  "advancements.lightsaber.darksaber": "\u90a3\u662f\u5149\u528d\u55ce\uff1f",
+  "advancements.lightsaber.darksaber.desc": "\u7372\u5f97\u6697\u528d"
+}
