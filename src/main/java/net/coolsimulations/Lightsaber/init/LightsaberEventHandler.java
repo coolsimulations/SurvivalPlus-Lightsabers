@@ -6,11 +6,13 @@ import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sun.audio.AudioPlayer;
@@ -20,22 +22,32 @@ import sun.audio.AudioStream;
 public class LightsaberEventHandler {
 	
 	@SubscribeEvent
+	public void onPlayerJoinedServer(ClientPlayerNetworkEvent.LoggedInEvent event) {
+		Minecraft.getInstance().deferTask(new Runnable() {
+			@Override
+			public void run() {
+				if(!SPConfig.disableSunAudio.get()) {
+					try
+					{
+						InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
+						AudioStream audioStream = new AudioStream(sound);
+						AudioPlayer.player.start(audioStream);
+					}
+					catch (Exception e)
+					{
+						System.err.println(e);
+					}
+				}
+			}
+		});
+	}
+	
+	@SubscribeEvent
 	public void onplayerLogin(PlayerEvent.PlayerLoggedInEvent event)
     {
 		ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
 		CompoundNBT entityData = player.getPersistentData();
-		
-		try
-    	{
-			InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
-	     	AudioStream audioStream = new AudioStream(sound);
-	     	AudioPlayer.player.start(audioStream);
-	   	}
-	    	catch (Exception e)
-	   	{
-	    	System.err.println(e);
-	    }
-		
+
 		AdvancementManager manager = player.getServer().getAdvancementManager();
 		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));
 		

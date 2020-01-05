@@ -45,7 +45,7 @@ public class LightsaberUpdateHandler {
 				
 				isOld = true;
 				
-				StringTextComponent lightsaber = new StringTextComponent(Reference.MOD_NAME);
+				TranslationTextComponent lightsaber = new TranslationTextComponent("sp.lightsaber.name");
 				lightsaber.getStyle().setColor(TextFormatting.BLUE);
 				
 				StringTextComponent MCVersion = new StringTextComponent(MCPVersion.getMCVersion());
@@ -63,13 +63,13 @@ public class LightsaberUpdateHandler {
 				
 				isOld = true;
 				
-				StringTextComponent sp = new StringTextComponent(Reference.MOD_NAME);
-				sp.getStyle().setColor(TextFormatting.BLUE);
+				TranslationTextComponent lightsaber = new TranslationTextComponent("sp.lightsaber.name");
+				lightsaber.getStyle().setColor(TextFormatting.BLUE);
 				
 				StringTextComponent version = new StringTextComponent(latestVersion);
 				version.getStyle().setColor(TextFormatting.BLUE);
 				
-				updateInfo = new TranslationTextComponent("sp.update.display1", new Object[] {sp, version});
+				updateInfo = new TranslationTextComponent("sp.update.display1", new Object[] {lightsaber, version});
 				updateInfo.getStyle().setColor(TextFormatting.YELLOW);
 				
 				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));

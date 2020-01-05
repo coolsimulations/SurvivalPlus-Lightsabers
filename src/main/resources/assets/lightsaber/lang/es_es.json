@@ -1,4 +1,6 @@
 {
+  "sp.lightsaber.name": "SupervivenciaM\u00e1s Sables de Luz",
+  
   "item.lightsaber.pommel_cap": "Gorro de Pomo",
   "item.lightsaber.focusing_lens": "Lente de Enfoque",
   "item.lightsaber.blade_emitter": "Emisor de Cuchillas",
@@ -35,8 +37,8 @@
   "entity.minecraft.villager.sith": "Sith",
   
   "advancements.lightsaber.install": "Hola a Todos!",
-  "advancements.lightsaber.install.desc": "Descargue e Instale SurvivalPlus Lightsabers",
-  "advancements.lightsaber.install.display1": "¡coolsim te agradece por descargar SurvivalPlus Lightsabers!",
+  "advancements.lightsaber.install.desc": "Descargue e Instale SupervivenciaM\u00e1s Sables de Luz",
+  "advancements.lightsaber.install.display1": "¡coolsim te agradece por descargar SupervivenciaM\u00e1s Sables de Luz!",
   "advancements.lightsaber.lightsaber": "Un arma Elegante",
   "advancements.lightsaber.lightsaber.desc": "Consigue un Sable de Luz",
   "advancements.lightsaber.darksaber": "¿Es Eso un Sable de Luz?",
