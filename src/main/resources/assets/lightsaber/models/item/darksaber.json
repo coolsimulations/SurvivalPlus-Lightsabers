@@ -488,6 +488,14 @@
 			"scale": [1.2, 2.24, 1.2]
 		}
 	},
+    "overrides": [
+        {
+            "predicate": {
+                "blocking": 1
+            },
+            "model": "lightsaber:item/darksaber_blocking"
+        }
+    ],
 	"groups": [
 		{
 			"name": "grip",

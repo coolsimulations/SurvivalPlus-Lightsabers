@@ -27,9 +27,11 @@ item.darksaber.name=Darksaber
 item.lightsaber.lightsaber_on=Lightsaber Turned On
 item.lightsaber.lightsaber_off=Lightsaber Turned Off
 item.lightsaber.lightsaber_swing=Lightsaber Swung
+item.lightsaber.lightsaber_hit=Lightsaber Blocks
 item.lightsaber.darksaber_on=Darksaber Turned On
 item.lightsaber.darksaber_off=Darksaber Turned Off
 item.lightsaber.darksaber_swing=Darksaber Swung
+item.lightsaber.darksaber_hit=Darksaber Blocks
 misc.hello_there=Hello There
 
 entity.Villager.jedi=Jedi

@@ -18,109 +18,108 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class ItemLightsaberHilt extends Item{
-	
+
 	public ItemLightsaberHilt(){
-		maxStackSize = 1;
+		this.maxStackSize = 1;
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn){
-		
-		
+
 		ItemStack itemStackIn = playerIn.getHeldItem(handIn);
-    	Item item = itemStackIn.getItem();
-    	NBTTagCompound tag = item.getNBTShareTag(itemStackIn);
-    	
-    	ItemStack red = new ItemStack(LightsaberItems.red_lightsaber);
-    	red.setTagCompound(tag);
-    	
-    	ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber);
-    	blue.setTagCompound(tag);
-    	
-    	ItemStack green = new ItemStack(LightsaberItems.green_lightsaber);
-    	green.setTagCompound(tag);
-    	
-    	ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber);
-    	purple.setTagCompound(tag);
-    	
-    	ItemStack white = new ItemStack(LightsaberItems.white_lightsaber);
-    	white.setTagCompound(tag);
-    	
-    	ItemStack dark = new ItemStack(LightsaberItems.darksaber);
-    	dark.setTagCompound(tag);
+		Item item = itemStackIn.getItem();
+		NBTTagCompound tag = item.getNBTShareTag(itemStackIn);
 
-    	if(item == LightsaberItems.red_lightsaber_hilt){
-    		
-    		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber);
+		red.setTagCompound(tag);
+
+		ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber);
+		blue.setTagCompound(tag);
+
+		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber);
+		green.setTagCompound(tag);
+
+		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber);
+		purple.setTagCompound(tag);
+
+		ItemStack white = new ItemStack(LightsaberItems.white_lightsaber);
+		white.setTagCompound(tag);
+
+		ItemStack dark = new ItemStack(LightsaberItems.darksaber);
+		dark.setTagCompound(tag);
+
+		if(item == LightsaberItems.red_lightsaber_hilt){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, red);
+				playerIn.setHeldItem(EnumHand.OFF_HAND, red);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, red);
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, red);
 			}
-		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
-    	}
-    	if(item == LightsaberItems.blue_lightsaber_hilt){
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
+		if(item == LightsaberItems.blue_lightsaber_hilt){
 
-    		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, blue);
+				playerIn.setHeldItem(EnumHand.OFF_HAND, blue);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, blue);
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, blue);
 			}
-    		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        }
-    	if(item == LightsaberItems.green_lightsaber_hilt){
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
+		if(item == LightsaberItems.green_lightsaber_hilt){
 
-    		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, green);
+				playerIn.setHeldItem(EnumHand.OFF_HAND, green);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
 			}
-    		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        }
-    	if(item == LightsaberItems.purple_lightsaber_hilt){
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
+		if(item == LightsaberItems.purple_lightsaber_hilt){
 
-    		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, purple);
+				playerIn.setHeldItem(EnumHand.OFF_HAND, purple);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, purple);
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, purple);
 			}
-    		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        }
-    	if(item == LightsaberItems.white_lightsaber_hilt){
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
+		if(item == LightsaberItems.white_lightsaber_hilt){
 
-    		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, white);
+				playerIn.setHeldItem(EnumHand.OFF_HAND, white);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, white);
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, white);
 			}
-    		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        }
-    	if(item == LightsaberItems.darksaber_hilt){
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
+		if(item == LightsaberItems.darksaber_hilt){
 
-    		if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 			{
-    			playerIn.setHeldItem(EnumHand.OFF_HAND, dark);
+				playerIn.setHeldItem(EnumHand.OFF_HAND, dark);
 			}
 			else
 			{
-    			playerIn.setHeldItem(EnumHand.MAIN_HAND, dark);
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, dark);
 			}
-    		worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        }
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 }

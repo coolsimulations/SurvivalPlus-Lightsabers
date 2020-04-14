@@ -10,6 +10,10 @@ import net.coolsimulations.Lightsaber.init.LightsaberVillagers;
 import net.coolsimulations.Lightsaber.init.StructureVillageJediHut;
 import net.coolsimulations.Lightsaber.init.VillageJediHutHandler;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
+import net.coolsimulations.Lightsaber.util.LightsaberBetterCombat;
+import net.coolsimulations.Lightsaber.util.LightsaberLighting;
+import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
+import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.minecraft.item.Item;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,10 +42,18 @@ public class Lightsaber {
 		System.out.println("Pre Init");
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
 		LightsaberItems.init();
-		LightsaberItems.register();
+		LightsaberItems.register(); 
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageJediHutHandler());
 		MapGenStructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure");
 		LightsaberVillagers.registerVillagers();
+		
+		if(SPCompatibilityManager.isDynamicLightsLoaded()) {
+			LightsaberLighting.initDynamicLights(event);
+		}
+		
+		if(SPCompatibilityManager.isSELLoaded()) {
+			LightsaberLighting.initSmoothEntityLight(event);
+		}
 	}
 	
 	@EventHandler
@@ -50,6 +62,14 @@ public class Lightsaber {
 		System.out.println("Init");
 		proxy.init();
 		LightsaberSoundHandler.init();
+		
+		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
+			LightsaberSwordBlocking.init();
+		}
+		
+		if(SPCompatibilityManager.isBetterCombatLoaded()) {
+			LightsaberBetterCombat.init();
+		}
 	}
 	
 	@EventHandler

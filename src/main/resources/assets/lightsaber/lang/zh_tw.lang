@@ -27,9 +27,11 @@ item.darksaber.name=暗劍
 item.lightsaber.lightsaber_on=光劍已打開
 item.lightsaber.lightsaber_off=光劍關閉
 item.lightsaber.lightsaber_swing=光劍搖擺
+item.lightsaber.lightsaber_hit=光劍格擋
 item.lightsaber.darksaber_on=黑暗劍開啓
 item.lightsaber.darksaber_off=黑暗劍已關閉
 item.lightsaber.darksaber_swing=暗劍揮杆
+item.lightsaber.darksaber_hit=暗劍格擋
 misc.hello_there=你好
 
 entity.Villager.jedi=絕地

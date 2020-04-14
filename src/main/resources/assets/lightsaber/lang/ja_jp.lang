@@ -27,9 +27,11 @@ item.darksaber.name=ダークセーバー
 item.lightsaber.lightsaber_on=ライトセーバーがオンになりました
 item.lightsaber.lightsaber_off=ライトセーバーがオフになりました
 item.lightsaber.lightsaber_swing=ライトセーバースイング
+item.lightsaber.lightsaber_hit=ライトセーバーで防御する
 item.lightsaber.darksaber_on=ダークセーバーがオンになりました
 item.lightsaber.darksaber_off=ダークセーバーがオフになりました
 item.lightsaber.darksaber_swing=ダークセーバースイング
+item.lightsaber.darksaber_hit=ダークセーバーで防御する
 misc.hello_there=こんにちは
 
 entity.Villager.jedi=ジェダイ
