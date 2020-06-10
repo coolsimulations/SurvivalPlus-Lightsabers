@@ -447,6 +447,14 @@
 			"scale": [0.6, 2.24, 1]
 		}
 	},
+    "overrides": [
+        {
+            "predicate": {
+                "blocking": 1
+            },
+            "model": "lightsaber:item/white_lightsaber_blocking"
+        }
+    ],
 	"groups": [0, 1, 2, 3,
 		{
 			"name": "blade",

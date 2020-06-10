@@ -1,12 +1,13 @@
 package net.coolsimulations.Lightsaber;
 
-import net.coolsimulations.Lightsaber.init.LightsaberBlocks;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberUpdateHandler;
 import net.coolsimulations.Lightsaber.proxy.ClientProxy;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
+import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
+import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 //import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
@@ -38,6 +39,10 @@ public class Lightsaber {
 		//StructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure"); //temp till forge pull request #6142 is resolved
 		//LightsaberVillagers.registerVillagers(); //temp till forge issue #6112 is resolved
 		LightsaberSoundHandler.init();
+		
+		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
+			LightsaberSwordBlocking.init();
+		}
 	}
 	
 }

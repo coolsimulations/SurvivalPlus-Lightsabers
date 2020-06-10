@@ -12,10 +12,12 @@ public class LightsaberSoundHandler {
 	public static SoundEvent lightsaber_on;
 	public static SoundEvent lightsaber_off;
 	public static SoundEvent lightsaber_swing;
+	public static SoundEvent lightsaber_hit;
 	
 	public static SoundEvent darksaber_on;
 	public static SoundEvent darksaber_off;
 	public static SoundEvent darksaber_swing;
+	public static SoundEvent darksaber_hit;
 	
 	public static SoundEvent hello_there;
 	
@@ -25,10 +27,12 @@ public class LightsaberSoundHandler {
 		lightsaber_on = register("item.lightsaber.lightsaber_on");
 		lightsaber_off = register("item.lightsaber.lightsaber_off");
 		lightsaber_swing = register("item.lightsaber.lightsaber_swing");
+		lightsaber_hit = register("item.lightsaber.lightsaber_hit");
 		
 		darksaber_off = register("item.lightsaber.darksaber_off");
 		darksaber_on = register("item.lightsaber.darksaber_on");
 		darksaber_swing = register("item.lightsaber.darksaber_swing");
+		darksaber_hit = register("item.lightsaber.darksaber_hit");
 		
 		hello_there = register("misc.hello_there");
 	}	

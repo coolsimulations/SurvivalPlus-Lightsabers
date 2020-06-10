@@ -28,9 +28,11 @@
   "item.lightsaber.lightsaber_on": "\u5149\u528d\u5df2\u6253\u958b",
   "item.lightsaber.lightsaber_off": "\u5149\u528d\u95dc\u9589",
   "item.lightsaber.lightsaber_swing": "\u5149\u528d\u6416\u64fa",
+  "item.lightsaber.lightsaber_hit": "\u5149\u528d\u683c\u64cb",
   "item.lightsaber.darksaber_on": "\u9ed1\u6697\u528d\u958b\u5553",
   "item.lightsaber.darksaber_off": "\u9ed1\u6697\u528d\u5df2\u95dc\u9589",
   "item.lightsaber.darksaber_swing": "\u6697\u528d\u63ee\u6746",
+  "item.lightsaber.darksaber_hit": "\u6697\u528d\u683c\u64cb",
   "misc.hello_there": "\u4f60\u597d",
 
   "entity.minecraft.villager.jedi": "\u7d55\u5730",
