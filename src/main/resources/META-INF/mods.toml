@@ -5,7 +5,7 @@ logoFile="logo.png"
 
 [[mods]]
     modId="lightsaber"
-    version="0.1.3"
+    version="0.1.4"
     updateJSONURL="https://coolsimulations.net/mcmods/lightsaber/versionchecker.json"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"
     displayName="SurvivalPlus Lightsabers"
@@ -17,7 +17,7 @@ logoFile="logo.png"
 [[dependencies.lightsaber]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[31.2,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.lightsaber]]
@@ -29,6 +29,6 @@ logoFile="logo.png"
 [[dependencies.lightsaber]]
     modId="survivalplus"
     mandatory=true
-    versionRange="[0.1.2]"
+    versionRange="[0.1.3,)"
     ordering="BEFORE"
     side="BOTH"

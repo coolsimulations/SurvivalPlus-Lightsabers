@@ -14,6 +14,11 @@
         "subtitle": "item.lightsaber.lightsaber_swing",
         "sounds": [ { "name": "lightsaber:item/lightsaber/lightsaber_swing_01", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_swing_02", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_swing_03", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_swing_04", "stream": true } ]
     },
+    "item.lightsaber.lightsaber_hit": {
+        "category": "item",
+        "subtitle": "item.lightsaber.lightsaber_hit",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/lightsaber_hit_01", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_hit_02", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_hit_03", "stream": true }, { "name": "lightsaber:item/lightsaber/lightsaber_hit_04", "stream": true } ]
+    },
     "item.lightsaber.darksaber_on": {
         "category": "item",
         "subtitle": "item.lightsaber.darksaber_on",
@@ -28,6 +33,11 @@
         "category": "item",
         "subtitle": "item.lightsaber.darksaber_off",
         "sounds": [ { "name": "lightsaber:item/lightsaber/darksaber_swing_01", "stream": true }, { "name": "lightsaber:item/lightsaber/darksaber_swing_02", "stream": true } ]
+    },
+    "item.lightsaber.darksaber_hit": {
+        "category": "item",
+        "subtitle": "item.lightsaber.darksaber_hit",
+        "sounds": [ { "name": "lightsaber:item/lightsaber/darksaber_hit_01", "stream": true }, { "name": "lightsaber:item/lightsaber/darksaber_hit_02", "stream": true } ]
     },
     "misc.hello_there": {
         "category": "voice",
