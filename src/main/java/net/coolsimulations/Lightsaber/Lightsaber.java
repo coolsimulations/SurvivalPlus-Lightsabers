@@ -14,6 +14,7 @@ import net.coolsimulations.Lightsaber.util.LightsaberBetterCombat;
 import net.coolsimulations.Lightsaber.util.LightsaberLighting;
 import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
+import net.coolsimulations.SurvivalPlus.api.SPReference;
 import net.minecraft.item.Item;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -40,6 +41,7 @@ public class Lightsaber {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		System.out.println("Pre Init");
+		SPReference.MOD_ADDON_NAMES.add("sp.lightsaber.name");
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
 		LightsaberItems.init();
 		LightsaberItems.register(); 
