@@ -1,6 +1,8 @@
 package net.coolsimulations.Lightsaber.init;
 
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
@@ -40,7 +42,7 @@ public class LightsaberEventHandler {
 		Minecraft.getInstance().deferTask(new Runnable() {
 			@Override
 			public void run() {
-				if(!SPConfig.disableSunAudio.get()) {
+				if(!SPConfig.disableSunAudio.get() && Minecraft.getInstance().gameSettings.getSoundLevel(SoundCategory.MASTER) != 0.0F && Minecraft.getInstance().gameSettings.getSoundLevel(SoundCategory.VOICE) != 0.0F) {
 					try
 					{
 						InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
@@ -66,6 +68,8 @@ public class LightsaberEventHandler {
 		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));
 
 		boolean isDone = false;
+		
+		Timer timer = new Timer();
 
 		if(install !=null && player.getAdvancements().getProgress(install).hasProgress()) {
 			isDone = true;
@@ -85,8 +89,14 @@ public class LightsaberEventHandler {
 		}
 
 		if(LightsaberUpdateHandler.isOld == true && SPConfig.disableUpdateCheck.get() == false) {
-			player.sendMessage(LightsaberUpdateHandler.updateInfo);
-			player.sendMessage(LightsaberUpdateHandler.updateVersionInfo);
+			timer.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					player.sendMessage(LightsaberUpdateHandler.updateInfo);
+					player.sendMessage(LightsaberUpdateHandler.updateVersionInfo);
+				}
+			}, 17000);
+
 		}
 
 	}
@@ -132,7 +142,6 @@ public class LightsaberEventHandler {
 				dark.setTag(tag);
 
 				if(event.getItemStack().getItem() == LightsaberItems.red_lightsaber){
-					System.out.print("ASDF Reached Red");
 
 					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
 					{

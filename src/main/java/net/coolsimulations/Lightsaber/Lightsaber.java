@@ -8,6 +8,7 @@ import net.coolsimulations.Lightsaber.proxy.ClientProxy;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
 import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
+import net.coolsimulations.SurvivalPlus.api.SPReference;
 //import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
@@ -30,6 +31,7 @@ public class Lightsaber {
 	public Lightsaber() {
 		
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
+		SPReference.MOD_ADDON_NAMES.add("sp.lightsaber.name");
 		LightsaberUpdateHandler.init();
 		LightsaberItems.init();
 		LightsaberItems.register();

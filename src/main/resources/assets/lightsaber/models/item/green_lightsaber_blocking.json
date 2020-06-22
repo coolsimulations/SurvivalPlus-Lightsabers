@@ -1,39 +1,15 @@
 {
 	"parent": "lightsaber:item/green_lightsaber",
 	"display": {
-		"thirdperson_righthand": {
-			"rotation": [-3, 0, 0],
-			"translation": [0, -3.25, 0.95],
-			"scale": [0.5, 1.12, 0.5]
-		},
 		"firstperson_righthand": {
-			"rotation": [-14, 18, 38],
-			"translation": [-0.5, -2.5, 0.5],
-			"scale": [0.5, 1.12, 0.5]
+			"rotation": [0, 7, 45],
+			"translation": [0, -3, 0],
+			"scale": [1, 1.2, 1]
 		},
 		"firstperson_lefthand": {
-			"rotation": [-12, 10, 35.5],
+			"rotation": [0, 5, 45],
 			"translation": [0, -3, 0],
-			"scale": [0.5, 1.12, 0.5]
-		},
-		"ground": {
-			"rotation": [-180, 16, -180],
-			"translation": [0, -1.5, 0],
-			"scale": [0.5, 1.12, 0.5]
-		},
-		"gui": {
-			"rotation": [-2, 55, -59],
-			"translation": [-6, -5, 0],
-			"scale": [0.5, 1.12, 0.5]
-		},
-		"head": {
-			"rotation": [128, 0, 180],
-			"translation": [0, 3, -4.25]
-		},
-		"fixed": {
-			"rotation": [0, 180, 0],
-			"translation": [0, -3.5, -0.5],
-			"scale": [1, 2.24, 1]
+			"scale": [1, 1.2, 1]
 		}
 	}
 }

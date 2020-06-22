@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.fuzs.swordblockingcombat.config.ConfigBuildHandler;
 
-//import com.fuzs.swordblockingcombat.config.ConfigBuildHandler;
-
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
