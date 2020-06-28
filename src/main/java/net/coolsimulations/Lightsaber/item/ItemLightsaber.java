@@ -2,6 +2,7 @@ package net.coolsimulations.Lightsaber.item;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
@@ -14,13 +15,14 @@ import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.TNTBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
@@ -36,6 +38,7 @@ import net.minecraft.world.World;
 public class ItemLightsaber extends Item{
 
 	private final float attackDamage;
+	private final Multimap<Attribute, AttributeModifier> attribute;
 	private final ItemLightsaber.LightsaberTier tier;
 	private boolean isSneaking = false;
 	private boolean holdsOne = false;
@@ -45,8 +48,12 @@ public class ItemLightsaber extends Item{
 		super(properties.maxStackSize(1));
 		this.tier = tier;
 		this.attackDamage = 3.0F + tier.getAttackDamage();
+		ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.<Attribute, AttributeModifier>builder();
+		attributeBuilder.put(Attributes.field_233823_f_, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, AttributeModifier.Operation.ADDITION));
+		attributeBuilder.put(Attributes.field_233825_h_, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.20000004768D, AttributeModifier.Operation.ADDITION));
+		this.attribute = attributeBuilder.build();
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
-			this.addPropertyOverride(new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.func_239418_a_(this, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
 			DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
@@ -90,7 +97,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, red);
 				}
-				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.blue_lightsaber){
 
@@ -102,7 +109,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 				}
-				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.green_lightsaber){
 
@@ -114,7 +121,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, green);
 				}
-				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.purple_lightsaber){
 
@@ -126,7 +133,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 				}
-				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.white_lightsaber){
 
@@ -138,7 +145,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, white);
 				}
-				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.darksaber){
 
@@ -150,7 +157,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 				}
-				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 		} else {
 			isSneaking = false;
@@ -211,9 +218,9 @@ public class ItemLightsaber extends Item{
 	public boolean onEntitySwing(ItemStack stack, LivingEntity entityLiving)
 	{
 		if(stack.getItem() == LightsaberItems.darksaber){
-			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.func_233580_cy_(), LightsaberSoundHandler.darksaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		} else {
-			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.func_233580_cy_(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		return false;
 	}
@@ -239,7 +246,7 @@ public class ItemLightsaber extends Item{
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
 			return lvt_4_1_ != Material.PLANTS && lvt_4_1_ != Material.TALL_PLANTS && lvt_4_1_ != Material.CORAL
-					&& !state.isIn(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
+					&& !state.func_235714_a_(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
 		}
 	}
 
@@ -257,7 +264,7 @@ public class ItemLightsaber extends Item{
 	{
 		BlockState state = player.world.getBlockState(pos);
 		Block block = state.getBlock();
-		if(!player.isCreative() && block instanceof TNTBlock && state.getProperties().contains(TNTBlock.UNSTABLE) && !state.get(TNTBlock.UNSTABLE)) {
+		if(!player.isCreative() && block instanceof TNTBlock && state.func_235904_r_().contains(TNTBlock.UNSTABLE) && !state.get(TNTBlock.UNSTABLE)) {
 			try {
 				((TNTBlock) block).catchFire(state, player.world, pos, player.getHorizontalFacing(), player);
 				player.world.setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
@@ -296,17 +303,9 @@ public class ItemLightsaber extends Item{
 	/**
 	 * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
 	 */
-	public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot)
+	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot)
 	{
-		Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
-
-		if (equipmentSlot == EquipmentSlotType.MAINHAND)
-		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) this.attackDamage, Operation.ADDITION));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double) -1.2000000476837158D, Operation.ADDITION));
-		}
-
-		return multimap;
+		return equipmentSlot == EquipmentSlotType.MAINHAND ? this.attribute : super.getAttributeModifiers(equipmentSlot);
 	}
 
 	public static enum LightsaberTier{

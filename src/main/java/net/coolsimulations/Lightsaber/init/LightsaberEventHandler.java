@@ -20,8 +20,12 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.Util;
+import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -82,8 +86,8 @@ public class LightsaberEventHandler {
 			if(!player.world.isRemote) {
 
 				TranslationTextComponent installInfo = new TranslationTextComponent("advancements.lightsaber.install.display1");
-				installInfo.getStyle().setColor(TextFormatting.GOLD);
-				player.sendMessage(installInfo);
+				installInfo.func_240699_a_(TextFormatting.GOLD);
+				player.func_241151_a_(installInfo, ChatType.SYSTEM, Util.field_240973_b_);
 
 			}
 		}
@@ -92,8 +96,9 @@ public class LightsaberEventHandler {
 			timer.schedule(new TimerTask() {
 				@Override
 				public void run() {
-					player.sendMessage(LightsaberUpdateHandler.updateInfo);
-					player.sendMessage(LightsaberUpdateHandler.updateVersionInfo);
+					player.func_241151_a_(LightsaberUpdateHandler.updateInfo.func_240700_a_((style) -> {return style.func_240716_a_(new HoverEvent(HoverEvent.Action.field_230550_a_, new TranslationTextComponent("sp.update.display2"))).func_240715_a_(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.field_240973_b_);
+					player.func_241151_a_(LightsaberUpdateHandler.updateVersionInfo.func_240700_a_((style) -> {return style.func_240716_a_(new HoverEvent(HoverEvent.Action.field_230550_a_, new TranslationTextComponent("sp.update.display2"))).func_240715_a_(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.field_240973_b_);
+
 				}
 			}, 17000);
 		}
@@ -150,7 +155,7 @@ public class LightsaberEventHandler {
 					{
 						playerIn.setHeldItem(Hand.MAIN_HAND, red);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.blue_lightsaber){
 
@@ -162,7 +167,7 @@ public class LightsaberEventHandler {
 					{
 						playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.green_lightsaber){
 
@@ -174,7 +179,7 @@ public class LightsaberEventHandler {
 					{
 						playerIn.setHeldItem(Hand.MAIN_HAND, green);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.purple_lightsaber){
 
@@ -186,7 +191,7 @@ public class LightsaberEventHandler {
 					{
 						playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.white_lightsaber){
 
@@ -198,7 +203,7 @@ public class LightsaberEventHandler {
 					{
 						playerIn.setHeldItem(Hand.MAIN_HAND, white);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.darksaber){
 
@@ -210,7 +215,7 @@ public class LightsaberEventHandler {
 					{
 						playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 			}
 		}

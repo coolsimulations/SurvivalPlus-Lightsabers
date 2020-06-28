@@ -22,7 +22,7 @@ public class LightsaberUpdateHandler {
 	public static void init() {
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker115.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker116.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersion = s.next();
             s.close();
@@ -31,7 +31,7 @@ public class LightsaberUpdateHandler {
         }
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/updateinfo115.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/updateinfo116.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersionInfo = s.nextLine();
             s.close();
@@ -46,16 +46,16 @@ public class LightsaberUpdateHandler {
 				isOld = true;
 				
 				TranslationTextComponent lightsaber = new TranslationTextComponent("sp.lightsaber.name");
-				lightsaber.getStyle().setColor(TextFormatting.BLUE);
+				lightsaber.func_240699_a_(TextFormatting.BLUE);
 				
 				StringTextComponent MCVersion = new StringTextComponent(MCPVersion.getMCVersion());
-				MCVersion.getStyle().setColor(TextFormatting.BLUE);
+				MCVersion.func_240699_a_(TextFormatting.BLUE);
 				
 				updateInfo = new TranslationTextComponent("sp.update.display3", new Object[] {lightsaber, MCVersion});
-				updateInfo.getStyle().setColor(TextFormatting.YELLOW);
+				updateInfo.func_240699_a_(TextFormatting.YELLOW);
 				
-				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
-				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
+				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
+				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
 				
 			}
 			
@@ -64,25 +64,25 @@ public class LightsaberUpdateHandler {
 				isOld = true;
 				
 				TranslationTextComponent lightsaber = new TranslationTextComponent("sp.lightsaber.name");
-				lightsaber.getStyle().setColor(TextFormatting.BLUE);
+				lightsaber.func_240699_a_(TextFormatting.BLUE);
 				
 				StringTextComponent version = new StringTextComponent(latestVersion);
-				version.getStyle().setColor(TextFormatting.BLUE);
+				version.func_240699_a_(TextFormatting.BLUE);
 				
 				updateInfo = new TranslationTextComponent("sp.update.display1", new Object[] {lightsaber, version});
-				updateInfo.getStyle().setColor(TextFormatting.YELLOW);
+				updateInfo.func_240699_a_(TextFormatting.YELLOW);
 				
-				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
-				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
+				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
+				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
 				
 				if(latestVersionInfo != null) {
 					
 					updateVersionInfo = new StringTextComponent(latestVersionInfo);
-					updateVersionInfo.getStyle().setColor(TextFormatting.DARK_AQUA);
-					updateVersionInfo.getStyle().setBold(true);
+					updateVersionInfo.func_240699_a_(TextFormatting.DARK_AQUA);
+					updateVersionInfo.func_240699_a_(TextFormatting.BOLD);
 					
-					updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
-					updateVersionInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
+					//updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
+					//updateVersionInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
 					
 				}
 				
