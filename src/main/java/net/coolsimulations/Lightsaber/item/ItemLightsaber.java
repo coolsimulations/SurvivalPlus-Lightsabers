@@ -24,6 +24,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tags.BlockTags;
@@ -53,9 +54,6 @@ public class ItemLightsaber extends Item{
 		attributeBuilder.put(Attributes.field_233825_h_, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.20000004768D, AttributeModifier.Operation.ADDITION));
 		this.attribute = attributeBuilder.build();
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
-			ItemModelsProperties.func_239418_a_(this, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
-				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
-			});
 			DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
 		}
 	}
