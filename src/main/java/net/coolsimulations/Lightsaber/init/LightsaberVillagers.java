@@ -58,9 +58,15 @@ public class LightsaberVillagers {
    				}
     		}
     		
+    		if(OreDictionary.getOres("gemEmerald").size() > 0) {
+    			for(int i = 0; i < OreDictionary.getOres("gemEmerald").size(); i++) {
+   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemEmerald").get(i), new ItemStack(LightsaberItems.green_lightsaber_hilt)));
+   				}
+    		}
+    		
     		if(OreDictionary.getOres("gemTopaz").size() > 0) {
     			for(int i = 0; i < OreDictionary.getOres("gemTopaz").size(); i++) {
-   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemTopaz").get(i), new ItemStack(LightsaberItems.green_lightsaber_hilt)));
+   					recipeList.add(new MerchantRecipe(new ItemStack(LightsaberItems.lightsaber_hilt), OreDictionary.getOres("gemTopaz").get(i), new ItemStack(LightsaberItems.yellow_lightsaber_hilt)));
    				}
     		}
     		

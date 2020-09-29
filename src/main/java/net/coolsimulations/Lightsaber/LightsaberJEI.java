@@ -20,6 +20,7 @@ public static void loadBlacklist(IIngredientBlacklist jeiHidden){
 			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.red_lightsaber, 1, 0));
 			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.blue_lightsaber, 1, 0));
 			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.green_lightsaber, 1, 0));
+			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.yellow_lightsaber, 1, 0));
 			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.purple_lightsaber, 1, 0));
 			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.white_lightsaber, 1, 0));
 			jeiHidden.addIngredientToBlacklist(new ItemStack(LightsaberItems.darksaber, 1, 0));

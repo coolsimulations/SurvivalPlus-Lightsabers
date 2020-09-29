@@ -24,6 +24,7 @@ public class LightsaberItems {
 	public static Item red_lightsaber_hilt;
 	public static Item blue_lightsaber_hilt;
 	public static Item green_lightsaber_hilt;
+	public static Item yellow_lightsaber_hilt;
 	public static Item purple_lightsaber_hilt;
 	public static Item white_lightsaber_hilt;
 	public static Item darksaber_hilt;
@@ -31,6 +32,7 @@ public class LightsaberItems {
 	public static Item red_lightsaber;
 	public static Item blue_lightsaber;
 	public static Item green_lightsaber;
+	public static Item yellow_lightsaber;
 	public static Item purple_lightsaber;
 	public static Item white_lightsaber;
 	public static Item darksaber;
@@ -49,6 +51,7 @@ public class LightsaberItems {
 		red_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("red_lightsaber_hilt").setRegistryName("red_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		blue_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("blue_lightsaber_hilt").setRegistryName("blue_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		green_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("green_lightsaber_hilt").setRegistryName("green_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		yellow_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("yellow_lightsaber_hilt").setRegistryName("yellow_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		purple_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("purple_lightsaber_hilt").setRegistryName("purple_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		white_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("white_lightsaber_hilt").setRegistryName("white_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		darksaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("darksaber_hilt").setRegistryName("darksaber_hilt").setCreativeTab(SPTabs.tabCombat);
@@ -56,6 +59,7 @@ public class LightsaberItems {
 		red_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("red_lightsaber").setRegistryName("red_lightsaber");
 		blue_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("blue_lightsaber").setRegistryName("blue_lightsaber");
 		green_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("green_lightsaber").setRegistryName("green_lightsaber");
+		yellow_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("yellow_lightsaber").setRegistryName("yellow_lightsaber");
 		purple_lightsaber = new ItemLightsaber(LightsaberMaterial.Purple_Lightsaber).setUnlocalizedName("purple_lightsaber").setRegistryName("purple_lightsaber");
 		white_lightsaber = new ItemLightsaber(LightsaberMaterial.White_Lightsaber).setUnlocalizedName("white_lightsaber").setRegistryName("white_lightsaber");
 		darksaber = new ItemLightsaber(LightsaberMaterial.Darksaber).setUnlocalizedName("darksaber").setRegistryName("darksaber");
@@ -76,6 +80,7 @@ public class LightsaberItems {
 		registerItem(red_lightsaber_hilt);
 		registerItem(blue_lightsaber_hilt);
 		registerItem(green_lightsaber_hilt);
+		registerItem(yellow_lightsaber_hilt);
 		registerItem(purple_lightsaber_hilt);
 		registerItem(white_lightsaber_hilt);
 		registerItem(darksaber_hilt);
@@ -83,6 +88,7 @@ public class LightsaberItems {
 		registerItem(red_lightsaber);
 		registerItem(blue_lightsaber);
 		registerItem(green_lightsaber);
+		registerItem(yellow_lightsaber);
 		registerItem(purple_lightsaber);
 		registerItem(white_lightsaber);
 		registerItem(darksaber);
@@ -102,6 +108,7 @@ public class LightsaberItems {
 		registerRender(red_lightsaber_hilt);
 		registerRender(blue_lightsaber_hilt);
 		registerRender(green_lightsaber_hilt);
+		registerRender(yellow_lightsaber_hilt);
 		registerRender(purple_lightsaber_hilt);
 		registerRender(white_lightsaber_hilt);
 		registerRender(darksaber_hilt);
@@ -109,6 +116,7 @@ public class LightsaberItems {
 		registerRender(red_lightsaber);
 		registerRender(blue_lightsaber);
 		registerRender(green_lightsaber);
+		registerRender(yellow_lightsaber);
 		registerRender(purple_lightsaber);
 		registerRender(white_lightsaber);
 		registerRender(darksaber);

@@ -38,6 +38,9 @@ public class ItemLightsaberHilt extends Item{
 
 		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber);
 		green.setTagCompound(tag);
+		
+		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber);
+		yellow.setTagCompound(tag);
 
 		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber);
 		purple.setTagCompound(tag);
@@ -81,6 +84,18 @@ public class ItemLightsaberHilt extends Item{
 			else
 			{
 				playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+		}
+		if(item == LightsaberItems.yellow_lightsaber_hilt){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, yellow);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, yellow);
 			}
 			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}

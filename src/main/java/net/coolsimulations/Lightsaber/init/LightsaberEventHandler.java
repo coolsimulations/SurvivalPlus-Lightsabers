@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import micdoodle8.mods.galacticraft.core.fluid.ThreadFindSeal.intBucket;
 import net.coolsimulations.Lightsaber.Lightsaber;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
@@ -13,11 +14,15 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -29,6 +34,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -135,6 +141,9 @@ public class LightsaberEventHandler {
 
 				ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
 				green.setTagCompound(tag);
+				
+				ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
+				yellow.setTagCompound(tag);
 
 				ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt);
 				purple.setTagCompound(tag);
@@ -181,6 +190,18 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
+				if(event.getItemStack().getItem() == LightsaberItems.yellow_lightsaber){
+
+					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					{
+						playerIn.setHeldItem(EnumHand.OFF_HAND, yellow);
+					}
+					else
+					{
+						playerIn.setHeldItem(EnumHand.MAIN_HAND, yellow);
+					}
+					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				}
 				if(event.getItemStack().getItem() == LightsaberItems.purple_lightsaber){
 
 					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
@@ -216,6 +237,21 @@ public class LightsaberEventHandler {
 						playerIn.setHeldItem(EnumHand.MAIN_HAND, dark);
 					}
 					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onEntityDeath(LivingDropsEvent event) {
+		if(event.getSource().getImmediateSource() instanceof EntityPlayer) {
+			if(((EntityPlayer) event.getSource().getImmediateSource()).getHeldItemMainhand().getItem() instanceof ItemLightsaber) {
+				for(int i = 0; i < event.getDrops().size(); i++) {
+					ItemStack itemstack = event.getDrops().get(i).getItem();
+					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(itemstack);
+					if(result.getItem() instanceof ItemFood || result.getItemUseAction() == EnumAction.EAT || result.getItemUseAction() == EnumAction.DRINK) {
+						event.getDrops().set(i, new EntityItem(event.getEntity().getEntityWorld(), event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, result));
+					}
 				}
 			}
 		}

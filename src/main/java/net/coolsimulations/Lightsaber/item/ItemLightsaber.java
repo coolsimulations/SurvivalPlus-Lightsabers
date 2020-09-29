@@ -12,6 +12,7 @@ import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -74,6 +75,9 @@ public class ItemLightsaber extends Item {
 
 		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
 		green.setTagCompound(tag);
+		
+		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
+		yellow.setTagCompound(tag);
 
 		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt);
 		purple.setTagCompound(tag);
@@ -119,6 +123,18 @@ public class ItemLightsaber extends Item {
 				else
 				{
 					playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
+				}
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			}
+			if(item == LightsaberItems.yellow_lightsaber){
+
+				if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+				{
+					playerIn.setHeldItem(EnumHand.OFF_HAND, yellow);
+				}
+				else
+				{
+					playerIn.setHeldItem(EnumHand.MAIN_HAND, yellow);
 				}
 				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
@@ -203,8 +219,126 @@ public class ItemLightsaber extends Item {
 	}
 
 	@Override
-	public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player)
+	public boolean onDroppedByPlayer(ItemStack itemStackIn, EntityPlayer playerIn)
 	{
+		
+		World worldIn = playerIn.getEntityWorld();
+		Item item = itemStackIn.getItem();
+		NBTTagCompound tag = item.getNBTShareTag(itemStackIn);
+		
+		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
+		red.setTagCompound(tag);
+
+		ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt);
+		blue.setTagCompound(tag);
+
+		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
+		green.setTagCompound(tag);
+		
+		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
+		yellow.setTagCompound(tag);
+
+		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt);
+		purple.setTagCompound(tag);
+
+		ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt);
+		white.setTagCompound(tag);
+
+		ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt);
+		dark.setTagCompound(tag);
+		
+		if(item == LightsaberItems.red_lightsaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, red);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, red);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		if(item == LightsaberItems.blue_lightsaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, blue);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, blue);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		if(item == LightsaberItems.green_lightsaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, green);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, green);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		if(item == LightsaberItems.yellow_lightsaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, yellow);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, yellow);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		if(item == LightsaberItems.purple_lightsaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, purple);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, purple);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		if(item == LightsaberItems.white_lightsaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, white);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, white);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		if(item == LightsaberItems.darksaber){
+
+			if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+			{
+				playerIn.setHeldItem(EnumHand.OFF_HAND, dark);
+			}
+			else
+			{
+				playerIn.setHeldItem(EnumHand.MAIN_HAND, dark);
+			}
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -300,6 +434,19 @@ public class ItemLightsaber extends Item {
 	public int getItemEnchantability()
 	{
 		return this.material.getEnchantability();
+	}
+	
+	public boolean isEnchantable(ItemStack stack)
+    {
+        return this.getItemStackLimit(stack) == 1;
+    }
+	
+	public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.enchantment.Enchantment enchantment)
+	{
+		if(enchantment.type == EnumEnchantmentType.WEAPON)
+			return true;
+		else
+			return false;
 	}
 
 	/**

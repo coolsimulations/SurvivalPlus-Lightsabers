@@ -8,14 +8,14 @@ item.lightsaber_hilt.name=光剑剑柄
 item.activation_stud.name=激活螺柱
 item.blade_matrix.name=刀片矩阵
 item.emitter_matrix.name=发射矩阵
-item.darksaber_lens.name=暗剑
+item.darksaber_lens.name=暗水晶
 
 item.red_lightsaber_hilt.name=红色光剑剑柄
 item.blue_lightsaber_hilt.name=蓝色光剑剑柄
 item.green_lightsaber_hilt.name=绿色光剑剑柄
 item.purple_lightsaber_hilt.name=紫色光剑剑柄
 item.white_lightsaber_hilt.name=白色光剑剑柄
-item.darksaber_hilt.name=黑暗剑击
+item.darksaber_hilt.name=暗剑剑柄
 
 item.red_lightsaber.name=红光剑
 item.blue_lightsaber.name=蓝色光剑
@@ -24,13 +24,13 @@ item.purple_lightsaber.name=紫色光剑
 item.white_lightsaber.name=白光剑
 item.darksaber.name=暗剑
 
-item.lightsaber.lightsaber_on=光剑已打开
+item.lightsaber.lightsaber_on=光剑开启
 item.lightsaber.lightsaber_off=光剑关闭
-item.lightsaber.lightsaber_swing=光剑摇摆
+item.lightsaber.lightsaber_swing=光剑挥舞
 item.lightsaber.lightsaber_hit=光剑格挡
-item.lightsaber.darksaber_on=黑暗剑开启
-item.lightsaber.darksaber_off=黑暗剑已关闭
-item.lightsaber.darksaber_swing=暗剑挥杆
+item.lightsaber.darksaber_on=暗剑开启
+item.lightsaber.darksaber_off=暗剑关闭
+item.lightsaber.darksaber_swing=暗剑挥舞
 item.lightsaber.darksaber_hit=暗剑格挡
 misc.hello_there=你好
 
