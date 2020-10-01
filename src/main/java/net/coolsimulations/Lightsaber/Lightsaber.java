@@ -12,6 +12,7 @@ import net.coolsimulations.Lightsaber.init.VillageJediHutHandler;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
 import net.coolsimulations.Lightsaber.util.LightsaberBetterCombat;
 import net.coolsimulations.Lightsaber.util.LightsaberLighting;
+import net.coolsimulations.Lightsaber.util.LightsaberSkills;
 import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPReference;
@@ -55,6 +56,10 @@ public class Lightsaber {
 		
 		if(SPCompatibilityManager.isSELLoaded()) {
 			LightsaberLighting.initSmoothEntityLight(event);
+		}
+		
+		if(SPCompatibilityManager.isReskillableLoaded()) {
+			LightsaberSkills.initReskillable(event);
 		}
 	}
 	
