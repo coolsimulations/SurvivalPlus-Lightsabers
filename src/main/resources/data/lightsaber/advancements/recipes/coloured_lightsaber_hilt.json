@@ -4,6 +4,7 @@
     "recipes": [
       "lightsaber:blue_lightsaber_hilt",
       "lightsaber:green_lightsaber_hilt",
+      "lightsaber:yellow_lightsaber_hilt",
       "lightsaber:white_lightsaber_hilt",
       "lightsaber:purple_lightsaber_hilt",
       "lightsaber:red_lightsaber_hilt",
@@ -26,6 +27,7 @@
       "conditions": {
         "recipe": "lightsaber:blue_lightsaber_hilt",
         "recipe": "lightsaber:green_lightsaber_hilt",
+        "recipe": "lightsaber:yellow_lightsaber_hilt",
         "recipe": "lightsaber:white_lightsaber_hilt",
         "recipe": "lightsaber:purple_lightsaber_hilt",
         "recipe": "lightsaber:red_lightsaber_hilt",

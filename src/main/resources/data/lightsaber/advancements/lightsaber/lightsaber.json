@@ -42,6 +42,16 @@
                 ]
             }
         },
+        "yellow_lightsaber_hilt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lightsaber:yellow_lightsaber_hilt"
+                    }
+                ]
+            }
+        },
         "purple_lightsaber_hilt": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
@@ -68,6 +78,7 @@
             "red_lightsaber_hilt",
             "blue_lightsaber_hilt",
             "green_lightsaber_hilt",
+            "yellow_lightsaber_hilt",
             "purple_lightsaber_hilt",
             "white_lightsaber_hilt"
         ]

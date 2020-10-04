@@ -6,10 +6,10 @@
       "item": "lightsaber:lightsaber_hilt"
     },
     {
-      "tag": "forge:gems/emerald"
+      "tag": "forge:gems/topaz"
     }
   ],
   "result": {
-    "item": "lightsaber:green_lightsaber_hilt"
+    "item": "lightsaber:yellow_lightsaber_hilt"
   }
 }
