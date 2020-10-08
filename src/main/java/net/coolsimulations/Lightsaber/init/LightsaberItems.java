@@ -21,6 +21,7 @@ public class LightsaberItems {
 	public static Item red_lightsaber_hilt;
 	public static Item blue_lightsaber_hilt;
 	public static Item green_lightsaber_hilt;
+	public static Item yellow_lightsaber_hilt;
 	public static Item purple_lightsaber_hilt;
 	public static Item white_lightsaber_hilt;
 	public static Item darksaber_hilt;
@@ -28,6 +29,7 @@ public class LightsaberItems {
 	public static Item red_lightsaber;
 	public static Item blue_lightsaber;
 	public static Item green_lightsaber;
+	public static Item yellow_lightsaber;
 	public static Item purple_lightsaber;
 	public static Item white_lightsaber;
 	public static Item darksaber;
@@ -46,6 +48,7 @@ public class LightsaberItems {
 		red_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("red_lightsaber_hilt");
 		blue_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("blue_lightsaber_hilt");
 		green_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("green_lightsaber_hilt");
+		yellow_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("yellow_lightsaber_hilt");
 		purple_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("purple_lightsaber_hilt");
 		white_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("white_lightsaber_hilt");
 		darksaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("darksaber_hilt");
@@ -53,6 +56,7 @@ public class LightsaberItems {
 		red_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("red_lightsaber");
 		blue_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("blue_lightsaber");
 		green_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("green_lightsaber");
+		yellow_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("yellow_lightsaber");
 		purple_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Purple_Lightsaber).setRegistryName("purple_lightsaber");
 		white_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.White_Lightsaber).setRegistryName("white_lightsaber");
 		darksaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Darksaber).setRegistryName("darksaber");
@@ -73,6 +77,7 @@ public class LightsaberItems {
 		registerItem(red_lightsaber_hilt);
 		registerItem(blue_lightsaber_hilt);
 		registerItem(green_lightsaber_hilt);
+		registerItem(yellow_lightsaber_hilt);
 		registerItem(purple_lightsaber_hilt);
 		registerItem(white_lightsaber_hilt);
 		registerItem(darksaber_hilt);
@@ -80,6 +85,7 @@ public class LightsaberItems {
 		registerItem(red_lightsaber);
 		registerItem(blue_lightsaber);
 		registerItem(green_lightsaber);
+		registerItem(yellow_lightsaber);
 		registerItem(purple_lightsaber);
 		registerItem(white_lightsaber);
 		registerItem(darksaber);

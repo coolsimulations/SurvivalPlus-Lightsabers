@@ -1,0 +1,13 @@
+{
+    "type": "futuremc:smithing",
+    "input": {
+        "item": "lightsaber:lightsaber_hilt"
+    },
+    "material": {
+        "tag": "forge:gems/sapphire"
+    },
+    "material_cost": 1,
+    "result": {
+        "item": "lightsaber:blue_lightsaber_hilt"
+    }
+}

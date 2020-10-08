@@ -1,0 +1,13 @@
+{
+    "type": "futuremc:smithing",
+    "input": {
+        "item": "lightsaber:lightsaber_hilt"
+    },
+    "material": {
+        "tag": "forge:gems/pearl"
+    },
+    "material_cost": 1,
+    "result": {
+        "item": "lightsaber:white_lightsaber_hilt"
+    }
+}

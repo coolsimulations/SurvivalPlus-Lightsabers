@@ -1,0 +1,13 @@
+{
+    "type": "futuremc:smithing",
+    "input": {
+        "item": "lightsaber:lightsaber_hilt"
+    },
+    "material": {
+        "tag": "forge:gems/topaz"
+    },
+    "material_cost": 1,
+    "result": {
+        "item": "lightsaber:yellow_lightsaber_hilt"
+    }
+}

@@ -1,0 +1,12 @@
+{
+	"type": "extendednether:smithing",
+	"base": {
+		"item": "lightsaber:lightsaber_hilt"
+	},
+	"addition": {
+		"tag": "forge:gems/topaz"
+	},
+	"result": {
+		"item": "lightsaber:yellow_lightsaber_hilt"
+	}
+}

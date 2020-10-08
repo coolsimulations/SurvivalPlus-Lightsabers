@@ -1,0 +1,12 @@
+{
+	"type": "extendednether:smithing",
+	"base": {
+		"item": "lightsaber:lightsaber_hilt"
+	},
+	"addition": {
+		"tag": "forge:gems/sapphire"
+	},
+	"result": {
+		"item": "lightsaber:blue_lightsaber_hilt"
+	}
+}

@@ -1,0 +1,13 @@
+{
+    "type": "futuremc:smithing",
+    "input": {
+        "item": "lightsaber:lightsaber_hilt"
+    },
+    "material": {
+        "item": "lightsaber:darksaber_lens"
+    },
+    "material_cost": 1,
+    "result": {
+        "item": "lightsaber:darksaber_hilt"
+    }
+}

@@ -1,0 +1,12 @@
+{
+	"type": "extendednether:smithing",
+	"base": {
+		"item": "lightsaber:lightsaber_hilt"
+	},
+	"addition": {
+		"item": "lightsaber:darksaber_lens"
+	},
+	"result": {
+		"item": "lightsaber:darksaber_hilt"
+	}
+}

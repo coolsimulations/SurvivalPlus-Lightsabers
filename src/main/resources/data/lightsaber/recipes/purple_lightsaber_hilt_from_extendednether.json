@@ -1,0 +1,12 @@
+{
+	"type": "extendednether:smithing",
+	"base": {
+		"item": "lightsaber:lightsaber_hilt"
+	},
+	"addition": {
+		"tag": "forge:gems/amethyst"
+	},
+	"result": {
+		"item": "lightsaber:purple_lightsaber_hilt"
+	}
+}
