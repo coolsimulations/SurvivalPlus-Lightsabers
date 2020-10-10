@@ -4,9 +4,9 @@
     "item": "lightsaber:lightsaber_hilt"
   },
   "addition": {
-    "item": "lightsaber:darksaber_lens"
+    "tag": "forge:gems/topaz"
   },
   "result": {
-    "item": "lightsaber:darksaber_hilt"
+    "item": "lightsaber:yellow_lightsaber_hilt"
   }
 }

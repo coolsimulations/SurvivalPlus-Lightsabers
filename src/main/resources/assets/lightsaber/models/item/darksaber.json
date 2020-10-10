@@ -491,7 +491,7 @@
     "overrides": [
         {
             "predicate": {
-                "blocking": 1
+                "lightsaber:blocking": 1
             },
             "model": "lightsaber:item/darksaber_blocking"
         }

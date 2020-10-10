@@ -1,14 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "coloured_lightsaber_hilt",
-  "ingredients": [
-    {
-      "item": "lightsaber:lightsaber_hilt"
-    },
-    {
-      "tag": "forge:gems/ruby"
-    }
-  ],
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "lightsaber:lightsaber_hilt"
+  },
+  "addition": {
+    "tag": "forge:gems/ruby"
+  },
   "result": {
     "item": "lightsaber:red_lightsaber_hilt"
   }

@@ -1,14 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "coloured_lightsaber_hilt",
-  "ingredients": [
-    {
-      "item": "lightsaber:lightsaber_hilt"
-    },
-    {
-      "tag": "forge:gems/topaz"
-    }
-  ],
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "lightsaber:lightsaber_hilt"
+  },
+  "addition": {
+    "tag": "forge:gems/emerald"
+  },
   "result": {
     "item": "lightsaber:green_lightsaber_hilt"
   }

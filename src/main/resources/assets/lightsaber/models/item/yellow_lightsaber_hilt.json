@@ -3,8 +3,7 @@
 	"textures": {
 		"0": "lightsaber:models/lightsaber/hilt_top",
 		"1": "lightsaber:models/lightsaber/blade_emitter",
-		"2": "lightsaber:models/lightsaber/purple_blade",
-		"3": "lightsaber:models/lightsaber/purple_hilt",
+		"3": "lightsaber:models/lightsaber/yellow_hilt",
 		"4": "lightsaber:models/lightsaber/control_panel",
 		"5": "lightsaber:models/lightsaber/hilt_top_base",
 		"6": "lightsaber:models/lightsaber/hilt_top_edge",
@@ -628,32 +627,6 @@
 				"west": {"uv": [0, 0, 0.29837, 10], "texture": "#0"},
 				"up": {"uv": [0, 0, 0.5, 0.5], "texture": "#0"},
 				"down": {"uv": [0, 15.5, 0.498, 15.999], "texture": "#0"}
-			}
-		},
-		{
-			"name": "blade1",
-			"from": [6.95, -4, 8],
-			"to": [9.05, 32, 8],
-			"faces": {
-				"north": {"uv": [2, 1, 14, 16], "texture": "#2"},
-				"east": {"uv": [0, 0, 0, 16], "texture": "#missing"},
-				"south": {"uv": [2, 1, 14, 16], "texture": "#2"},
-				"west": {"uv": [0, 0, 0, 16], "texture": "#missing"},
-				"up": {"uv": [0, 0, 2, 0], "texture": "#missing"},
-				"down": {"uv": [0, 0, 2, 0], "texture": "#missing"}
-			}
-		},
-		{
-			"name": "blade2",
-			"from": [8, -4, 6.95],
-			"to": [8, 32, 9.05],
-			"faces": {
-				"north": {"uv": [0, 0, 0, 16], "texture": "#missing"},
-				"east": {"uv": [2, 1, 14, 16], "texture": "#2"},
-				"south": {"uv": [0, 0, 0, 16], "texture": "#missing"},
-				"west": {"uv": [2, 1, 14, 16], "texture": "#2"},
-				"up": {"uv": [0, 0, 2, 0], "rotation": 270, "texture": "#missing"},
-				"down": {"uv": [0, 0, 2, 0], "rotation": 90, "texture": "#missing"}
 			}
 		},
 		{
@@ -1897,14 +1870,6 @@
 			"scale": [1, 1.2, 1]
 		}
 	},
-    "overrides": [
-        {
-            "predicate": {
-                "lightsaber:blocking": 1
-            },
-            "model": "lightsaber:item/purple_lightsaber_blocking"
-        }
-    ],
 	"groups": [
 		{
 			"name": "hilt",
@@ -1943,74 +1908,69 @@
 			]
 		},
 		{
-			"name": "blade",
-			"origin": [8, 8, 8],
-			"children": [44, 45]
-		},
-		{
 			"name": "pommel",
 			"origin": [8, 8, 8],
-			"children": [46, 47]
-		}, 48, 49,
+			"children": [44, 45]
+		}, 46, 47,
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [50, 51, 52, 53, 54, 55, 56, 57]
+			"children": [48, 49, 50, 51, 52, 53, 54, 55]
 		},
 		{
 			"name": "newoutergrip",
 			"origin": [8, 8, 8],
-			"children": [58, 59, 60, 61, 62, 63, 64, 65]
+			"children": [56, 57, 58, 59, 60, 61, 62, 63]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [66, 67, 68, 69, 70, 71, 72, 73]
+			"children": [64, 65, 66, 67, 68, 69, 70, 71]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [74, 75, 76, 77, 78, 79, 80, 81]
+			"children": [72, 73, 74, 75, 76, 77, 78, 79]
 		},
 		{
 			"name": "gripborder1",
 			"origin": [8, 8, 8],
-			"children": [82, 83, 84, 85, 86, 87, 88, 89]
+			"children": [80, 81, 82, 83, 84, 85, 86, 87]
 		},
 		{
 			"name": "gripborder1",
 			"origin": [8, 8, 8],
-			"children": [90, 91, 92, 93, 94, 95, 96, 97]
+			"children": [88, 89, 90, 91, 92, 93, 94, 95]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [98, 99, 100, 101, 102, 103, 104, 105]
+			"children": [96, 97, 98, 99, 100, 101, 102, 103]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [106, 107, 108, 109, 110, 111, 112, 113]
+			"children": [104, 105, 106, 107, 108, 109, 110, 111]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [114, 115, 116, 117, 118, 119, 120, 121]
+			"children": [112, 113, 114, 115, 116, 117, 118, 119]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [122, 123, 124, 125, 126, 127, 128, 129]
+			"children": [120, 121, 122, 123, 124, 125, 126, 127]
 		},
 		{
 			"name": "hexadecagon",
 			"origin": [8, 8, 8],
-			"children": [130, 131, 132, 133, 134, 135, 136, 137]
+			"children": [128, 129, 130, 131, 132, 133, 134, 135]
 		},
 		{
 			"name": "gripborder1",
 			"origin": [8, 8, 8],
-			"children": [138, 139, 140, 141, 142, 143, 144, 145]
+			"children": [136, 137, 138, 139, 140, 141, 142, 143]
 		}
 	]
 }

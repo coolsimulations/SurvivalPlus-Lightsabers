@@ -3,8 +3,8 @@
 	"textures": {
 		"0": "lightsaber:models/lightsaber/hilt_top",
 		"1": "lightsaber:models/lightsaber/blade_emitter",
-		"2": "lightsaber:models/lightsaber/purple_blade",
-		"3": "lightsaber:models/lightsaber/purple_hilt",
+		"2": "lightsaber:models/lightsaber/yellow_blade",
+		"3": "lightsaber:models/lightsaber/yellow_hilt",
 		"4": "lightsaber:models/lightsaber/control_panel",
 		"5": "lightsaber:models/lightsaber/hilt_top_base",
 		"6": "lightsaber:models/lightsaber/hilt_top_edge",
@@ -1902,7 +1902,7 @@
             "predicate": {
                 "lightsaber:blocking": 1
             },
-            "model": "lightsaber:item/purple_lightsaber_blocking"
+            "model": "lightsaber:item/yellow_lightsaber_blocking"
         }
     ],
 	"groups": [

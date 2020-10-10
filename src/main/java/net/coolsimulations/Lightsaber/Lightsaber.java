@@ -46,6 +46,8 @@ public class Lightsaber {
 		//StructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure"); //temp till forge pull request #6142 is resolved
 		//LightsaberVillagers.registerVillagers(); //temp till forge issue #6112 is resolved
 		LightsaberSoundHandler.init();
+		
+		proxy.init();
 
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			LightsaberSwordBlocking.init();
