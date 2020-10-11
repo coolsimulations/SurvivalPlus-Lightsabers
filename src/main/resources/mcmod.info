@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["coolsim"],
   "credits": "To leviofpower and Jessen_House who have both played a vital part in testing this mod throughout its development. Credit to Sushi_Witch for the amazing Lightsaber, Darksaber and Lightsaber Parts models! Also, credit goes to Star Wars and Lucasfilms for Lightsaber related concepts and assets.",
-  "logoFile": "assets/lightsaber/textures/gui/rehilted.png",
+  "logoFile": "assets/lightsaber/textures/gui/cubed.png",
   "screenshots": [],
   "dependencies": []
 }

@@ -1,5 +1,7 @@
 {
 	"parent": "lightsaber:item/purple_lightsaber",
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
 	"display": {
 		"firstperson_righthand": {
 			"rotation": [0, 7, 45],
