@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[28,]"
 issueTrackerURL="http://github.com/coolsimulations/survivalplus-lightsabers/issues/"
-logoFile="rehilted.png"
+logoFile="cubed.png"
 
 [[mods]]
     modId="lightsaber"
