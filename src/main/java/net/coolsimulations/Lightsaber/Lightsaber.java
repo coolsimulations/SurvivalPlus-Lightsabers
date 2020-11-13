@@ -57,22 +57,22 @@ public class Lightsaber {
 	private static void clientLoad(final FMLClientSetupEvent event)
 	{
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
-			ItemModelsProperties.func_239418_a_(LightsaberItems.red_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.registerProperty(LightsaberItems.red_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.func_239418_a_(LightsaberItems.blue_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.registerProperty(LightsaberItems.blue_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.func_239418_a_(LightsaberItems.green_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.registerProperty(LightsaberItems.green_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.func_239418_a_(LightsaberItems.purple_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.registerProperty(LightsaberItems.purple_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.func_239418_a_(LightsaberItems.white_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.registerProperty(LightsaberItems.white_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.func_239418_a_(LightsaberItems.darksaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemModelsProperties.registerProperty(LightsaberItems.darksaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
 			});
 		}

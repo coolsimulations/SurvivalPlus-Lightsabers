@@ -18,19 +18,19 @@ public class ClientProxy extends CommonProxy{
 	@SubscribeEvent
 	public static void registerProperties(FMLClientSetupEvent event)
 	{
-		ItemModelsProperties.func_239418_a_(LightsaberItems.red_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.red_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
-		ItemModelsProperties.func_239418_a_(LightsaberItems.blue_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.blue_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
-		ItemModelsProperties.func_239418_a_(LightsaberItems.green_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.green_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
-		ItemModelsProperties.func_239418_a_(LightsaberItems.yellow_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.yellow_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
-		ItemModelsProperties.func_239418_a_(LightsaberItems.purple_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.purple_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
-		ItemModelsProperties.func_239418_a_(LightsaberItems.white_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.white_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
-		ItemModelsProperties.func_239418_a_(LightsaberItems.darksaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
+		ItemModelsProperties.registerProperty(LightsaberItems.darksaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player) -> {
 	         return player != null && player.isHandActive() && player.getActiveItemStack() == stack ? 1.0F : 0.0F;});
 	}
 

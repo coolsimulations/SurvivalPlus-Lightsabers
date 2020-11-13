@@ -62,7 +62,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, red);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		if(item == LightsaberItems.blue_lightsaber_hilt){
 
@@ -74,7 +74,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		if(item == LightsaberItems.green_lightsaber_hilt){
 
@@ -86,7 +86,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, green);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		if(item == LightsaberItems.yellow_lightsaber_hilt){
 
@@ -98,7 +98,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, yellow);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		if(item == LightsaberItems.purple_lightsaber_hilt){
 
@@ -110,7 +110,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		if(item == LightsaberItems.white_lightsaber_hilt){
 
@@ -122,7 +122,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, white);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		if(item == LightsaberItems.darksaber_hilt){
 
@@ -134,7 +134,7 @@ public class ItemLightsaberHilt extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.darksaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_on, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, itemStackIn);
 	}

@@ -48,8 +48,8 @@ public class ItemLightsaber extends Item{
 		this.tier = tier;
 		this.attackDamage = 3.0F + tier.getAttackDamage();
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.<Attribute, AttributeModifier>builder();
-		attributeBuilder.put(Attributes.field_233823_f_, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, AttributeModifier.Operation.ADDITION));
-		attributeBuilder.put(Attributes.field_233825_h_, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.20000004768D, AttributeModifier.Operation.ADDITION));
+		attributeBuilder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, AttributeModifier.Operation.ADDITION));
+		attributeBuilder.put(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.20000004768D, AttributeModifier.Operation.ADDITION));
 		this.attribute = attributeBuilder.build();
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
 			DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
@@ -96,7 +96,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, red);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.blue_lightsaber){
 
@@ -108,7 +108,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.green_lightsaber){
 
@@ -120,7 +120,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, green);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.yellow_lightsaber){
 
@@ -132,7 +132,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, yellow);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 
 			if(item == LightsaberItems.purple_lightsaber){
@@ -145,7 +145,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.white_lightsaber){
 
@@ -157,7 +157,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, white);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.darksaber){
 
@@ -169,7 +169,7 @@ public class ItemLightsaber extends Item{
 				{
 					playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 				}
-				worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			}
 		} else {
 			isSneaking = false;
@@ -245,7 +245,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, red);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.blue_lightsaber){
@@ -258,7 +258,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, blue);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.green_lightsaber){
@@ -271,7 +271,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, green);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.yellow_lightsaber){
@@ -284,7 +284,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, yellow);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.purple_lightsaber){
@@ -297,7 +297,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, purple);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.white_lightsaber){
@@ -310,7 +310,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, white);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.darksaber){
@@ -323,7 +323,7 @@ public class ItemLightsaber extends Item{
 			{
 				playerIn.setHeldItem(Hand.MAIN_HAND, dark);
 			}
-			worldIn.playSound(playerIn, playerIn.func_233580_cy_(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 
@@ -347,9 +347,9 @@ public class ItemLightsaber extends Item{
 	public boolean onEntitySwing(ItemStack stack, LivingEntity entityLiving)
 	{
 		if(stack.getItem() == LightsaberItems.darksaber){
-			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.func_233580_cy_(), LightsaberSoundHandler.darksaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		} else {
-			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.func_233580_cy_(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			entityLiving.world.playSound((PlayerEntity) entityLiving, entityLiving.getPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
 		}
 		return false;
 	}
@@ -375,7 +375,7 @@ public class ItemLightsaber extends Item{
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
 			return lvt_4_1_ != Material.PLANTS && lvt_4_1_ != Material.TALL_PLANTS && lvt_4_1_ != Material.CORAL
-					&& !state.func_235714_a_(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
+					&& !state.isIn(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
 		}
 	}
 
@@ -393,7 +393,7 @@ public class ItemLightsaber extends Item{
 	{
 		BlockState state = player.world.getBlockState(pos);
 		Block block = state.getBlock();
-		if(!player.isCreative() && block instanceof TNTBlock && state.func_235904_r_().contains(TNTBlock.UNSTABLE) && !state.get(TNTBlock.UNSTABLE)) {
+		if(!player.isCreative() && block instanceof TNTBlock && state.getProperties().contains(TNTBlock.UNSTABLE) && !state.get(TNTBlock.UNSTABLE)) {
 			try {
 				((TNTBlock) block).catchFire(state, player.world, pos, player.getHorizontalFacing(), player);
 				player.world.setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
