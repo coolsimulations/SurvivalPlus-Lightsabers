@@ -13,10 +13,10 @@
       "item": "minecraft:comparator"
     },
     "I": {
-      "tag": "forge:ingots/iron"
+      "tag": "c:iron_ingots"
     },
     "T": {
-      "tag": "forge:ingots/titanium"
+      "tag": "c:titanium_ingots"
     }
   },
   "result": {

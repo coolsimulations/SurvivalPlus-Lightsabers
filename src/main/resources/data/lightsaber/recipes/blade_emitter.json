@@ -10,13 +10,13 @@
       "item": "lightsaber:emitter_matrix"
     },
     "T": {
-      "tag": "forge:ingots/titanium"
+      "tag": "c:titanium_ingots"
     },
     "G": {
-      "tag": "forge:glass"
+      "tag": "c:glasses"
     },
     "B": {
-      "tag": "forge:storage_blocks/redstone"
+      "tag": "c:redstone_blocks"
     },
     "C": {
       "item": "minecraft:repeater"

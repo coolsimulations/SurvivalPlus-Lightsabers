@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "package": "net.coolsimulations.Lightsaber.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "LivingEntityMixin", "MobEntityMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "minVersion": "0.8"
+}

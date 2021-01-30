@@ -2,7 +2,8 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lightsaber:darksaber_lens"
+      "lightsaber:darksaber_lens",
+      "lightsaber:darksaber_lens_blockus"
     ]
   },
   "criteria": {
@@ -11,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:obsidian"
+            "tag": "c:obsidians"
           }
         ]
       }
@@ -31,7 +32,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/spinel"
+            "tag": "c:spinels"
           }
         ]
       }
@@ -39,7 +40,8 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lightsaber:darksaber_lens"
+        "recipe": "lightsaber:darksaber_lens",
+        "recipe": "lightsaber:darksaber_lens_blockus"
       }
     }
   },

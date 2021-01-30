@@ -11,13 +11,13 @@
       "item": "lightsaber:pommel_cap"
     },
     "I": {
-      "tag": "forge:ingots/titanium"
+      "tag": "c:titanium_ingots"
     },
     "F": {
       "item": "lightsaber:focusing_lens"
     },
     "T": {
-      "tag": "forge:storage_blocks/iron"
+      "tag": "c:iron_blocks"
     },
     "E": {
       "item": "lightsaber:blade_emitter"

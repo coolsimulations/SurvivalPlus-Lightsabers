@@ -7,16 +7,16 @@
   ],
   "key": {
     "C": {
-      "tag": "forge:ingots/bronze"
+      "tag": "c:bronze_ingots"
     },
     "W": {
       "item": "minecraft:repeater"
     },
     "T": {
-      "tag": "forge:ingots/titanium"
+      "tag": "c:titanium_ingots"
     },
     "D": {
-      "tag": "forge:gems/diamond"
+      "tag": "c:diamonds"
     }
   },
   "result": {
