@@ -2,8 +2,10 @@ package net.coolsimulations.Lightsaber;
 
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
+import net.coolsimulations.Lightsaber.init.LightsaberShieldLib;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberUpdateHandler;
+import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPReference;
 import net.fabricmc.api.ModInitializer;
 
@@ -25,6 +27,10 @@ public class Lightsaber implements ModInitializer {
 		LightsaberItems.init();	
 		LightsaberItems.register();
 		LightsaberSoundHandler.init();
+		
+		if(SPCompatibilityManager.isShieldLibLoaded()) {
+			LightsaberShieldLib.init();
+		}
 	}
 
 }
