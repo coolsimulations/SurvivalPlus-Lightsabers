@@ -1,0 +1,13 @@
+
+{
+	"replace": false,
+	"values": [
+		"lightsaber:red_lightsaber",
+		"lightsaber:blue_lightsaber",
+		"lightsaber:green_lightsaber",
+		"lightsaber:yellow_lightsaber",
+		"lightsaber:purple_lightsaber",
+		"lightsaber:white_lightsaber",
+		"lightsaber:darksaber"
+	]
+}

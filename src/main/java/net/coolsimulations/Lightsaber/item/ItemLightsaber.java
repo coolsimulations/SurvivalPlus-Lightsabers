@@ -376,7 +376,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
 			return lvt_4_1_ != Material.PLANT && lvt_4_1_ != Material.REPLACEABLE_PLANT && lvt_4_1_ != Material.UNUSED_PLANT
-					&& !state.matches(BlockTags.LEAVES) && lvt_4_1_ != Material.PUMPKIN ? 1.0F : 1.5F;
+					&& !state.matches(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
 		}
 	}
 

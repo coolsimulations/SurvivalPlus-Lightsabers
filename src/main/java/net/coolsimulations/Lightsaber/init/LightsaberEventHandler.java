@@ -46,7 +46,7 @@ public class LightsaberEventHandler {
 	public static void onPlayerJoinedServer() {
 
 		SPClientPlayerJoinEvent.EVENT.register((manager, player, networkManager) -> {
-			MinecraftClient.getInstance().method_20493(new Runnable() {
+			MinecraftClient.getInstance().submit(new Runnable() {
 				@Override
 				public void run() {
 					if(!SPConfig.disableSunAudio && MinecraftClient.getInstance().options.getSoundVolume(SoundCategory.MASTER) != 0.0F && MinecraftClient.getInstance().options.getSoundVolume(SoundCategory.VOICE) != 0.0F) {
@@ -74,7 +74,7 @@ public class LightsaberEventHandler {
 
 			CompoundTag entityData = ((EntityAccessor) player).getPersistentData();
 
-			ServerAdvancementLoader manager = server.getAdvancementManager();
+			ServerAdvancementLoader manager = server.getAdvancementLoader();
 			Advancement install = manager.get(new Identifier(Reference.MOD_ID, Reference.MOD_ID + "/install"));
 
 			boolean isDone = false;
