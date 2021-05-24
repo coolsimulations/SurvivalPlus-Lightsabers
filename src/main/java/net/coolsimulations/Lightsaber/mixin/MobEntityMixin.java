@@ -17,7 +17,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.BasicInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CampfireCookingRecipe;
 import net.minecraft.recipe.RecipeType;
@@ -59,7 +59,7 @@ public abstract class MobEntityMixin extends LivingEntity {
 							ItemStack itemstack = newList.get(i);
 							int count = itemstack.getCount();
 
-							List<SmokingRecipe> recipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.SMOKING, new BasicInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+							List<SmokingRecipe> recipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.SMOKING, new SimpleInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
 
 							if(!recipe.isEmpty()) {
 								for(SmokingRecipe smokeingList : recipe) {
@@ -70,7 +70,7 @@ public abstract class MobEntityMixin extends LivingEntity {
 								}
 							} else {
 
-								List<CampfireCookingRecipe> campfireRecipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.CAMPFIRE_COOKING, new BasicInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+								List<CampfireCookingRecipe> campfireRecipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.CAMPFIRE_COOKING, new SimpleInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
 
 								if(!campfireRecipe.isEmpty()) {
 									for(CampfireCookingRecipe campfireList : campfireRecipe) {
@@ -81,7 +81,7 @@ public abstract class MobEntityMixin extends LivingEntity {
 									}
 								} else {
 
-									List<SmeltingRecipe> furnaceRecipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.SMELTING, new BasicInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+									List<SmeltingRecipe> furnaceRecipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.SMELTING, new SimpleInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
 
 									if(!furnaceRecipe.isEmpty()) {
 										for(SmeltingRecipe furnaceList : furnaceRecipe) {

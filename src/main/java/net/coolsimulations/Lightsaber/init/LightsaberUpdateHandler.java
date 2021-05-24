@@ -22,7 +22,7 @@ public class LightsaberUpdateHandler {
 	public static void init() {
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/versionchecker115.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/versionchecker116.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersion = s.next();
             s.close();
@@ -31,7 +31,7 @@ public class LightsaberUpdateHandler {
         }
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/updateinfo115.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/updateinfo116.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersionInfo = s.nextLine();
             s.close();
@@ -46,16 +46,16 @@ public class LightsaberUpdateHandler {
 				isOld = true;
 				
 				TranslatableText lightsaber = new TranslatableText("sp.lightsaber.name");
-				lightsaber.getStyle().setColor(Formatting.BLUE);
+				lightsaber.formatted(Formatting.BLUE);
 				
 				LiteralText MCVersion = new LiteralText(SharedConstants.getGameVersion().getName());
-				MCVersion.getStyle().setColor(Formatting.BLUE);
+				MCVersion.formatted(Formatting.BLUE);
 				
 				updateInfo = new TranslatableText("sp.update.display3", new Object[] {lightsaber, MCVersion});
-				updateInfo.getStyle().setColor(Formatting.YELLOW);
+				updateInfo.formatted(Formatting.YELLOW);
 				
-				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2")));
-				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
+				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2")));
+				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
 				
 			}
 			
@@ -64,25 +64,24 @@ public class LightsaberUpdateHandler {
 				isOld = true;
 				
 				TranslatableText lightsaber = new TranslatableText("sp.lightsaber.name");
-				lightsaber.getStyle().setColor(Formatting.BLUE);
+				lightsaber.formatted(Formatting.BLUE);
 				
 				LiteralText version = new LiteralText(latestVersion);
-				version.getStyle().setColor(Formatting.BLUE);
+				version.formatted(Formatting.BLUE);
 				
 				updateInfo = new TranslatableText("sp.update.display1", new Object[] {lightsaber, version});
-				updateInfo.getStyle().setColor(Formatting.YELLOW);
+				updateInfo.formatted(Formatting.YELLOW);
 				
-				updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2")));
-				updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
+				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2")));
+				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
 				
 				if(latestVersionInfo != null) {
 					
 					updateVersionInfo = new LiteralText(latestVersionInfo);
-					updateVersionInfo.getStyle().setColor(Formatting.DARK_AQUA);
-					updateVersionInfo.getStyle().setBold(true);
+					updateVersionInfo.formatted(Formatting.DARK_AQUA, Formatting.BOLD);
 					
-					updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2")));
-					updateVersionInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
+					//updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2")));
+					//updateVersionInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
 					
 				}
 				

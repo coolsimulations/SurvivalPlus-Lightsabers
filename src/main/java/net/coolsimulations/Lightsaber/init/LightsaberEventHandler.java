@@ -19,13 +19,17 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.MessageType;
 import net.minecraft.server.ServerAdvancementLoader;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.HoverEvent;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -92,8 +96,8 @@ public class LightsaberEventHandler {
 				if(!player.world.isClient) {
 
 					TranslatableText installInfo = new TranslatableText("advancements.lightsaber.install.display1");
-					installInfo.getStyle().setColor(Formatting.GOLD);
-					player.sendMessage(installInfo);
+					installInfo.formatted(Formatting.GOLD);
+					player.sendMessage(installInfo, MessageType.SYSTEM, Util.NIL_UUID);
 
 				}
 			}
@@ -102,8 +106,8 @@ public class LightsaberEventHandler {
 				timer.schedule(new TimerTask() {
 					@Override
 					public void run() {
-						player.sendMessage(LightsaberUpdateHandler.updateInfo);
-						player.sendMessage(LightsaberUpdateHandler.updateVersionInfo);
+						player.sendMessage(LightsaberUpdateHandler.updateInfo.setStyle(LightsaberUpdateHandler.updateInfo.getStyle().withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"))), MessageType.SYSTEM, Util.NIL_UUID);
+						player.sendMessage(LightsaberUpdateHandler.updateVersionInfo.setStyle(LightsaberUpdateHandler.updateVersionInfo.getStyle().withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"))), MessageType.SYSTEM, Util.NIL_UUID);
 					}
 				}, 17000);
 

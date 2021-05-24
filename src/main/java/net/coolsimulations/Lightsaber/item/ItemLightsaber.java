@@ -2,12 +2,17 @@ package net.coolsimulations.Lightsaber.item;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.SurvivalPlus.api.events.ItemAccessor;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -17,6 +22,7 @@ import net.minecraft.block.TntBlock;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributeModifier.Operation;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -38,6 +44,7 @@ import net.minecraft.world.World;
 public class ItemLightsaber extends Item implements ItemAccessor{
 
 	private final float attackDamage;
+	private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 	private final ItemLightsaber.LightsaberTier tier;
 	private boolean isSneaking = false;
 	private boolean holdsOne = false;
@@ -47,9 +54,15 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 		super(properties.maxCount(1));
 		this.tier = tier;
 		this.attackDamage = 3.0F + tier.getAttackDamage();
-		this.addPropertyGetter(new Identifier("blocking"), (stack, worldIn, entityIn) -> {
+		Builder<EntityAttribute, EntityAttributeModifier> attributeBuilder = ImmutableMultimap.builder();
+		attributeBuilder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier", (double) this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
+		attributeBuilder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", (double) -1.2000000476837158D, EntityAttributeModifier.Operation.ADDITION));
+		this.attributeModifiers = attributeBuilder.build();
+		if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+			FabricModelPredicateProviderRegistry.register(this, new Identifier("blocking"),(stack, worldIn, entityIn) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getActiveItem() == stack ? 1.0F : 0.0F;
 			});
+		}
 			DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
 	}
 
@@ -68,7 +81,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 
 		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
 		green.setTag(tag);
-		
+
 		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
 		yellow.setTag(tag);
 
@@ -186,7 +199,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 
 		return new TypedActionResult<ItemStack>(ActionResult.PASS, itemStackIn);
 	}
-	
+
 	@Override
 	public UseAction getUseAction(ItemStack stack)
 	{
@@ -196,13 +209,13 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 			return UseAction.BLOCK;
 		}
 	}
-	
+
 	@Override
 	public boolean isShield(ItemStack stack, @Nullable LivingEntity entity)
 	{
 		return true;
 	}
-	
+
 	@Override
 	public boolean canDisableShield(ItemStack stack, ItemStack shield, LivingEntity entity, LivingEntity attacker) {
 		return false;
@@ -214,7 +227,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 		World worldIn = playerIn.getEntityWorld();
 		Item item = itemStackIn.getItem();
 		CompoundTag tag = itemStackIn.getTag();
-		
+
 		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
 		red.setTag(tag);
 
@@ -223,7 +236,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 
 		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
 		green.setTag(tag);
-		
+
 		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
 		yellow.setTag(tag);
 
@@ -235,7 +248,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 
 		ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt);
 		dark.setTag(tag);
-		
+
 		if(item == LightsaberItems.red_lightsaber){
 
 			if (ItemStack.areItemsEqual(playerIn.getOffHandStack(), itemStackIn))
@@ -330,7 +343,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 
 		return true;
 	}
-	
+
 	/**
 	 * How long it takes to use or consume an item
 	 */
@@ -369,14 +382,14 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 		return this.tier.getAttackDamage();
 	}
 
-	public float getMiningSpeed(ItemStack stack, BlockState state) {
+	public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
 		Block lvt_3_1_ = state.getBlock();
 		if (lvt_3_1_ == Blocks.COBWEB) {
 			return 15.0F;
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
 			return lvt_4_1_ != Material.PLANT && lvt_4_1_ != Material.REPLACEABLE_PLANT && lvt_4_1_ != Material.UNUSED_PLANT
-					&& !state.matches(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
+					&& !state.isIn(BlockTags.LEAVES) && lvt_4_1_ != Material.GOURD ? 1.0F : 1.5F;
 		}
 	}
 
@@ -387,7 +400,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 	{
 		return blockIn.getBlock() == Blocks.COBWEB;
 	}
-	
+
 	@SuppressWarnings("static-access")
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player)
@@ -409,16 +422,16 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 	/**
 	 * Return the enchantability factor of the item, most of the time is based on material.
 	 */
-	public int getItemEnchantability()
+	public int getEnchantability()
 	{
 		return this.tier.getEnchantability();
 	}
-	
+
 	public boolean isEnchantable(ItemStack stack)
-    {
-        return this.getMaxCount() == 1;
-    }
-	
+	{
+		return this.getMaxCount() == 1;
+	}
+
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.enchantment.Enchantment enchantment)
 	{
@@ -450,17 +463,9 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 	/**
 	 * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
 	 */
-	public Multimap<String, EntityAttributeModifier> getModifiers(EquipmentSlot equipmentSlot)
+	public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot equipmentSlot)
 	{
-		Multimap<String, EntityAttributeModifier> multimap = super.getModifiers(equipmentSlot);
-
-		if (equipmentSlot == EquipmentSlot.MAINHAND)
-		{
-			multimap.put(EntityAttributes.ATTACK_DAMAGE.getId(), new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_UUID, "Weapon modifier", (double) this.attackDamage, Operation.ADDITION));
-			multimap.put(EntityAttributes.ATTACK_SPEED.getId(), new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_UUID, "Weapon modifier", (double) -1.2000000476837158D, Operation.ADDITION));
-		}
-
-		return multimap;
+		return equipmentSlot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(equipmentSlot);
 	}
 
 	public static enum LightsaberTier{

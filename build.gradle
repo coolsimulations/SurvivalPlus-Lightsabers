@@ -3,6 +3,13 @@ plugins {
 	id 'maven-publish'
 }
 
+repositories {
+	maven {
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
+	}
+}
+
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -19,15 +26,13 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-        modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
+	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
 	modImplementation "me.shedaniel.cloth:config-2:${project.cloth_version}"
 
 	modImplementation "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
 
-        compile files('libs/SurvivalPlus-Fabric-1.15.2-0.1.4b-API.jar')
-
-        compile files('libs/FabricShieldLib-v1.0.5-1.15.2-dev.jar')
+        compile files('libs/SurvivalPlus-Fabric-1.16.5-0.1.4d-API.jar')
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
