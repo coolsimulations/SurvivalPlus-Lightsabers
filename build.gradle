@@ -27,8 +27,6 @@ dependencies {
 
         compile files('libs/SurvivalPlus-Fabric-1.14.4-0.1.4b-API.jar')
 
-        compile files('libs/FabricShieldLib-v1.0.5-1.14.4-dev.jar')
-
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }
