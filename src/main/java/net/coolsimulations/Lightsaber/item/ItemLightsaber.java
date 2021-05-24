@@ -409,7 +409,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 	/**
 	 * Return the enchantability factor of the item, most of the time is based on material.
 	 */
-	public int getItemEnchantability()
+	public int getEnchantability()
 	{
 		return this.tier.getEnchantability();
 	}
