@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import micdoodle8.mods.galacticraft.core.fluid.ThreadFindSeal.intBucket;
 import net.coolsimulations.Lightsaber.Lightsaber;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
@@ -12,9 +11,14 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSponge;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
@@ -25,6 +29,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -34,7 +39,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -78,7 +85,7 @@ public class LightsaberEventHandler {
 		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));
 
 		boolean isDone = false;
-		
+
 		Timer timer = new Timer();
 
 		if(install !=null && player.getAdvancements().getProgress(install).hasProgress()) {
@@ -141,7 +148,7 @@ public class LightsaberEventHandler {
 
 				ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
 				green.setTagCompound(tag);
-				
+
 				ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
 				yellow.setTagCompound(tag);
 
@@ -241,7 +248,20 @@ public class LightsaberEventHandler {
 			}
 		}
 	}
-	
+
+	@SubscribeEvent
+	public void onLeftClick(LeftClickBlock event) {
+
+		IBlockState state = event.getWorld().getBlockState(event.getPos());
+		Block block = state.getBlock();
+
+		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
+			if(block instanceof BlockSponge && state.getValue(BlockSponge.WET)) {
+				event.getWorld().setBlockState(event.getPos(), state.withProperty(BlockSponge.WET, false), 3);
+			}
+		}
+	}
+
 	@SubscribeEvent
 	public void onEntityDeath(LivingDropsEvent event) {
 		if(event.getSource().getImmediateSource() instanceof EntityPlayer) {
@@ -251,6 +271,24 @@ public class LightsaberEventHandler {
 					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(itemstack);
 					if(result.getItem() instanceof ItemFood || result.getItemUseAction() == EnumAction.EAT || result.getItemUseAction() == EnumAction.DRINK) {
 						event.getDrops().set(i, new EntityItem(event.getEntity().getEntityWorld(), event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, result));
+					}
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onDamage(LivingAttackEvent event) {
+
+		if(event.getEntityLiving() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			
+			if(player.getActiveItemStack().getItem() instanceof ItemLightsaber) {
+				Item lightsaber = player.getActiveItemStack().getItem();
+
+				if(lightsaber.getItemUseAction(player.getActiveItemStack()) == EnumAction.BLOCK) {
+					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource() == DamageSource.FIREWORKS || event.getSource().getTrueSource() instanceof EntityGuardian) {
+						event.setCanceled(true);
 					}
 				}
 			}

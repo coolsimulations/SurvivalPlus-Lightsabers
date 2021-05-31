@@ -3,6 +3,7 @@ package net.coolsimulations.Lightsaber;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
@@ -69,6 +70,7 @@ public class Lightsaber {
 		System.out.println("Init");
 		proxy.init();
 		LightsaberSoundHandler.init();
+		LightsaberDispenserBehavior.init();
 		
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			LightsaberSwordBlocking.init();

@@ -1,14 +1,20 @@
 package net.coolsimulations.Lightsaber.init;
 
 import net.coolsimulations.Lightsaber.Lightsaber;
+import net.coolsimulations.Lightsaber.item.ItemFireproofLightsaber;
+import net.coolsimulations.Lightsaber.item.ItemFireproofLightsaberHilt;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber.LightsaberMaterial;
 import net.coolsimulations.Lightsaber.item.ItemLightsaberHilt;
+import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.registries.IForgeRegistry;
+import thedarkcolour.futuremc.config.FConfig;
 
 public class LightsaberItems {
 
@@ -54,7 +60,12 @@ public class LightsaberItems {
 		yellow_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("yellow_lightsaber_hilt").setRegistryName("yellow_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		purple_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("purple_lightsaber_hilt").setRegistryName("purple_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
 		white_lightsaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("white_lightsaber_hilt").setRegistryName("white_lightsaber_hilt").setCreativeTab(SPTabs.tabCombat);
-		darksaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("darksaber_hilt").setRegistryName("darksaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		
+		if((SPCompatibilityManager.isFutureMCLoaded() && FConfig.INSTANCE.getNetherUpdate().netherite) || SPCompatibilityManager.isNetheriteModLoaded()) {
+			darksaber_hilt = new ItemFireproofLightsaberHilt().setUnlocalizedName("darksaber_hilt").setRegistryName("darksaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		} else {
+			darksaber_hilt = new ItemLightsaberHilt().setUnlocalizedName("darksaber_hilt").setRegistryName("darksaber_hilt").setCreativeTab(SPTabs.tabCombat);
+		}
 
 		red_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("red_lightsaber").setRegistryName("red_lightsaber");
 		blue_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("blue_lightsaber").setRegistryName("blue_lightsaber");
@@ -62,7 +73,12 @@ public class LightsaberItems {
 		yellow_lightsaber = new ItemLightsaber(LightsaberMaterial.Lightsaber).setUnlocalizedName("yellow_lightsaber").setRegistryName("yellow_lightsaber");
 		purple_lightsaber = new ItemLightsaber(LightsaberMaterial.Purple_Lightsaber).setUnlocalizedName("purple_lightsaber").setRegistryName("purple_lightsaber");
 		white_lightsaber = new ItemLightsaber(LightsaberMaterial.White_Lightsaber).setUnlocalizedName("white_lightsaber").setRegistryName("white_lightsaber");
-		darksaber = new ItemLightsaber(LightsaberMaterial.Darksaber).setUnlocalizedName("darksaber").setRegistryName("darksaber");
+		
+		if((SPCompatibilityManager.isFutureMCLoaded() && FConfig.INSTANCE.getNetherUpdate().netherite) || SPCompatibilityManager.isNetheriteModLoaded()) {
+			darksaber = new ItemFireproofLightsaber(LightsaberMaterial.Darksaber).setUnlocalizedName("darksaber").setRegistryName("darksaber");
+		} else {
+			darksaber = new ItemLightsaber(LightsaberMaterial.Darksaber).setUnlocalizedName("darksaber").setRegistryName("darksaber");
+		}
 	}
 
 	public static void register()
