@@ -14,18 +14,26 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.WetSpongeBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.UseAction;
 import net.minecraft.item.crafting.CampfireCookingRecipe;
 import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.SmokingRecipe;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -37,8 +45,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sun.audio.AudioPlayer;
@@ -242,6 +252,20 @@ public class LightsaberEventHandler {
 			}
 		}
 	}
+	
+	@SubscribeEvent
+	public void onLeftClick(LeftClickBlock event) {
+
+		BlockState state = event.getWorld().getBlockState(event.getPos());
+		Block block = state.getBlock();
+
+		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
+			if(block instanceof WetSpongeBlock) {
+				event.getWorld().setBlockState(event.getPos(), Blocks.SPONGE.getDefaultState(), 3);
+			}
+		}
+	}
+
 
 	@SubscribeEvent
 	public void onEntityDeath(LivingDropsEvent event) {
@@ -292,6 +316,25 @@ public class LightsaberEventHandler {
 			}
 		}
 	}
+	
+	@SubscribeEvent
+	public void onDamage(LivingAttackEvent event) {
+
+		if(event.getEntityLiving() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+			
+			if(player.getActiveItemStack().getItem() instanceof ItemLightsaber) {
+				Item lightsaber = player.getActiveItemStack().getItem();
+
+				if(lightsaber.getUseAction(player.getActiveItemStack()) == UseAction.BLOCK) {
+					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource() == DamageSource.FIREWORKS || event.getSource().getTrueSource() instanceof GuardianEntity) {
+						event.setCanceled(true);
+					}
+				}
+			}
+		}
+	}
+
 
 
 	/**@SubscribeEvent
