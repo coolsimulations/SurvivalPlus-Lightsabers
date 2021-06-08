@@ -9,15 +9,24 @@ import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.coolsimulations.SurvivalPlus.api.events.EntityAccessor;
 import net.coolsimulations.SurvivalPlus.api.events.SPClientPlayerJoinEvent;
+import net.coolsimulations.SurvivalPlus.api.events.SPLivingAttackEvent;
 import net.coolsimulations.SurvivalPlus.api.events.SPPlaySoundAtEntityEvent;
 import net.coolsimulations.SurvivalPlus.api.events.SPPlayerJoinEvent;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.minecraft.advancement.Advancement;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.WetSpongeBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.GuardianEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.ServerAdvancementLoader;
 import net.minecraft.sound.SoundCategory;
@@ -26,6 +35,7 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.UseAction;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -39,6 +49,8 @@ public class LightsaberEventHandler {
 		});
 		onplayerLogin();
 		onSoundPlay();
+		onLeftClick();
+		onDamage();
 
 	}
 
@@ -125,6 +137,43 @@ public class LightsaberEventHandler {
 					} else {
 						world.playSound((PlayerEntity) entity, entity.getBlockPos(), LightsaberSoundHandler.lightsaber_hit, category, volume, pitch);
 						return ActionResult.FAIL;
+					}
+				}
+			}
+			return ActionResult.PASS;
+		});
+	}
+	
+	public static void onLeftClick() {
+		
+		AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
+			
+			BlockState state = world.getBlockState(pos);
+			Block block = state.getBlock();
+			
+			if(player.getStackInHand(hand).getItem() instanceof ItemLightsaber) {
+				if(block instanceof WetSpongeBlock) {
+					world.setBlockState(pos, Blocks.SPONGE.getDefaultState(), 3);
+					return ActionResult.SUCCESS;
+				}
+			}
+			return ActionResult.PASS;
+		});
+	}
+	
+	public static void onDamage() {
+		SPLivingAttackEvent.EVENT.register((entity, source, amount) -> {
+			
+			if(entity instanceof PlayerEntity) {
+				PlayerEntity player = (PlayerEntity) entity;
+				
+				if(player.getActiveItem().getItem() instanceof ItemLightsaber) {
+					Item lightsaber = player.getActiveItem().getItem();
+					
+					if(lightsaber.getUseAction(player.getActiveItem()) == UseAction.BLOCK) {
+						if(source == DamageSource.LIGHTNING_BOLT || source == DamageSource.FIREWORKS || source.getAttacker() instanceof GuardianEntity) {
+							return ActionResult.FAIL;
+						}
 					}
 				}
 			}
