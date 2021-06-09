@@ -2,6 +2,7 @@ package net.coolsimulations.Lightsaber.init;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -14,18 +15,27 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.WetSpongeBlock;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.UseAction;
 import net.minecraft.item.crafting.CampfireCookingRecipe;
 import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.SmokingRecipe;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -36,9 +46,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
+import net.minecraftforge.event.TickEvent.WorldTickEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sun.audio.AudioPlayer;
@@ -46,6 +60,8 @@ import sun.audio.AudioStream;
 
 @SuppressWarnings("restriction")
 public class LightsaberEventHandler {
+	
+	public List<ItemEntity> fireProofItems = new ArrayList<ItemEntity>();
 
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
@@ -243,6 +259,19 @@ public class LightsaberEventHandler {
 	}
 	
 	@SubscribeEvent
+	public void onLeftClick(LeftClickBlock event) {
+
+		BlockState state = event.getWorld().getBlockState(event.getPos());
+		Block block = state.getBlock();
+
+		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
+			if(block instanceof WetSpongeBlock) {
+				event.getWorld().setBlockState(event.getPos(), Blocks.SPONGE.getDefaultState(), 3);
+			}
+		}
+	}
+	
+	@SubscribeEvent
 	public void onEntityDeath(LivingDropsEvent event) {
 		if(event.getSource().getImmediateSource() instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) event.getSource().getImmediateSource();
@@ -292,6 +321,60 @@ public class LightsaberEventHandler {
 		}
 	}
 
+	@SubscribeEvent
+	public void onDamage(LivingAttackEvent event) {
+
+		if(event.getEntityLiving() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+			
+			if(player.getActiveItemStack().getItem() instanceof ItemLightsaber) {
+				Item lightsaber = player.getActiveItemStack().getItem();
+
+				if(lightsaber.getUseAction(player.getActiveItemStack()) == UseAction.BLOCK) {
+					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource() == DamageSource.FIREWORKS || event.getSource().getTrueSource() instanceof GuardianEntity) {
+						event.setCanceled(true);
+					}
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void itemDropped(EntityJoinWorldEvent event) {
+		Entity entity = event.getEntity();
+		if (entity instanceof ItemEntity && (SPCompatibilityManager.isExtendedNetherBackportLoaded() || SPCompatibilityManager.isFutureMCLoaded())) {
+			ItemEntity itemEntity = (ItemEntity) entity;
+			if (itemEntity.getItem().getItem() == LightsaberItems.darksaber_hilt || itemEntity.getItem().getItem() == LightsaberItems.darksaber) {
+				itemEntity.setInvulnerable(true);
+				this.fireProofItems.add(itemEntity);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void tick(WorldTickEvent event) {
+		if(SPCompatibilityManager.isExtendedNetherBackportLoaded() || SPCompatibilityManager.isFutureMCLoaded()) {
+			try {
+				List<ItemEntity> toRemove = new ArrayList<ItemEntity>();
+				Iterator<ItemEntity> var3 = this.fireProofItems.iterator();
+
+				while (var3.hasNext()) {
+					ItemEntity item = (ItemEntity) var3.next();
+					if (item.isAlive()) {
+						if (item.isInLava()) {
+							item.addVelocity(0.0D, 0.025D, 0.0D);
+						}
+					} else {
+						toRemove.add(item);
+					}
+				}
+
+				this.fireProofItems.removeAll(toRemove);
+			} catch (ConcurrentModificationException var5) {
+				var5.printStackTrace();
+			}
+		}
+	}
 
 	/**@SubscribeEvent
     public static void onPointsOfInterestTypeRegistry(final RegistryEvent.Register<PointOfInterestType> event){
