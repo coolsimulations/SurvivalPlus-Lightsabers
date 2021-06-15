@@ -14,18 +14,27 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.WetSpongeBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.UseAction;
 import net.minecraft.item.crafting.CampfireCookingRecipe;
 import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.SmokingRecipe;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -41,8 +50,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sun.audio.AudioPlayer;
@@ -54,10 +65,10 @@ public class LightsaberEventHandler {
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onPlayerJoinedServer(ClientPlayerNetworkEvent.LoggedInEvent event) {
-		Minecraft.getInstance().deferTask(new Runnable() {
+		Minecraft.getInstance().submitAsync(new Runnable() {
 			@Override
 			public void run() {
-				if(!SPConfig.disableSunAudio.get() && Minecraft.getInstance().gameSettings.getSoundLevel(SoundCategory.MASTER) != 0.0F && Minecraft.getInstance().gameSettings.getSoundLevel(SoundCategory.VOICE) != 0.0F) {
+				if(!SPConfig.disableSunAudio.get() && Minecraft.getInstance().options.getSoundSourceVolume(SoundCategory.MASTER) != 0.0F && Minecraft.getInstance().options.getSoundSourceVolume(SoundCategory.VOICE) != 0.0F) {
 					try
 					{
 						InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
@@ -79,14 +90,14 @@ public class LightsaberEventHandler {
 		ServerPlayerEntity player = (ServerPlayerEntity) event.getPlayer();
 		CompoundNBT entityData = player.getPersistentData();
 
-		AdvancementManager manager = player.getServer().getAdvancementManager();
+		AdvancementManager manager = player.getServer().getAdvancements();
 		Advancement install = manager.getAdvancement(new ResourceLocation(Reference.MOD_ID, Reference.MOD_ID + "/install"));
 
 		boolean isDone = false;
 
 		Timer timer = new Timer();
 
-		if(install !=null && player.getAdvancements().getProgress(install).hasProgress()) {
+		if(install !=null && player.getAdvancements().getOrStartProgress(install).hasProgress()) {
 			isDone = true;
 		}
 
@@ -94,11 +105,11 @@ public class LightsaberEventHandler {
 
 			entityData.putBoolean("lightsaber.firstJoin", true);
 
-			if(!player.world.isRemote) {
+			if(!player.level.isClientSide) {
 
 				TranslationTextComponent installInfo = new TranslationTextComponent("advancements.lightsaber.install.display1");
-				installInfo.mergeStyle(TextFormatting.GOLD);
-				player.func_241151_a_(installInfo, ChatType.SYSTEM, Util.DUMMY_UUID);
+				installInfo.withStyle(TextFormatting.GOLD);
+				player.sendMessage(installInfo, ChatType.SYSTEM, Util.NIL_UUID);
 
 			}
 		}
@@ -107,8 +118,8 @@ public class LightsaberEventHandler {
 			timer.schedule(new TimerTask() {
 				@Override
 				public void run() {
-					player.func_241151_a_(LightsaberUpdateHandler.updateInfo.modifyStyle((style) -> {return style.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2"))).setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.DUMMY_UUID);
-					player.func_241151_a_(LightsaberUpdateHandler.updateVersionInfo.modifyStyle((style) -> {return style.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2"))).setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.DUMMY_UUID);
+					player.sendMessage(LightsaberUpdateHandler.updateInfo.withStyle((style) -> {return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.NIL_UUID);
+					player.sendMessage(LightsaberUpdateHandler.updateVersionInfo.withStyle((style) -> {return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.NIL_UUID);
 
 				}
 			}, 17000);
@@ -118,9 +129,9 @@ public class LightsaberEventHandler {
 
 	@SubscribeEvent
 	public void onSoundPlay(PlaySoundAtEntityEvent event) {
-		if(event.getSound() == SoundEvents.ITEM_SHIELD_BLOCK && event.getEntity() != null) {
-			if(event.getEntity() instanceof LivingEntity && ((LivingEntity) event.getEntity()).getActiveItemStack().getItem() instanceof ItemLightsaber) {
-				if(((LivingEntity) event.getEntity()).getActiveItemStack().getItem() == LightsaberItems.darksaber) {
+		if(event.getSound() == SoundEvents.SHIELD_BLOCK && event.getEntity() != null) {
+			if(event.getEntity() instanceof LivingEntity && ((LivingEntity) event.getEntity()).getUseItem().getItem() instanceof ItemLightsaber) {
+				if(((LivingEntity) event.getEntity()).getUseItem().getItem() == LightsaberItems.darksaber) {
 					event.setSound(LightsaberSoundHandler.darksaber_hit);
 				} else {
 					event.setSound(LightsaberSoundHandler.lightsaber_hit);
@@ -137,7 +148,7 @@ public class LightsaberEventHandler {
 		World worldIn = event.getWorld();
 
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
-			if(event.getItemStack().getItem() instanceof ItemLightsaber && event.getPlayer().isSneaking()) {
+			if(event.getItemStack().getItem() instanceof ItemLightsaber && event.getPlayer().isCrouching()) {
 				ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
 				red.setTag(tag);
 
@@ -161,97 +172,110 @@ public class LightsaberEventHandler {
 
 				if(event.getItemStack().getItem() == LightsaberItems.red_lightsaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, red);
+						playerIn.setItemInHand(Hand.OFF_HAND, red);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, red);
+						playerIn.setItemInHand(Hand.MAIN_HAND, red);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.blue_lightsaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, blue);
+						playerIn.setItemInHand(Hand.OFF_HAND, blue);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, blue);
+						playerIn.setItemInHand(Hand.MAIN_HAND, blue);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.green_lightsaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, green);
+						playerIn.setItemInHand(Hand.OFF_HAND, green);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, green);
+						playerIn.setItemInHand(Hand.MAIN_HAND, green);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.yellow_lightsaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, yellow);
+						playerIn.setItemInHand(Hand.OFF_HAND, yellow);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, yellow);
+						playerIn.setItemInHand(Hand.MAIN_HAND, yellow);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.purple_lightsaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, purple);
+						playerIn.setItemInHand(Hand.OFF_HAND, purple);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, purple);
+						playerIn.setItemInHand(Hand.MAIN_HAND, purple);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.white_lightsaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, white);
+						playerIn.setItemInHand(Hand.OFF_HAND, white);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, white);
+						playerIn.setItemInHand(Hand.MAIN_HAND, white);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 				if(event.getItemStack().getItem() == LightsaberItems.darksaber){
 
-					if (ItemStack.areItemStacksEqual(playerIn.getHeldItemOffhand(), itemStackIn))
+					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
-						playerIn.setHeldItem(Hand.OFF_HAND, dark);
+						playerIn.setItemInHand(Hand.OFF_HAND, dark);
 					}
 					else
 					{
-						playerIn.setHeldItem(Hand.MAIN_HAND, dark);
+						playerIn.setItemInHand(Hand.MAIN_HAND, dark);
 					}
-					worldIn.playSound(playerIn, playerIn.getPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
 				}
 			}
 		}
 	}
 	
 	@SubscribeEvent
+	public void onLeftClick(LeftClickBlock event) {
+
+		BlockState state = event.getWorld().getBlockState(event.getPos());
+		Block block = state.getBlock();
+
+		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
+			if(block instanceof WetSpongeBlock) {
+				event.getWorld().setBlock(event.getPos(), Blocks.SPONGE.defaultBlockState(), 3);
+			}
+		}
+	}
+	
+	@SubscribeEvent
 	public void onEntityDeath(LivingDropsEvent event) {
-		if(event.getSource().getImmediateSource() instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) event.getSource().getImmediateSource();
-			if(player.getHeldItemMainhand().getItem() instanceof ItemLightsaber) {
+		if(event.getSource().getEntity() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) event.getSource().getEntity();
+			if(player.getMainHandItem().getItem() instanceof ItemLightsaber) {
 				List<ItemEntity> newList = new ArrayList<ItemEntity>();
 
 				for(Iterator<ItemEntity> iter = event.getDrops().iterator(); iter.hasNext();) {
@@ -262,35 +286,53 @@ public class LightsaberEventHandler {
 					ItemStack itemstack = newList.get(i).getItem();
 					int count = itemstack.getCount();
 
-					Optional<SmokingRecipe> recipe = player.getEntityWorld().getRecipeManager().getRecipe(IRecipeType.SMOKING, new Inventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+					Optional<SmokingRecipe> recipe = player.getCommandSenderWorld().getRecipeManager().getRecipeFor(IRecipeType.SMOKING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
 					if(recipe.isPresent()) {
-						ItemStack result = recipe.get().getRecipeOutput();
+						ItemStack result = recipe.get().getResultItem();
 						result.setCount(count);
 						event.getDrops().remove(newList.get(i));
-						event.getDrops().add(new ItemEntity(event.getEntity().getEntityWorld(), event.getEntity().getPosX(), event.getEntity().getPosY(), event.getEntity().getPosZ(), result));
+						event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
 					} else {
 
-						Optional<CampfireCookingRecipe> campfireRecipe = player.getEntityWorld().getRecipeManager().getRecipe(IRecipeType.CAMPFIRE_COOKING, new Inventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+						Optional<CampfireCookingRecipe> campfireRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipeFor(IRecipeType.CAMPFIRE_COOKING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
 						if(campfireRecipe.isPresent()) {
-							ItemStack result = recipe.get().getRecipeOutput();
+							ItemStack result = recipe.get().getResultItem();
 							result.setCount(count);
 							event.getDrops().remove(newList.get(i));
-							event.getDrops().add(new ItemEntity(event.getEntity().getEntityWorld(), event.getEntity().getPosX(), event.getEntity().getPosY(), event.getEntity().getPosZ(), result));
+							event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
 						} else {
 
-							Optional<FurnaceRecipe> furnaceRecipe = player.getEntityWorld().getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+							Optional<FurnaceRecipe> furnaceRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipeFor(IRecipeType.SMELTING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
 							if(furnaceRecipe.isPresent()) {
-								ItemStack result = recipe.get().getRecipeOutput();
+								ItemStack result = recipe.get().getResultItem();
 								result.setCount(count);
-								if(result.getItem().isFood()) {
+								if(result.getItem().isEdible()) {
 									event.getDrops().remove(newList.get(i));
-									event.getDrops().add(new ItemEntity(event.getEntity().getEntityWorld(), event.getEntity().getPosX(), event.getEntity().getPosY(), event.getEntity().getPosZ(), result));
+									event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onDamage(LivingAttackEvent event) {
+
+		if(event.getEntityLiving() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+			
+			if(player.getUseItem().getItem() instanceof ItemLightsaber) {
+				Item lightsaber = player.getUseItem().getItem();
+
+				if(lightsaber.getUseAnimation(player.getUseItem()) == UseAction.BLOCK) {
+					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource().getDirectEntity() instanceof FireworkRocketEntity || event.getSource().getEntity() instanceof GuardianEntity) {
+						event.setCanceled(true);
 					}
 				}
 			}

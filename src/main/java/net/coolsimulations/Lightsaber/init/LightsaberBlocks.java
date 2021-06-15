@@ -14,7 +14,7 @@ public class LightsaberBlocks {
 	
 	public static void init() {
 		
-		holocron = new Block(Block.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN).hardnessAndResistance(3.5F)).setRegistryName("holocron");
+		holocron = new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(3.5F)).setRegistryName("holocron");
 		
 	}
 	
@@ -25,7 +25,7 @@ public class LightsaberBlocks {
 	
 	public static void registerBlock(Block block) {
 		
-		BlockItem BlockItem = new BlockItem(block, new Item.Properties().group(SPTabs.tabBlocks));
+		BlockItem BlockItem = new BlockItem(block, new Item.Properties().tab(SPTabs.tabBlocks));
 		BlockItem.setRegistryName(block.getRegistryName());
 		ForgeRegistries.BLOCKS.register(block);
 		ForgeRegistries.ITEMS.register(BlockItem);

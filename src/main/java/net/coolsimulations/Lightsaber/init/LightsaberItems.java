@@ -36,22 +36,22 @@ public class LightsaberItems {
 
 	public static void init() {
 
-		pommel_cap = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("pommel_cap");
-		focusing_lens = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("focusing_lens");
-		blade_emitter = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("blade_emitter");
-		emitter_matrix = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("emitter_matrix");
-		inert_power_insulator = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("inert_power_insulator");
-		activation_stud = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("activation_stud");
-		lightsaber_hilt = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("lightsaber_hilt");
-		darksaber_lens = new Item(new Item.Properties().group(SPTabs.tabMaterials)).setRegistryName("darksaber_lens");
+		pommel_cap = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("pommel_cap");
+		focusing_lens = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("focusing_lens");
+		blade_emitter = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("blade_emitter");
+		emitter_matrix = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("emitter_matrix");
+		inert_power_insulator = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("inert_power_insulator");
+		activation_stud = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("activation_stud");
+		lightsaber_hilt = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("lightsaber_hilt");
+		darksaber_lens = new Item(new Item.Properties().tab(SPTabs.tabMaterials)).setRegistryName("darksaber_lens");
 
-		red_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("red_lightsaber_hilt");
-		blue_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("blue_lightsaber_hilt");
-		green_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("green_lightsaber_hilt");
-		yellow_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("yellow_lightsaber_hilt");
-		purple_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("purple_lightsaber_hilt");
-		white_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("white_lightsaber_hilt");
-		darksaber_hilt = new ItemLightsaberHilt(new Item.Properties().group(SPTabs.tabCombat)).setRegistryName("darksaber_hilt");
+		red_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().tab(SPTabs.tabCombat)).setRegistryName("red_lightsaber_hilt");
+		blue_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().tab(SPTabs.tabCombat)).setRegistryName("blue_lightsaber_hilt");
+		green_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().tab(SPTabs.tabCombat)).setRegistryName("green_lightsaber_hilt");
+		yellow_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().tab(SPTabs.tabCombat)).setRegistryName("yellow_lightsaber_hilt");
+		purple_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().tab(SPTabs.tabCombat)).setRegistryName("purple_lightsaber_hilt");
+		white_lightsaber_hilt = new ItemLightsaberHilt(new Item.Properties().tab(SPTabs.tabCombat)).setRegistryName("white_lightsaber_hilt");
+		darksaber_hilt = new ItemLightsaberHilt(new Item.Properties().fireResistant().tab(SPTabs.tabCombat)).setRegistryName("darksaber_hilt");
 
 		red_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("red_lightsaber");
 		blue_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("blue_lightsaber");
@@ -59,7 +59,7 @@ public class LightsaberItems {
 		yellow_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Lightsaber).setRegistryName("yellow_lightsaber");
 		purple_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Purple_Lightsaber).setRegistryName("purple_lightsaber");
 		white_lightsaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.White_Lightsaber).setRegistryName("white_lightsaber");
-		darksaber = new ItemLightsaber(new Item.Properties(), LightsaberTier.Darksaber).setRegistryName("darksaber");
+		darksaber = new ItemLightsaber(new Item.Properties().fireResistant(), LightsaberTier.Darksaber).setRegistryName("darksaber");
 	}
 
 	public static void register()
