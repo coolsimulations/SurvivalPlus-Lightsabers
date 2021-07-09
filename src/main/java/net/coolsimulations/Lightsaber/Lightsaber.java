@@ -1,5 +1,6 @@
 package net.coolsimulations.Lightsaber;
 
+import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
@@ -25,6 +26,7 @@ public class Lightsaber implements ModInitializer {
 		LightsaberItems.init();	
 		LightsaberItems.register();
 		LightsaberSoundHandler.init();
+		LightsaberDispenserBehavior.init();
 	}
 
 }

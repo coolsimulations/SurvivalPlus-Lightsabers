@@ -11,43 +11,43 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.context.LootContext;
-import net.minecraft.loot.context.LootContextTypes;
-import net.minecraft.recipe.CampfireCookingRecipe;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.SmeltingRecipe;
-import net.minecraft.recipe.SmokingRecipe;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
+import net.minecraft.world.item.crafting.SmokingRecipe;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-	public LivingEntityMixin(EntityType<?> type, World world) {
+	public LivingEntityMixin(EntityType<?> type, Level world) {
 		super(type, world);
 	}
 
-	@Inject(at = @At("HEAD"), method = "dropLoot", cancellable = true)
-	protected void dropLoot(DamageSource source, boolean causedByPlayer, CallbackInfo info) {
-		if(source.getAttacker() instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) source.getAttacker();
-			if(player.getMainHandStack().getItem() instanceof ItemLightsaber) {
+	@Inject(at = @At("HEAD"), method = "dropFromLootTable", cancellable = true)
+	protected void dropFromLootTable(DamageSource source, boolean causedByPlayer, CallbackInfo info) {
+		if(source.getEntity() instanceof Player) {
+			Player player = (Player) source.getEntity();
+			if(player.getMainHandItem().getItem() instanceof ItemLightsaber) {
 				List<ItemStack> newList = new ArrayList<ItemStack>();
 				List<ItemStack> oldList = new ArrayList<ItemStack>();
 
-				Identifier identifier = this.getLootTable();
-				LootTable lootTable = this.world.getServer().getLootManager().getTable(identifier);
-				LootContext.Builder builder = this.getLootContextBuilder(causedByPlayer, source);
+				ResourceLocation location = this.getLootTable();
+				LootTable lootTable = this.level.getServer().getLootTables().get(location);
+				LootContext.Builder builder = this.createLootContext(causedByPlayer, source);
 
-				for(Iterator<ItemStack> iter = lootTable.generateLoot(builder.build(LootContextTypes.ENTITY)).iterator(); iter.hasNext();) {
+				for(Iterator<ItemStack> iter = lootTable.getRandomItems(builder.create(LootContextParamSets.ENTITY)).iterator(); iter.hasNext();) {
 					ItemStack drop = iter.next();
 					newList.add(drop);
 					oldList.add(drop);
@@ -57,35 +57,35 @@ public abstract class LivingEntityMixin extends Entity {
 					ItemStack itemstack = newList.get(i);
 					int count = itemstack.getCount();
 
-					List<SmokingRecipe> recipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.SMOKING, new SimpleInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+					List<SmokingRecipe> recipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(RecipeType.SMOKING, new SimpleContainer(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
 					if(!recipe.isEmpty()) {
 						for(SmokingRecipe smokeingList : recipe) {
-							ItemStack result = smokeingList.getOutput();
+							ItemStack result = smokeingList.getResultItem();
 							result.setCount(count);
 							newList.remove(newList.get(i));
 							newList.add(result);
 						}
 					} else {
 
-						List<CampfireCookingRecipe> campfireRecipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.CAMPFIRE_COOKING, new SimpleInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+						List<CampfireCookingRecipe> campfireRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(RecipeType.CAMPFIRE_COOKING, new SimpleContainer(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
 						if(!campfireRecipe.isEmpty()) {
 							for(CampfireCookingRecipe campfireList : campfireRecipe) {
-								ItemStack result = campfireList.getOutput();
+								ItemStack result = campfireList.getResultItem();
 								result.setCount(count);
 								newList.remove(newList.get(i));
 								newList.add(result);
 							}
 						} else {
 
-							List<SmeltingRecipe> furnaceRecipe = player.getEntityWorld().getRecipeManager().getAllMatches(RecipeType.SMELTING, new SimpleInventory(new ItemStack[]{itemstack}), player.getEntityWorld());
+							List<SmeltingRecipe> furnaceRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(RecipeType.SMELTING, new SimpleContainer(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
 							if(!furnaceRecipe.isEmpty()) {
 								for(SmeltingRecipe furnaceList : furnaceRecipe) {
-									ItemStack result = furnaceList.getOutput();
+									ItemStack result = furnaceList.getResultItem();
 									result.setCount(count);
-									if(result.getItem().isFood()) {
+									if(result.getItem().isEdible()) {
 										newList.remove(newList.get(i));
 										newList.add(result);
 									}
@@ -97,7 +97,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 				if(newList != oldList)
 					for(ItemStack stack : newList) {
-						this.dropStack(stack);
+						this.spawnAtLocation(stack);
 					}
 				info.cancel();
 			}
@@ -105,9 +105,9 @@ public abstract class LivingEntityMixin extends Entity {
 	}
 
 	@Shadow
-	public abstract Identifier getLootTable();
+	public abstract ResourceLocation getLootTable();
 
 	@Shadow
-	public abstract LootContext.Builder getLootContextBuilder(boolean causedByPlayer, DamageSource source);
+	public abstract LootContext.Builder createLootContext(boolean causedByPlayer, DamageSource source);
 
 }

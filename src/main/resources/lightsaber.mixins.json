@@ -3,7 +3,7 @@
     "package": "net.coolsimulations.Lightsaber.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "LivingEntityMixin", "MobEntityMixin"
+        "LivingEntityMixin", "MobMixin"
     ],
     "injectors": {
         "defaultRequire": 1

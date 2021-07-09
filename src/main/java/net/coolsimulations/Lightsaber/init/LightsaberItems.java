@@ -6,9 +6,9 @@ import net.coolsimulations.Lightsaber.item.ItemLightsaber.LightsaberTier;
 import net.coolsimulations.Lightsaber.item.ItemLightsaberHilt;
 import net.coolsimulations.SurvivalPlus.api.SPTabs;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 
 public class LightsaberItems {
 
@@ -96,7 +96,7 @@ public class LightsaberItems {
 
 	public static void registerItem(Item item, String registryName) {
 
-		Registry.register(Registry.ITEM, new Identifier(Reference.MOD_ID, registryName), item);
+		Registry.register(Registry.ITEM, new ResourceLocation(Reference.MOD_ID, registryName), item);
 	}
 
 }
