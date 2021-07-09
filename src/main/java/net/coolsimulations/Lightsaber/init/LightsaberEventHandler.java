@@ -50,6 +50,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -267,7 +268,7 @@ public class LightsaberEventHandler {
 	}
 
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onEntityDeath(LivingDropsEvent event) {
 		if(event.getSource().getImmediateSource() instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) event.getSource().getImmediateSource();
