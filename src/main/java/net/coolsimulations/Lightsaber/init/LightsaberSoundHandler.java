@@ -22,7 +22,7 @@ public class LightsaberSoundHandler {
 	public static SoundEvent hello_there;
 	
 	public static void init() {
-		size = Registry.SOUND_EVENT.getIds().size();;
+		size = Registry.SOUND_EVENT.getIds().size();
 		
 		lightsaber_on = register("item.lightsaber.lightsaber_on");
 		lightsaber_off = register("item.lightsaber.lightsaber_off");
