@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -157,7 +156,7 @@ public class LightsaberEventHandler {
 
 				ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
 				green.setTag(tag);
-				
+
 				ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
 				yellow.setTag(tag);
 
@@ -257,7 +256,7 @@ public class LightsaberEventHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onLeftClick(LeftClickBlock event) {
 
@@ -270,7 +269,7 @@ public class LightsaberEventHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onEntityDeath(LivingDropsEvent event) {
 		if(event.getSource().getEntity() instanceof PlayerEntity) {
@@ -286,32 +285,38 @@ public class LightsaberEventHandler {
 					ItemStack itemstack = newList.get(i).getItem();
 					int count = itemstack.getCount();
 
-					Optional<SmokingRecipe> recipe = player.getCommandSenderWorld().getRecipeManager().getRecipeFor(IRecipeType.SMOKING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
+					List<SmokingRecipe> recipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(IRecipeType.SMOKING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
-					if(recipe.isPresent()) {
-						ItemStack result = recipe.get().getResultItem();
-						result.setCount(count);
-						event.getDrops().remove(newList.get(i));
-						event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
-					} else {
-
-						Optional<CampfireCookingRecipe> campfireRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipeFor(IRecipeType.CAMPFIRE_COOKING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
-
-						if(campfireRecipe.isPresent()) {
-							ItemStack result = recipe.get().getResultItem();
+					if(recipe.isEmpty()) {
+						for(SmokingRecipe smokeingList : recipe) {
+							ItemStack result = smokeingList.getResultItem();
 							result.setCount(count);
 							event.getDrops().remove(newList.get(i));
 							event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
+						}
+					} else {
+
+						List<CampfireCookingRecipe> campfireRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(IRecipeType.CAMPFIRE_COOKING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
+
+						if(campfireRecipe.isEmpty()) {
+							for(CampfireCookingRecipe campfireList : campfireRecipe) {
+								ItemStack result = campfireList.getResultItem();
+								result.setCount(count);
+								event.getDrops().remove(newList.get(i));
+								event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
+							}
 						} else {
 
-							Optional<FurnaceRecipe> furnaceRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipeFor(IRecipeType.SMELTING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
+							List<FurnaceRecipe> furnaceRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(IRecipeType.SMELTING, new Inventory(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
-							if(furnaceRecipe.isPresent()) {
-								ItemStack result = recipe.get().getResultItem();
-								result.setCount(count);
-								if(result.getItem().isEdible()) {
-									event.getDrops().remove(newList.get(i));
-									event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
+							if(furnaceRecipe.isEmpty()) {
+								for(FurnaceRecipe furnaceList : furnaceRecipe) {
+									ItemStack result = furnaceList.getResultItem();
+									result.setCount(count);
+									if(result.getItem().isEdible()) {
+										event.getDrops().remove(newList.get(i));
+										event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
+									}
 								}
 							}
 						}
@@ -320,13 +325,13 @@ public class LightsaberEventHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onDamage(LivingAttackEvent event) {
 
 		if(event.getEntityLiving() instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) event.getEntityLiving();
-			
+
 			if(player.getUseItem().getItem() instanceof ItemLightsaber) {
 				Item lightsaber = player.getUseItem().getItem();
 
