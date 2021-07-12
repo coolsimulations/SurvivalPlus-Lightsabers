@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
+import net.coolsimulations.Lightsaber.init.LightsaberFutureMCRecipes;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberVillagers;
@@ -71,6 +72,7 @@ public class Lightsaber {
 		proxy.init();
 		LightsaberSoundHandler.init();
 		LightsaberDispenserBehavior.init();
+		LightsaberFutureMCRecipes.init();
 		
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			LightsaberSwordBlocking.init();
