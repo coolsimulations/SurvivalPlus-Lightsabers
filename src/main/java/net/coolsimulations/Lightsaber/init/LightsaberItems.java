@@ -54,7 +54,7 @@ public class LightsaberItems {
 		yellow_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
 		purple_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
 		white_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		darksaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
+		darksaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat).fireproof());
 
 		red_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Lightsaber);
 		blue_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Lightsaber);
@@ -62,7 +62,7 @@ public class LightsaberItems {
 		yellow_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Lightsaber);
 		purple_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Purple_Lightsaber);
 		white_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.White_Lightsaber);
-		darksaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Darksaber);
+		darksaber = new ItemLightsaber(new FabricItemSettings().fireproof(), LightsaberTier.Darksaber);
 	}
 
 	public static void register()
