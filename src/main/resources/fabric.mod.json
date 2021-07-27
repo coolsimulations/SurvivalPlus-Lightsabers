@@ -21,6 +21,9 @@
   "entrypoints": {
     "main": [
       "net.coolsimulations.Lightsaber.Lightsaber"
+    ],
+    "rei_plugins": [
+      "net.coolsimulations.Lightsaber.util.LightsaberREI"
     ]
   },
   
