@@ -22,6 +22,9 @@
     "main": [
       "net.coolsimulations.Lightsaber.Lightsaber"
     ],
+    "client": [
+      "net.coolsimulations.Lightsaber.LightsaberClient"
+    ],
     "rei_plugins": [
       "net.coolsimulations.Lightsaber.util.LightsaberREI"
     ]
