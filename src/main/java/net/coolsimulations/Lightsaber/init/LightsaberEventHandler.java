@@ -14,7 +14,6 @@ import net.coolsimulations.SurvivalPlus.api.events.SPPlaySoundAtEntityEvent;
 import net.coolsimulations.SurvivalPlus.api.events.SPPlayerJoinEvent;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.block.Block;
@@ -43,10 +42,6 @@ public class LightsaberEventHandler {
 
 	public static void init() {
 
-		ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
-			if(!server.isRemote())
-				onPlayerJoinedServer();
-		});
 		onplayerLogin();
 		onSoundPlay();
 		onLeftClick();
