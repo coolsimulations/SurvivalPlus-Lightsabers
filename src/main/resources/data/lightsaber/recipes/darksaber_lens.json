@@ -11,7 +11,7 @@
       "tag": "c:obsidians"
     },
     "G": {
-      "item": "minecraft:black_stained_glass"
+      "item": "minecraft:tinted_glass"
     },
     "Q": {
       "tag": "c:quartzes"
@@ -20,7 +20,7 @@
       "item": "minecraft:dragon_egg"
     },
     "S": {
-      "tag": "c:spinels"
+      "tag": "c:spinel_shards"
     }
   },
   "result": {

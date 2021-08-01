@@ -12,7 +12,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lightsaber:pommel_cap"
+            "items": [
+              "lightsaber:pommel_cap"
+            ]
           }
         ]
       }
@@ -22,7 +24,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lightsaber:focusing_lens"
+            "items": [
+              "lightsaber:focusing_lens"
+            ]
           }
         ]
       }
@@ -32,7 +36,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lightsaber:blade_emitter"
+            "items": [
+              "lightsaber:blade_emitter"
+            ]
           }
         ]
       }
@@ -42,7 +48,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lightsaber:activation_stud"
+            "items": [
+              "lightsaber:activation_stud"
+            ]
           }
         ]
       }
@@ -52,7 +60,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lightsaber:inert_power_insulator"
+            "items": [
+              "lightsaber:inert_power_insulator"
+            ]
           }
         ]
       }

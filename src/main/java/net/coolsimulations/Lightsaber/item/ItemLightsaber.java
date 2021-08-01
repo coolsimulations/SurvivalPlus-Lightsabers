@@ -58,7 +58,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 		attributeBuilder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", (double) -1.2000000476837158D, AttributeModifier.Operation.ADDITION));
 		this.attributeModifiers = attributeBuilder.build();
 		if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-			FabricModelPredicateProviderRegistry.register(this, new ResourceLocation("blocking"),(stack, worldIn, entityIn) -> {
+			FabricModelPredicateProviderRegistry.register(this, new ResourceLocation("blocking"),(stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
 		}
@@ -387,7 +387,7 @@ public class ItemLightsaber extends Item implements ItemAccessor{
 			return 15.0F;
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
-			return lvt_4_1_ != Material.PLANT && lvt_4_1_ != Material.REPLACEABLE_PLANT && lvt_4_1_ != Material.CORAL
+			return lvt_4_1_ != Material.PLANT && lvt_4_1_ != Material.REPLACEABLE_PLANT
 					&& !state.is(BlockTags.LEAVES) && lvt_4_1_ != Material.VEGETABLE ? 1.0F : 1.5F;
 		}
 	}

@@ -22,7 +22,9 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:dragon_egg"
+            "items": [
+              "minecraft:dragon_egg"
+            ]
           }
         ]
       }
@@ -32,7 +34,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "c:spinels"
+            "tag": "c:spinel_shards"
           }
         ]
       }

@@ -16,9 +16,11 @@
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
-                    {
-                        "item": "lightsaber:darksaber_hilt"
-                    }
+                  {
+                    "items": [
+                      "lightsaber:darksaber_hilt"
+                    ]
+                  }
                 ]
             }
         }

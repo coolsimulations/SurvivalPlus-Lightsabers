@@ -1,14 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "coloured_lightsaber_hilt",
-  "ingredients": [
-    {
-      "item": "lightsaber:lightsaber_hilt"
-    },
-    {
-      "tag": "c:amethysts"
-    }
-  ],
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "lightsaber:lightsaber_hilt"
+  },
+  "addition": {
+    "tag": "c:amethyst_shards"
+  },
   "result": {
     "item": "lightsaber:purple_lightsaber_hilt"
   }
