@@ -43,6 +43,7 @@ public class Lightsaber {
 		//LightsaberVillagers.registerVillagers(); //temp till forge issue #6112 is resolved
 		LightsaberSoundHandler.init();
 		LightsaberDispenserBehavior.init();
+		proxy.init();
 		
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			LightsaberSwordBlocking.init();
