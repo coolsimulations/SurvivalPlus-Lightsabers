@@ -4,7 +4,7 @@ import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber.LightsaberTier;
 import net.coolsimulations.Lightsaber.item.ItemLightsaberHilt;
 import net.coolsimulations.SurvivalPlus.api.SPTabs;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LightsaberItems {

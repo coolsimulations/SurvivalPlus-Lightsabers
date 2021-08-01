@@ -1,18 +1,18 @@
 package net.coolsimulations.Lightsaber.init;
 
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.TNTBlock;
-import net.minecraft.block.WetSpongeBlock;
-import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.dispenser.OptionalDispenseBehavior;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.TntBlock;
+import net.minecraft.world.level.block.WetSpongeBlock;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LightsaberDispenserBehavior {
@@ -22,15 +22,15 @@ public class LightsaberDispenserBehavior {
 		for(ResourceLocation location : ForgeRegistries.ITEMS.getKeys()) {
 			Item item = ForgeRegistries.ITEMS.getValue(location);
 			if(item instanceof ItemLightsaber) {
-				DispenserBlock.registerBehavior(item, new OptionalDispenseBehavior() {
-			         protected ItemStack execute(IBlockSource source, ItemStack stack) {
-			            World world = source.getLevel();
+				DispenserBlock.registerBehavior(item, new OptionalDispenseItemBehavior() {
+			         protected ItemStack execute(BlockSource source, ItemStack stack) {
+			            Level world = source.getLevel();
 			            this.setSuccess(true);
 			            BlockPos blockpos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
 			            BlockState blockstate = world.getBlockState(blockpos);
-			            if(blockstate.getBlock() instanceof TNTBlock && blockstate.getProperties().contains(TNTBlock.UNSTABLE) && !blockstate.getValue(TNTBlock.UNSTABLE)) {
+			            if(blockstate.getBlock() instanceof TntBlock && blockstate.getProperties().contains(TntBlock.UNSTABLE) && !blockstate.getValue(TntBlock.UNSTABLE)) {
 			    			try {
-			    				((TNTBlock) blockstate.getBlock()).explode(world, blockpos);
+			    				((TntBlock) blockstate.getBlock()).explode(world, blockpos);
 			    				world.setBlock(blockpos, Blocks.AIR.defaultBlockState(), 11);
 			    			} catch(Exception e) {
 			    			}

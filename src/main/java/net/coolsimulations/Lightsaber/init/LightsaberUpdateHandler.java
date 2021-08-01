@@ -4,11 +4,9 @@ import java.net.URL;
 import java.util.Scanner;
 
 import net.coolsimulations.Lightsaber.Reference;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.ClickEvent;
-import net.minecraft.util.text.event.HoverEvent;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.versions.mcp.MCPVersion;
 
 public class LightsaberUpdateHandler {
@@ -16,13 +14,13 @@ public class LightsaberUpdateHandler {
 	private static String latestVersion;
 	private static String latestVersionInfo;
 	public static boolean isOld = false;
-	public static TranslationTextComponent updateInfo = null;
-	public static StringTextComponent updateVersionInfo = null;
+	public static TranslatableComponent updateInfo = null;
+	public static TextComponent updateVersionInfo = null;
 	
 	public static void init() {
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker116.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker117.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersion = s.next();
             s.close();
@@ -31,7 +29,7 @@ public class LightsaberUpdateHandler {
         }
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/updateinfo116.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/updateinfo117.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersionInfo = s.nextLine();
             s.close();
@@ -45,14 +43,14 @@ public class LightsaberUpdateHandler {
 				
 				isOld = true;
 				
-				TranslationTextComponent lightsaber = new TranslationTextComponent("sp.lightsaber.name");
-				lightsaber.withStyle(TextFormatting.BLUE);
+				TranslatableComponent lightsaber = new TranslatableComponent("sp.lightsaber.name");
+				lightsaber.withStyle(ChatFormatting.BLUE);
 				
-				StringTextComponent MCVersion = new StringTextComponent(MCPVersion.getMCVersion());
-				MCVersion.withStyle(TextFormatting.BLUE);
+				TextComponent MCVersion = new TextComponent(MCPVersion.getMCVersion());
+				MCVersion.withStyle(ChatFormatting.BLUE);
 				
-				updateInfo = new TranslationTextComponent("sp.update.display3", new Object[] {lightsaber, MCVersion});
-				updateInfo.withStyle(TextFormatting.YELLOW);
+				updateInfo = new TranslatableComponent("sp.update.display3", new Object[] {lightsaber, MCVersion});
+				updateInfo.withStyle(ChatFormatting.YELLOW);
 				
 				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
 				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
@@ -63,23 +61,23 @@ public class LightsaberUpdateHandler {
 				
 				isOld = true;
 				
-				TranslationTextComponent lightsaber = new TranslationTextComponent("sp.lightsaber.name");
-				lightsaber.withStyle(TextFormatting.BLUE);
+				TranslatableComponent lightsaber = new TranslatableComponent("sp.lightsaber.name");
+				lightsaber.withStyle(ChatFormatting.BLUE);
 				
-				StringTextComponent version = new StringTextComponent(latestVersion);
-				version.withStyle(TextFormatting.BLUE);
+				TextComponent version = new TextComponent(latestVersion);
+				version.withStyle(ChatFormatting.BLUE);
 				
-				updateInfo = new TranslationTextComponent("sp.update.display1", new Object[] {lightsaber, version});
-				updateInfo.withStyle(TextFormatting.YELLOW);
+				updateInfo = new TranslatableComponent("sp.update.display1", new Object[] {lightsaber, version});
+				updateInfo.withStyle(ChatFormatting.YELLOW);
 				
 				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
 				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));
 				
 				if(latestVersionInfo != null) {
 					
-					updateVersionInfo = new StringTextComponent(latestVersionInfo);
-					updateVersionInfo.withStyle(TextFormatting.DARK_AQUA);
-					updateVersionInfo.withStyle(TextFormatting.BOLD);
+					updateVersionInfo = new TextComponent(latestVersionInfo);
+					updateVersionInfo.withStyle(ChatFormatting.DARK_AQUA);
+					updateVersionInfo.withStyle(ChatFormatting.BOLD);
 					
 					//updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslationTextComponent("sp.update.display2")));
 					//updateVersionInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));

@@ -16,7 +16,9 @@
       "conditions": {
         "items": [
           {
-            "item": "lightsaber:lightsaber_hilt"
+            "items": [
+              "lightsaber:lightsaber_hilt"
+            ]
           }
         ]
       }

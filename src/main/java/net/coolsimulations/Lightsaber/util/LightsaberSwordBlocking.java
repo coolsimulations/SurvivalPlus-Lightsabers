@@ -6,8 +6,8 @@ import java.util.List;
 import com.fuzs.swordblockingcombat.config.ConfigBuildHandler;
 
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LightsaberSwordBlocking {

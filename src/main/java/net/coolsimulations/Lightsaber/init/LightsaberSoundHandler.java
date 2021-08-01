@@ -1,8 +1,8 @@
 package net.coolsimulations.Lightsaber.init;
 
 import net.coolsimulations.Lightsaber.Reference;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LightsaberSoundHandler {

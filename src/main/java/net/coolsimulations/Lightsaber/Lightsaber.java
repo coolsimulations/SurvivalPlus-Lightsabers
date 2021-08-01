@@ -10,8 +10,8 @@ import net.coolsimulations.Lightsaber.proxy.CommonProxy;
 import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPReference;
-import net.minecraft.item.ItemModelsProperties;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 //import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
@@ -24,7 +24,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Lightsaber {
 
-	public static CommonProxy proxy = (CommonProxy) DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+	public static CommonProxy proxy = (CommonProxy) DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
 	private static Lightsaber instance;
 
@@ -59,22 +59,22 @@ public class Lightsaber {
 	private static void clientLoad(final FMLClientSetupEvent event)
 	{
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
-			ItemModelsProperties.register(LightsaberItems.red_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemProperties.register(LightsaberItems.red_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.register(LightsaberItems.blue_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemProperties.register(LightsaberItems.blue_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.register(LightsaberItems.green_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemProperties.register(LightsaberItems.green_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.register(LightsaberItems.purple_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemProperties.register(LightsaberItems.purple_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.register(LightsaberItems.white_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemProperties.register(LightsaberItems.white_lightsaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
-			ItemModelsProperties.register(LightsaberItems.darksaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn) -> {
+			ItemProperties.register(LightsaberItems.darksaber, new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
 		}

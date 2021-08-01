@@ -8,31 +8,31 @@ import com.google.common.collect.Multimap;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.TNTBlock;
-import net.minecraft.block.material.Material;
-import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.TntBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 
 public class ItemLightsaber extends Item{
 
@@ -57,11 +57,11 @@ public class ItemLightsaber extends Item{
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn){
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn){
 
 		ItemStack itemStackIn = playerIn.getItemInHand(handIn);
 		Item item = itemStackIn.getItem();
-		CompoundNBT tag = item.getShareTag(itemStackIn);
+		CompoundTag tag = item.getShareTag(itemStackIn);
 
 		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
 		red.setTag(tag);
@@ -90,94 +90,94 @@ public class ItemLightsaber extends Item{
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, red);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, red);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, red);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, red);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.blue_lightsaber){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, blue);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, blue);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, blue);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, blue);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.green_lightsaber){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, green);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, green);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, green);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, green);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.yellow_lightsaber){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, yellow);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, yellow);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, yellow);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, yellow);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 
 			if(item == LightsaberItems.purple_lightsaber){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, purple);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, purple);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, purple);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, purple);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.white_lightsaber){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, white);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, white);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, white);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, white);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 			if(item == LightsaberItems.darksaber){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
-					playerIn.setItemInHand(Hand.OFF_HAND, dark);
+					playerIn.setItemInHand(InteractionHand.OFF_HAND, dark);
 				}
 				else
 				{
-					playerIn.setItemInHand(Hand.MAIN_HAND, dark);
+					playerIn.setItemInHand(InteractionHand.MAIN_HAND, dark);
 				}
-				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 		} else {
 			isSneaking = false;
 		}
 
-		if(playerIn.getItemInHand(Hand.MAIN_HAND).getItem() instanceof ItemLightsaber && playerIn.getItemInHand(Hand.OFF_HAND).isEmpty()) {
+		if(playerIn.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ItemLightsaber && playerIn.getItemInHand(InteractionHand.OFF_HAND).isEmpty()) {
 			holdsOne = true;
-		} else if(playerIn.getItemInHand(Hand.OFF_HAND).getItem() instanceof ItemLightsaber && playerIn.getItemInHand(Hand.MAIN_HAND).isEmpty()) {
+		} else if(playerIn.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ItemLightsaber && playerIn.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
 			holdsOne = true;
 		} else {
 			holdsOne = false;	
@@ -185,19 +185,19 @@ public class ItemLightsaber extends Item{
 
 		if(holdsOne){
 			playerIn.startUsingItem(handIn);
-			return new ActionResult<ItemStack>(ActionResultType.SUCCESS, itemStackIn);
+			return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, itemStackIn);
 		}
 
-		return new ActionResult<ItemStack>(ActionResultType.PASS, itemStackIn);
+		return new InteractionResultHolder<ItemStack>(InteractionResult.PASS, itemStackIn);
 	}
 	
 	@Override
-	public UseAction getUseAnimation(ItemStack stack)
+	public UseAnim getUseAnimation(ItemStack stack)
 	{
 		if(isSneaking) {
-			return UseAction.NONE;
+			return UseAnim.NONE;
 		} else {
-			return UseAction.BLOCK;
+			return UseAnim.BLOCK;
 		}
 	}
 	
@@ -208,11 +208,11 @@ public class ItemLightsaber extends Item{
 	}
 
 	@Override
-	public boolean onDroppedByPlayer(ItemStack itemStackIn, PlayerEntity playerIn)
+	public boolean onDroppedByPlayer(ItemStack itemStackIn, Player playerIn)
 	{
-		World worldIn = playerIn.getCommandSenderWorld();
+		Level worldIn = playerIn.getCommandSenderWorld();
 		Item item = itemStackIn.getItem();
-		CompoundNBT tag = item.getShareTag(itemStackIn);
+		CompoundTag tag = item.getShareTag(itemStackIn);
 		
 		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
 		red.setTag(tag);
@@ -239,91 +239,91 @@ public class ItemLightsaber extends Item{
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, red);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, red);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, red);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, red);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.blue_lightsaber){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, blue);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, blue);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, blue);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, blue);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.green_lightsaber){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, green);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, green);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, green);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, green);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.yellow_lightsaber){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, yellow);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, yellow);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, yellow);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, yellow);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.purple_lightsaber){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, purple);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, purple);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, purple);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, purple);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.white_lightsaber){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, white);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, white);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, white);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, white);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 		if(item == LightsaberItems.darksaber){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
-				playerIn.setItemInHand(Hand.OFF_HAND, dark);
+				playerIn.setItemInHand(InteractionHand.OFF_HAND, dark);
 			}
 			else
 			{
-				playerIn.setItemInHand(Hand.MAIN_HAND, dark);
+				playerIn.setItemInHand(InteractionHand.MAIN_HAND, dark);
 			}
-			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
 
@@ -336,7 +336,7 @@ public class ItemLightsaber extends Item{
 	@Override
 	public int getUseDuration(ItemStack stack)
 	{
-		if(stack.getUseAnimation() == UseAction.BLOCK) {
+		if(stack.getUseAnimation() == UseAnim.BLOCK) {
 			return 72000;
 		} else {
 			return 0;
@@ -347,15 +347,15 @@ public class ItemLightsaber extends Item{
 	public boolean onEntitySwing(ItemStack stack, LivingEntity entityLiving)
 	{
 		if(stack.getItem() == LightsaberItems.darksaber){
-			entityLiving.level.playSound((PlayerEntity) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.darksaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			entityLiving.level.playSound((Player) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.darksaber_swing, SoundSource.HOSTILE, 1.0F, 1.0F);
 		} else {
-			entityLiving.level.playSound((PlayerEntity) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.lightsaber_swing, SoundCategory.HOSTILE, 1.0F, 1.0F);
+			entityLiving.level.playSound((Player) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.lightsaber_swing, SoundSource.HOSTILE, 1.0F, 1.0F);
 		}
 		return false;
 	}
 
 	@Override
-	public boolean canAttackBlock(BlockState state, World world, BlockPos pos, PlayerEntity player)
+	public boolean canAttackBlock(BlockState state, Level world, BlockPos pos, Player player)
 	{
 		return !player.isCreative();
 	}
@@ -374,7 +374,7 @@ public class ItemLightsaber extends Item{
 			return 15.0F;
 		} else {
 			Material lvt_4_1_ = state.getMaterial();
-			return lvt_4_1_ != Material.PLANT && lvt_4_1_ != Material.REPLACEABLE_PLANT && lvt_4_1_ != Material.CORAL
+			return lvt_4_1_ != Material.PLANT && lvt_4_1_ != Material.REPLACEABLE_PLANT
 					&& !state.is(BlockTags.LEAVES) && lvt_4_1_ != Material.VEGETABLE ? 1.0F : 1.5F;
 		}
 	}
@@ -389,13 +389,13 @@ public class ItemLightsaber extends Item{
 	
 	@SuppressWarnings("static-access")
 	@Override
-	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player)
+	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, Player player)
 	{
 		BlockState state = player.level.getBlockState(pos);
 		Block block = state.getBlock();
-		if(!player.isCreative() && block instanceof TNTBlock && state.getProperties().contains(TNTBlock.UNSTABLE) && !state.getValue(TNTBlock.UNSTABLE)) {
+		if(!player.isCreative() && block instanceof TntBlock && state.getProperties().contains(TntBlock.UNSTABLE) && !state.getValue(TntBlock.UNSTABLE)) {
 			try {
-				((TNTBlock) block).catchFire(state, player.level, pos, player.getDirection(), player);
+				((TntBlock) block).catchFire(state, player.level, pos, player.getDirection(), player);
 				player.level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
 			} catch(Exception e) {
 			}
@@ -416,9 +416,9 @@ public class ItemLightsaber extends Item{
         return this.getItemStackLimit(stack) == 1;
     }
 	
-	public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.enchantment.Enchantment enchantment)
+	public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.world.item.enchantment.Enchantment enchantment)
 	{
-		if(enchantment.category == EnchantmentType.WEAPON)
+		if(enchantment.category == EnchantmentCategory.WEAPON)
 			return true;
 		else
 			return false;
@@ -435,9 +435,9 @@ public class ItemLightsaber extends Item{
 	/**
 	 * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
 	 */
-	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlotType equipmentSlot)
+	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot)
 	{
-		return equipmentSlot == EquipmentSlotType.MAINHAND ? this.attribute : super.getDefaultAttributeModifiers(equipmentSlot);
+		return equipmentSlot == EquipmentSlot.MAINHAND ? this.attribute : super.getDefaultAttributeModifiers(equipmentSlot);
 	}
 
 	public static enum LightsaberTier{
