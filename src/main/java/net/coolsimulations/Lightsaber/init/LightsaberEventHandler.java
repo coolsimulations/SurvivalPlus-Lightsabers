@@ -1,6 +1,5 @@
 package net.coolsimulations.Lightsaber.init;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -19,7 +18,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.WetSpongeBlock;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -43,9 +41,6 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.TickEvent.WorldTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
@@ -56,35 +51,10 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
-@SuppressWarnings("restriction")
 public class LightsaberEventHandler {
 	
 	public List<ItemEntity> fireProofItems = new ArrayList<ItemEntity>();
-
-	@OnlyIn(Dist.CLIENT)
-	@SubscribeEvent
-	public void onPlayerJoinedServer(ClientPlayerNetworkEvent.LoggedInEvent event) {
-		Minecraft.getInstance().deferTask(new Runnable() {
-			@Override
-			public void run() {
-				if(!SPConfig.disableSunAudio.get() && Minecraft.getInstance().gameSettings.getSoundLevel(SoundCategory.MASTER) != 0.0F && Minecraft.getInstance().gameSettings.getSoundLevel(SoundCategory.VOICE) != 0.0F) {
-					try
-					{
-						InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
-						AudioStream audioStream = new AudioStream(sound);
-						AudioPlayer.player.start(audioStream);
-					}
-					catch (Exception e)
-					{
-						System.err.println(e);
-					}
-				}
-			}
-		});
-	}
 
 	@SubscribeEvent
 	public void onplayerLogin(PlayerEvent.PlayerLoggedInEvent event)

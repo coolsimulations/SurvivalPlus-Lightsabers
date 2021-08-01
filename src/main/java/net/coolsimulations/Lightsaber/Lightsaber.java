@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Lightsaber {
 
-	public static CommonProxy proxy = (CommonProxy) DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+	public static CommonProxy proxy = (CommonProxy) DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
 	private static Lightsaber instance;
 
@@ -43,6 +43,7 @@ public class Lightsaber {
 		//LightsaberVillagers.registerVillagers(); //temp till forge issue #6112 is resolved
 		LightsaberSoundHandler.init();
 		LightsaberDispenserBehavior.init();
+		proxy.init();
 
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			LightsaberSwordBlocking.init();
