@@ -1,6 +1,5 @@
 package net.coolsimulations.Lightsaber.init;
 
-import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -8,17 +7,13 @@ import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.coolsimulations.SurvivalPlus.api.events.EntityAccessor;
-import net.coolsimulations.SurvivalPlus.api.events.SPClientPlayerJoinEvent;
 import net.coolsimulations.SurvivalPlus.api.events.SPLivingAttackEvent;
 import net.coolsimulations.SurvivalPlus.api.events.SPPlaySoundAtEntityEvent;
 import net.coolsimulations.SurvivalPlus.api.events.SPPlayerJoinEvent;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.ClickEvent;
@@ -27,7 +22,6 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.ServerAdvancementManager;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -40,8 +34,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WetSpongeBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
 public class LightsaberEventHandler {
 
@@ -52,31 +44,6 @@ public class LightsaberEventHandler {
 		onLeftClick();
 		onDamage();
 
-	}
-
-	@Environment(EnvType.CLIENT)
-	public static void onPlayerJoinedServer() {
-
-		SPClientPlayerJoinEvent.EVENT.register((manager, player, networkManager) -> {
-			Minecraft.getInstance().submit(new Runnable() {
-				@Override
-				public void run() {
-					if(!SPConfig.disableSunAudio && Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MASTER) != 0.0F && Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.VOICE) != 0.0F) {
-						try
-						{
-							InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
-							AudioStream audioStream = new AudioStream(sound);
-							AudioPlayer.player.start(audioStream);
-						}
-						catch (Exception e)
-						{
-							System.err.println(e);
-						}
-					}
-				}
-			});
-			return InteractionResult.PASS;
-		});
 	}
 
 	public static void onplayerLogin()
