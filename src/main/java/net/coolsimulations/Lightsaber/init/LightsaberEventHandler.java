@@ -1,6 +1,5 @@
 package net.coolsimulations.Lightsaber.init;
 
-import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,7 +13,6 @@ import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSponge;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGuardian;
@@ -42,38 +40,12 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
-@SuppressWarnings("restriction")
 public class LightsaberEventHandler {
-
-	@SubscribeEvent
-	public void onPlayerJoinedServer(FMLNetworkEvent.ClientConnectedToServerEvent event) {
-		Minecraft.getMinecraft().addScheduledTask(new Runnable() {
-			@Override
-			public void run() {
-				if(!SPConfig.disableSunAudio && FMLClientHandler.instance().getClient().gameSettings.getSoundLevel(SoundCategory.MASTER) != 0.0F && FMLClientHandler.instance().getClient().gameSettings.getSoundLevel(SoundCategory.VOICE) != 0.0F) {
-					try
-					{
-						InputStream sound = getClass().getClassLoader().getResourceAsStream("assets/" + Reference.MOD_ID + "/sounds/misc/hello_there.wav");
-						AudioStream audioStream = new AudioStream(sound);
-						AudioPlayer.player.start(audioStream);
-					}
-					catch (Exception e)
-					{
-						System.err.println(e);
-					}
-				}
-			}
-		});
-	}
 
 	@SubscribeEvent
 	public void onplayerLogin(PlayerLoggedInEvent event)
