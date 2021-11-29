@@ -241,8 +241,11 @@ public class LightsaberEventHandler {
 				for(int i = 0; i < event.getDrops().size(); i++) {
 					ItemStack itemstack = event.getDrops().get(i).getItem();
 					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(itemstack);
+					int original = result.getCount();
+					result.setCount(result.getCount() * itemstack.getCount());
 					if(result.getItem() instanceof ItemFood || result.getItemUseAction() == EnumAction.EAT || result.getItemUseAction() == EnumAction.DRINK) {
 						event.getDrops().set(i, new EntityItem(event.getEntity().getEntityWorld(), event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, result));
+						result.setCount(original);
 					}
 				}
 			}
