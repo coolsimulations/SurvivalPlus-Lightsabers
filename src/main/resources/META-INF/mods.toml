@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[37,]"
+loaderVersion="[39,]"
 issueTrackerURL="http://github.com/coolsimulations/survivalplus-lightsabers/issues/"
 logoFile="cubed.png"
 license="All rights reserved"
 
 [[mods]]
     modId="lightsaber"
-    version="0.1.6"
+    version="0.1.6b"
     updateJSONURL="https://coolsimulations.net/mcmods/lightsaber/versionchecker.json"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"
     displayName="SurvivalPlus Lightsabers"
@@ -18,18 +18,18 @@ license="All rights reserved"
 [[dependencies.lightsaber]]
     modId="forge"
     mandatory=true
-    versionRange="[37.0.9,]"
+    versionRange="[39.0.7,]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.lightsaber]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,]"
+    versionRange="[1.18.1,]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.lightsaber]]
     modId="survivalplus"
     mandatory=true
-    versionRange="[0.1.5,]"
+    versionRange="[0.1.6,]"
     ordering="BEFORE"
     side="BOTH"

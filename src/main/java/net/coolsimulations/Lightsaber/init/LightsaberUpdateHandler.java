@@ -20,7 +20,7 @@ public class LightsaberUpdateHandler {
 	public static void init() {
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker117.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/versionchecker118.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersion = s.next();
             s.close();
@@ -29,7 +29,7 @@ public class LightsaberUpdateHandler {
         }
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/updateinfo117.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber/updateinfo118.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersionInfo = s.nextLine();
             s.close();

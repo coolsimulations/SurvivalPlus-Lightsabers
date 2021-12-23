@@ -202,9 +202,9 @@ public class ItemLightsaber extends Item{
 	}
 	
 	@Override
-	public boolean isShield(ItemStack stack, @Nullable LivingEntity entity)
+	public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction)
 	{
-		return true;
+		return net.minecraftforge.common.ToolActions.DEFAULT_SHIELD_ACTIONS.contains(toolAction);
 	}
 
 	@Override
@@ -387,7 +387,6 @@ public class ItemLightsaber extends Item{
 		return blockIn.getBlock() == Blocks.COBWEB;
 	}
 	
-	@SuppressWarnings("static-access")
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, Player player)
 	{
@@ -395,7 +394,7 @@ public class ItemLightsaber extends Item{
 		Block block = state.getBlock();
 		if(!player.isCreative() && block instanceof TntBlock && state.getProperties().contains(TntBlock.UNSTABLE) && !state.getValue(TntBlock.UNSTABLE)) {
 			try {
-				((TntBlock) block).catchFire(state, player.level, pos, player.getDirection(), player);
+				((TntBlock) block).onCaughtFire(state, player.level, pos, player.getDirection(), player);
 				player.level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
 			} catch(Exception e) {
 			}
