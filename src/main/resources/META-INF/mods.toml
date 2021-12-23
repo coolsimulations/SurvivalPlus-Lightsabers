@@ -6,7 +6,7 @@ license="All rights reserved"
 
 [[mods]]
     modId="lightsaber"
-    version="0.1.6"
+    version="0.1.6b"
     updateJSONURL="https://coolsimulations.net/mcmods/lightsaber/versionchecker.json"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"
     displayName="SurvivalPlus Lightsabers"

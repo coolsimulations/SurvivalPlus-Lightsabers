@@ -258,7 +258,7 @@ public class LightsaberEventHandler {
 
 					List<SmokingRecipe> recipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(RecipeType.SMOKING, new SimpleContainer(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
-					if(recipe.isEmpty()) {
+					if(!recipe.isEmpty()) {
 						for(SmokingRecipe smokeingList : recipe) {
 							ItemStack result = smokeingList.getResultItem();
 							result.setCount(count);
@@ -269,7 +269,7 @@ public class LightsaberEventHandler {
 
 						List<CampfireCookingRecipe> campfireRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(RecipeType.CAMPFIRE_COOKING, new SimpleContainer(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
-						if(campfireRecipe.isEmpty()) {
+						if(!campfireRecipe.isEmpty()) {
 							for(CampfireCookingRecipe campfireList : campfireRecipe) {
 								ItemStack result = campfireList.getResultItem();
 								result.setCount(count);
@@ -280,7 +280,7 @@ public class LightsaberEventHandler {
 
 							List<SmeltingRecipe> furnaceRecipe = player.getCommandSenderWorld().getRecipeManager().getRecipesFor(RecipeType.SMELTING, new SimpleContainer(new ItemStack[]{itemstack}), player.getCommandSenderWorld());
 
-							if(furnaceRecipe.isEmpty()) {
+							if(!furnaceRecipe.isEmpty()) {
 								for(SmeltingRecipe furnaceList : furnaceRecipe) {
 									ItemStack result = furnaceList.getResultItem();
 									result.setCount(count);
