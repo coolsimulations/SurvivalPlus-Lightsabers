@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 public class LightsaberREI implements REIClientPlugin {
 	
 	@Override
-    public void postRegister() {
+    public void registerEntries(EntryRegistry registry) {
 		
 		EntryRegistry.getInstance().getEntryStacks().filter(stack->((ItemStack) stack.getValue()).getItem().asItem() instanceof ItemLightsaber).forEach(stack->EntryRegistry.getInstance().removeEntry(stack));
     }
