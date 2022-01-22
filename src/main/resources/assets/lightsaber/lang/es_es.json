@@ -46,5 +46,16 @@
   "advancements.lightsaber.lightsaber": "Un arma Elegante",
   "advancements.lightsaber.lightsaber.desc": "Consigue un Sable de Luz",
   "advancements.lightsaber.darksaber": "¿Es Eso un Sable de Luz?",
-  "advancements.lightsaber.darksaber.desc": "Consigue un Sable Oscuro"
+  "advancements.lightsaber.darksaber.desc": "Consigue un Sable Oscuro",
+  
+  "lightsaber.configgui.title": "Sables de Luz Configuraci\u00f3n",
+  "lightsaber.configgui.values": "Valores",
+  "lightsaber.configgui.general_lightsaber_damage": "General Da\u00f1o de Sables de Luz",
+  "lightsaber.configgui.general_lightsaber_speed": "General Velocidad de Sables de Luz",
+  "lightsaber.configgui.darksaber_damage": "Da\u00f1o de Sable Oscuro",
+  "lightsaber.configgui.darksaber_speed": "Velocidad de Sable Oscuro",
+  "lightsaber.configgui.white_lightsaber_damage": "Da\u00f1o de Sables de Luz Blanca",
+  "lightsaber.configgui.white_lightsaber_speed": "Velocidad de Sables de Luz Blanca",
+  "lightsaber.configgui.purple_lightsaber_damage": "Da\u00f1o de Sables de Luz P\u00farpura",
+  "lightsaber.configgui.purple_lightsaber_speed": "Velocidad de Sables de Luz P\u00farpura"
 }

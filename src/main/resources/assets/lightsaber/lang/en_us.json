@@ -46,5 +46,16 @@
   "advancements.lightsaber.lightsaber": "An Elegant Weapon",
   "advancements.lightsaber.lightsaber.desc": "Obtain a Lightsaber",
   "advancements.lightsaber.darksaber": "Is that a Lightsaber?",
-  "advancements.lightsaber.darksaber.desc": "Obtain a Darksaber"
+  "advancements.lightsaber.darksaber.desc": "Obtain a Darksaber",
+  
+  "lightsaber.configgui.title": "Lightsaber Config",
+  "lightsaber.configgui.values": "Values",
+  "lightsaber.configgui.general_lightsaber_damage": "General Lightsaber Damage",
+  "lightsaber.configgui.general_lightsaber_speed": "General Lightsaber Speed",
+  "lightsaber.configgui.darksaber_damage": "Darksaber Damage",
+  "lightsaber.configgui.darksaber_speed": "Darksaber Speed",
+  "lightsaber.configgui.white_lightsaber_damage": "White Lightsaber Damage",
+  "lightsaber.configgui.white_lightsaber_speed": "White Lightsaber Speed",
+  "lightsaber.configgui.purple_lightsaber_damage": "Purple Lightsaber Damage",
+  "lightsaber.configgui.purple_lightsaber_speed": "Purple Lightsaber Speed"
 }

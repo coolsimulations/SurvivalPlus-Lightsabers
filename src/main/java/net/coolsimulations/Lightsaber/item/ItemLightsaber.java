@@ -1,10 +1,9 @@
 package net.coolsimulations.Lightsaber.item;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
+import net.coolsimulations.Lightsaber.config.LightsaberConfig;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
@@ -37,6 +36,7 @@ import net.minecraft.world.level.material.Material;
 public class ItemLightsaber extends Item{
 
 	private final float attackDamage;
+	private final float attackSpeed;
 	private final Multimap<Attribute, AttributeModifier> attribute;
 	private final ItemLightsaber.LightsaberTier tier;
 	private boolean isSneaking = false;
@@ -46,10 +46,11 @@ public class ItemLightsaber extends Item{
 	{
 		super(properties.stacksTo(1));
 		this.tier = tier;
-		this.attackDamage = 3.0F + tier.getAttackDamage();
+		this.attackDamage = -1.0F + tier.getAttackDamage();
+		this.attackSpeed = -4.0F + tier.getAttackSpeed();
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> attributeBuilder = ImmutableMultimap.<Attribute, AttributeModifier>builder();
 		attributeBuilder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", (double)this.attackDamage, AttributeModifier.Operation.ADDITION));
-		attributeBuilder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", -1.20000004768D, AttributeModifier.Operation.ADDITION));
+		attributeBuilder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", (double)this.attackSpeed, AttributeModifier.Operation.ADDITION));
 		this.attribute = attributeBuilder.build();
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
 			DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
@@ -440,20 +441,22 @@ public class ItemLightsaber extends Item{
 	}
 
 	public static enum LightsaberTier{
-		Lightsaber(3, 10.0F, 16.0F, 24),
-		Darksaber(3, 10.0F, 26.0F, 24),
-		White_Lightsaber(3, 10.0F, 20.0F, 24),
-		Purple_Lightsaber(3, 10.0F, 18.0F, 24);
+		Lightsaber(3, 10.0F, (float) LightsaberConfig.generalLightsaberDamage, (float) LightsaberConfig.generalLightsaberSpeed, 24),
+		Darksaber(3, 10.0F, (float) LightsaberConfig.darksaberDamage, (float) LightsaberConfig.darksaberSpeed, 24),
+		White_Lightsaber(3, 10.0F, (float) LightsaberConfig.whiteLightsaberDamage, (float) LightsaberConfig.whiteLightsaberSpeed, 24),
+		Purple_Lightsaber(3, 10.0F, (float) LightsaberConfig.purpleLightsaberDamage, (float) LightsaberConfig.purpleLightsaberSpeed, 24);
 
 		private final int harvestLevel;
 		private final float efficiency;
 		private final float attackDamage;
+		private final float attackSpeed;
 		private final int enchantability;
 
-		LightsaberTier(int harvestLevelIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn) {
+		LightsaberTier(int harvestLevelIn, float efficiencyIn, float attackDamageIn, float attackSpeedIn, int enchantabilityIn) {
 			this.harvestLevel = harvestLevelIn;
 			this.efficiency = efficiencyIn;
 			this.attackDamage = attackDamageIn;
+			this.attackSpeed = attackSpeedIn;
 			this.enchantability = enchantabilityIn;
 		}
 
@@ -461,6 +464,12 @@ public class ItemLightsaber extends Item{
 		public float getAttackDamage() {
 			// TODO Auto-generated method stub
 			return this.attackDamage;
+		}
+		
+		//@Override
+		public float getAttackSpeed() {
+			// TODO Auto-generated method stub
+			return this.attackSpeed;
 		}
 
 		//@Override
