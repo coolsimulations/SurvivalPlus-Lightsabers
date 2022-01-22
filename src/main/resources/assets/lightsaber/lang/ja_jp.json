@@ -46,5 +46,16 @@
   "advancements.lightsaber.lightsaber": "\u30a8\u30ec\u30ac\u30f3\u30c8\u306a\u6b66\u5668",
   "advancements.lightsaber.lightsaber.desc": "\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u3092\u5165\u624b\u3059\u308b",
   "advancements.lightsaber.darksaber": "\u305d\u308c\u306f\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u3067\u3059\u304b\uff1f",
-  "advancements.lightsaber.darksaber.desc": "\u30c0\u30fc\u30af\u30bb\u30a4\u30d0\u30fc\u3092\u5165\u624b\u3059\u308b"
+  "advancements.lightsaber.darksaber.desc": "\u30c0\u30fc\u30af\u30bb\u30a4\u30d0\u30fc\u3092\u5165\u624b\u3059\u308b",
+  
+  "lightsaber.configgui.title": "\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u69cb\u6210",
+  "lightsaber.configgui.values": "\u5024",
+  "lightsaber.configgui.general_lightsaber_damage": "\u4e00\u822c\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u529b",
+  "lightsaber.configgui.general_lightsaber_speed": "\u4e00\u822c\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u901f\u5ea6",
+  "lightsaber.configgui.darksaber_damage": "\u30c0\u30fc\u30af\u30bb\u30fc\u30d0\u30fc\u529b",
+  "lightsaber.configgui.darksaber_speed": "\u30c0\u30fc\u30af\u30bb\u30fc\u30d0\u30fc\u901f\u5ea6",
+  "lightsaber.configgui.white_lightsaber_damage": "\u30db\u30ef\u30a4\u30c8\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u529b",
+  "lightsaber.configgui.white_lightsaber_speed": "\u30db\u30ef\u30a4\u30c8\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u901f\u5ea6",
+  "lightsaber.configgui.purple_lightsaber_damage": "\u30d1\u30fc\u30d7\u30eb\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u529b",
+  "lightsaber.configgui.purple_lightsaber_speed": "\u30d1\u30fc\u30d7\u30eb\u30e9\u30a4\u30c8\u30bb\u30fc\u30d0\u30fc\u901f\u5ea6"
 }
