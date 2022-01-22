@@ -46,5 +46,16 @@
   "advancements.lightsaber.lightsaber": "\u4f18\u96c5\u7684\u6b66\u5668",
   "advancements.lightsaber.lightsaber.desc": "\u83b7\u5f97\u5149\u5251",
   "advancements.lightsaber.darksaber": "\u90a3\u662f\u5149\u5251\u5417\uff1f",
-  "advancements.lightsaber.darksaber.desc": "\u83b7\u5f97\u6697\u5251"
+  "advancements.lightsaber.darksaber.desc": "\u83b7\u5f97\u6697\u5251",
+  
+  "lightsaber.configgui.title": "\u5149\u5251\u7ec4\u6001",
+  "lightsaber.configgui.values": "\u4ef7\u503c",
+  "lightsaber.configgui.general_lightsaber_damage": "\u4e00\u822c\u7684\u5149\u5251\u4f24\u5bb3",
+  "lightsaber.configgui.general_lightsaber_speed": "\u4e00\u822c\u7684\u5149\u5251\u901f\u5ea6",
+  "lightsaber.configgui.darksaber_damage": "\u6697\u5251\u4f24\u5bb3",
+  "lightsaber.configgui.darksaber_speed": "\u6697\u5251\u901f\u5ea6",
+  "lightsaber.configgui.white_lightsaber_damage": "\u767d\u5149\u5251\u4f24\u5bb3",
+  "lightsaber.configgui.white_lightsaber_speed": "\u767d\u5149\u5251\u901f\u5ea6",
+  "lightsaber.configgui.purple_lightsaber_damage": "\u7d2b\u8272\u5149\u5251\u4f24\u5bb3",
+  "lightsaber.configgui.purple_lightsaber_speed": "\u7d2b\u8272\u5149\u5251\u901f\u5ea6"
 }
