@@ -1,5 +1,9 @@
 package net.coolsimulations.Lightsaber;
 
+import java.io.File;
+
+import net.coolsimulations.Lightsaber.config.LightsaberConfig;
+import net.coolsimulations.Lightsaber.config.LightsaberConfigGUI;
 import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
@@ -15,10 +19,13 @@ import net.minecraft.resources.ResourceLocation;
 //import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 //import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.fmlclient.ConfigGuiHandler.ConfigGuiFactory;
 
 @Mod(value = Reference.MOD_ID)
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -37,6 +44,14 @@ public class Lightsaber {
 
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
 		SPReference.MOD_ADDON_NAMES.add("sp.lightsaber.name");
+		LightsaberConfig.init(new File(FMLPaths.CONFIGDIR.get().toFile(), Reference.MOD_ID + "-common.json"));
+		
+		if(SPCompatibilityManager.isClothConfigLoaded()) {
+			ModLoadingContext.get().registerExtensionPoint(ConfigGuiFactory.class, () -> new ConfigGuiFactory((mc, screen) -> {
+				return LightsaberConfigGUI.getConfigScreen(screen);
+			}));
+		}
+
 		LightsaberUpdateHandler.init();
 		LightsaberItems.init();
 		LightsaberItems.register();
