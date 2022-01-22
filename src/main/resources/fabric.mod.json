@@ -25,6 +25,9 @@
     "client": [
       "net.coolsimulations.Lightsaber.LightsaberClient"
     ],
+    "modmenu": [
+      "net.coolsimulations.Lightsaber.config.LSConfigGUI"
+    ],
     "rei_plugins": [
       "net.coolsimulations.Lightsaber.util.LightsaberREI"
     ]
