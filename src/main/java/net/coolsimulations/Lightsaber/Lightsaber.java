@@ -1,8 +1,10 @@
 package net.coolsimulations.Lightsaber;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.coolsimulations.Lightsaber.config.LightsaberConfig;
 import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberFutureMCRecipes;
@@ -28,8 +30,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS, dependencies = Reference.DEPENDENCIES, guiFactory = "net.coolsimulations.Lightsaber.config.LightsaberConfigGUI", updateJSON = "https://coolsimulations.net/mcmods/lightsaber/versionchecker.json")
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS, dependencies = Reference.DEPENDENCIES, updateJSON = "https://coolsimulations.net/mcmods/lightsaber/versionchecker.json")
 public class Lightsaber {
 	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
@@ -44,6 +46,7 @@ public class Lightsaber {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		System.out.println("Pre Init");
+		LightsaberConfig.init(new File(event.getModConfigurationDirectory(), Reference.LIGHTSABER_CONFIG_FILE));
 		SPReference.MOD_ADDON_NAMES.add("sp.lightsaber.name");
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
 		LightsaberItems.init();

@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import net.coolsimulations.Lightsaber.Lightsaber;
 import net.coolsimulations.Lightsaber.Reference;
+import net.coolsimulations.Lightsaber.config.LightsaberConfig;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
@@ -40,12 +41,22 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 public class LightsaberEventHandler {
+
+	@SubscribeEvent
+	public void onConfigChanged(ConfigChangedEvent event)
+	{
+		if (event.getModID().equals(Reference.MOD_ID))
+		{
+			LightsaberConfig.syncConfig(false);
+		}
+	}
 
 	@SubscribeEvent
 	public void onplayerLogin(PlayerLoggedInEvent event)
@@ -257,7 +268,7 @@ public class LightsaberEventHandler {
 
 		if(event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			
+
 			if(player.getActiveItemStack().getItem() instanceof ItemLightsaber) {
 				Item lightsaber = player.getActiveItemStack().getItem();
 

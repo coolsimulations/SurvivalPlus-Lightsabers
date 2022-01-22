@@ -46,3 +46,13 @@ advancements.lightsaber.lightsaber=エレガントな武器
 advancements.lightsaber.lightsaber.desc=ライトセーバーを入手する
 advancements.lightsaber.darksaber=それはライトセーバーですか？
 advancements.lightsaber.darksaber.desc=ダークセイバーを入手する
+
+lightsaber.configgui.title=ライトセーバー構成
+lightsaber.configgui.general_lightsaber_damage=一般ライトセーバー力
+lightsaber.configgui.general_lightsaber_speed=一般ライトセーバー速度
+lightsaber.configgui.darksaber_damage=ダークセーバー力
+lightsaber.configgui.darksaber_speed=ダークセーバー速度
+lightsaber.configgui.white_lightsaber_damage=ホワイトライトセーバー力
+lightsaber.configgui.white_lightsaber_speed=ホワイトライトセーバー速度
+lightsaber.configgui.purple_lightsaber_damage=パープルライトセーバー力
+lightsaber.configgui.purple_lightsaber_speed=パープルライトセーバー速度

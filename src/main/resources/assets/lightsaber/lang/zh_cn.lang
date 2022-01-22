@@ -46,3 +46,13 @@ advancements.lightsaber.lightsaber=优雅的武器
 advancements.lightsaber.lightsaber.desc=获得光剑
 advancements.lightsaber.darksaber=那是光剑吗？
 advancements.lightsaber.darksaber.desc=获得暗剑
+
+lightsaber.configgui.title=光剑组态
+lightsaber.configgui.general_lightsaber_damage=一般的光剑伤害
+lightsaber.configgui.general_lightsaber_speed=一般的光剑速度
+lightsaber.configgui.darksaber_damage=暗剑伤害
+lightsaber.configgui.darksaber_speed=暗剑速度
+lightsaber.configgui.white_lightsaber_damage=白光剑伤害
+lightsaber.configgui.white_lightsaber_speed=白光剑速度
+lightsaber.configgui.purple_lightsaber_damage=紫色光剑伤害
+lightsaber.configgui.purple_lightsaber_speed=紫色光剑速度

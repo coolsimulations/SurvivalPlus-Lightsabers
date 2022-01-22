@@ -46,3 +46,13 @@ advancements.lightsaber.lightsaber=Элегантное оружие
 advancements.lightsaber.lightsaber.desc=Получить световой меч
 advancements.lightsaber.darksaber=Это световой меч?
 advancements.lightsaber.darksaber.desc=Получить Темный Меч
+
+lightsaber.configgui.title=световые мечи конфигурация
+lightsaber.configgui.general_lightsaber_damage=Общее световой меч Урон
+lightsaber.configgui.general_lightsaber_speed=Общее световой меч Скорость
+lightsaber.configgui.darksaber_damage=Тёмный меч Урон
+lightsaber.configgui.darksaber_speed=Тёмный меч Скорость
+lightsaber.configgui.white_lightsaber_damage=Белый световой меч Урон
+lightsaber.configgui.white_lightsaber_speed=Белый световой меч Скорость
+lightsaber.configgui.purple_lightsaber_damage=Фиолетовый световой меч Урон
+lightsaber.configgui.purple_lightsaber_speed=Фиолетовый световой меч Скорость

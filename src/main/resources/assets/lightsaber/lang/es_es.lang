@@ -46,3 +46,13 @@ advancements.lightsaber.lightsaber=Un arma Elegante
 advancements.lightsaber.lightsaber.desc=Consigue un Sable de Luz
 advancements.lightsaber.darksaber=¿Es Eso un Sable de Luz?
 advancements.lightsaber.darksaber.desc=Consigue un Sable Oscuro
+
+lightsaber.configgui.title=Sables de Luz Configuración
+lightsaber.configgui.general_lightsaber_damage=General Daño de Sables de Luz
+lightsaber.configgui.general_lightsaber_speed=General Velocidad de Sables de Luz
+lightsaber.configgui.darksaber_damage=Daño de Sable Oscuro
+lightsaber.configgui.darksaber_speed=Velocidad de Sable Oscuro
+lightsaber.configgui.white_lightsaber_damage=Daño de Sables de Luz Blanca
+lightsaber.configgui.white_lightsaber_speed=Velocidad de Sables de Luz Blanca
+lightsaber.configgui.purple_lightsaber_damage=Daño de Sables de Luz Púrpura
+lightsaber.configgui.purple_lightsaber_speed=Velocidad de Sables de Luz Púrpura

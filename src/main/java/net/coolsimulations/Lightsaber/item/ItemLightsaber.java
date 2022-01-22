@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Multimap;
 
+import net.coolsimulations.Lightsaber.config.LightsaberConfig;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
@@ -38,6 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLightsaber extends Item {
 
 	private final float attackDamage;
+	private final float attackSpeed;
 	private final ItemLightsaber.LightsaberMaterial material;
 	private boolean isSneaking = false;
 	private boolean holdsOne = false;
@@ -46,7 +48,8 @@ public class ItemLightsaber extends Item {
 	{
 		this.material = material;
 		this.maxStackSize = 1;
-		this.attackDamage = 3.0F + material.getDamageVsEntity();
+		this.attackDamage = -1.0F + material.getDamageVsEntity();
+		this.attackSpeed = -4.0F + material.getSpeed();
 		if(!SPCompatibilityManager.isSwordBlockingLoaded()) {
 			this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter()
 			{
@@ -477,7 +480,7 @@ public class ItemLightsaber extends Item {
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
 		{
 			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)this.attackDamage, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.2000000476837158D, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double)this.attackSpeed, 0));
 		}
 
 		return multimap;
@@ -485,10 +488,10 @@ public class ItemLightsaber extends Item {
 
 	public static enum LightsaberMaterial
 	{
-		Lightsaber(3, 10.0F, 16.0F, 24),
-		Darksaber(3, 10.0F, 26.0F, 24),
-		White_Lightsaber(3, 10.0F, 20.0F, 24),
-		Purple_Lightsaber(3, 10.0F, 18.0F, 24);
+		Lightsaber(3, 10.0F, (float) LightsaberConfig.generalLightsaberDamage, (float) LightsaberConfig.generalLightsaberSpeed, 24),
+		Darksaber(3, 10.0F, (float) LightsaberConfig.darksaberDamage, (float) LightsaberConfig.darksaberSpeed, 24),
+		White_Lightsaber(3, 10.0F, (float) LightsaberConfig.whiteLightsaberDamage, (float) LightsaberConfig.whiteLightsaberSpeed, 24),
+		Purple_Lightsaber(3, 10.0F, (float) LightsaberConfig.purpleLightsaberDamage, (float) LightsaberConfig.purpleLightsaberSpeed, 24);
 
 		/** The level of material this tool can harvest (3 = DIAMOND, 2 = IRON, 1 = STONE, 0 = WOOD/GOLD) */
 		private final int harvestLevel;
@@ -497,6 +500,8 @@ public class ItemLightsaber extends Item {
 		private final float efficiencyOnProperMaterial;
 		/** Damage versus entities. */
 		private final float damageVsEntity;
+		/** Swing Speed. */
+		private final float swingSpeed;
 		/** Defines the natural enchantability factor of the material. */
 		private final int enchantability;
 
@@ -504,11 +509,12 @@ public class ItemLightsaber extends Item {
 		@Deprecated public Item customCraftingMaterial = null; // Remote in 1.8.1
 		private ItemStack repairMaterial = null;
 
-		LightsaberMaterial(int harvestLevel, float efficiency, float damageVsEntity, int enchantability)
+		LightsaberMaterial(int harvestLevel, float efficiency, float damageVsEntity, float swingSpeed, int enchantability)
 		{
 			this.harvestLevel = harvestLevel;
 			this.efficiencyOnProperMaterial = efficiency;
 			this.damageVsEntity = damageVsEntity;
+			this.swingSpeed = swingSpeed;
 			this.enchantability = enchantability;
 		}
 
@@ -526,6 +532,14 @@ public class ItemLightsaber extends Item {
 		public float getDamageVsEntity()
 		{
 			return this.damageVsEntity;
+		}
+		
+		/**
+		 * Returns the damage against a given entity.
+		 */
+		public float getSpeed()
+		{
+			return this.swingSpeed;
 		}
 
 		/**
