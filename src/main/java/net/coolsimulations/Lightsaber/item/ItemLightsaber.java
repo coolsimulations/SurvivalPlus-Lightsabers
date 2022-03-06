@@ -64,30 +64,30 @@ public class ItemLightsaber extends Item{
 		Item item = itemStackIn.getItem();
 		CompoundTag tag = item.getShareTag(itemStackIn);
 
-		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
+		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt.get());
 		red.setTag(tag);
 
-		ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt);
+		ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt.get());
 		blue.setTag(tag);
 
-		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
+		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt.get());
 		green.setTag(tag);
 		
-		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
+		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt.get());
 		yellow.setTag(tag);
 
-		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt);
+		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt.get());
 		purple.setTag(tag);
 
-		ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt);
+		ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt.get());
 		white.setTag(tag);
 
-		ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt);
+		ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt.get());
 		dark.setTag(tag);
 
 		if(playerIn.isCrouching()) {
 			isSneaking = true;
-			if(item == LightsaberItems.red_lightsaber){
+			if(item == LightsaberItems.red_lightsaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -99,7 +99,7 @@ public class ItemLightsaber extends Item{
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
-			if(item == LightsaberItems.blue_lightsaber){
+			if(item == LightsaberItems.blue_lightsaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -111,7 +111,7 @@ public class ItemLightsaber extends Item{
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
-			if(item == LightsaberItems.green_lightsaber){
+			if(item == LightsaberItems.green_lightsaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -123,7 +123,7 @@ public class ItemLightsaber extends Item{
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
-			if(item == LightsaberItems.yellow_lightsaber){
+			if(item == LightsaberItems.yellow_lightsaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -136,7 +136,7 @@ public class ItemLightsaber extends Item{
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
 
-			if(item == LightsaberItems.purple_lightsaber){
+			if(item == LightsaberItems.purple_lightsaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -148,7 +148,7 @@ public class ItemLightsaber extends Item{
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
-			if(item == LightsaberItems.white_lightsaber){
+			if(item == LightsaberItems.white_lightsaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -160,7 +160,7 @@ public class ItemLightsaber extends Item{
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			}
-			if(item == LightsaberItems.darksaber){
+			if(item == LightsaberItems.darksaber.get()){
 
 				if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 				{
@@ -215,28 +215,28 @@ public class ItemLightsaber extends Item{
 		Item item = itemStackIn.getItem();
 		CompoundTag tag = item.getShareTag(itemStackIn);
 		
-		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
+		ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt.get());
 		red.setTag(tag);
 
-		ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt);
+		ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt.get());
 		blue.setTag(tag);
 
-		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
+		ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt.get());
 		green.setTag(tag);
 		
-		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
+		ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt.get());
 		yellow.setTag(tag);
 
-		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt);
+		ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt.get());
 		purple.setTag(tag);
 
-		ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt);
+		ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt.get());
 		white.setTag(tag);
 
-		ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt);
+		ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt.get());
 		dark.setTag(tag);
 		
-		if(item == LightsaberItems.red_lightsaber){
+		if(item == LightsaberItems.red_lightsaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -249,7 +249,7 @@ public class ItemLightsaber extends Item{
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
-		if(item == LightsaberItems.blue_lightsaber){
+		if(item == LightsaberItems.blue_lightsaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -262,7 +262,7 @@ public class ItemLightsaber extends Item{
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
-		if(item == LightsaberItems.green_lightsaber){
+		if(item == LightsaberItems.green_lightsaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -275,7 +275,7 @@ public class ItemLightsaber extends Item{
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
-		if(item == LightsaberItems.yellow_lightsaber){
+		if(item == LightsaberItems.yellow_lightsaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -288,7 +288,7 @@ public class ItemLightsaber extends Item{
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
-		if(item == LightsaberItems.purple_lightsaber){
+		if(item == LightsaberItems.purple_lightsaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -301,7 +301,7 @@ public class ItemLightsaber extends Item{
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
-		if(item == LightsaberItems.white_lightsaber){
+		if(item == LightsaberItems.white_lightsaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -314,7 +314,7 @@ public class ItemLightsaber extends Item{
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 			return true;
 		}
-		if(item == LightsaberItems.darksaber){
+		if(item == LightsaberItems.darksaber.get()){
 
 			if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 			{
@@ -347,7 +347,7 @@ public class ItemLightsaber extends Item{
 	@Override
 	public boolean onEntitySwing(ItemStack stack, LivingEntity entityLiving)
 	{
-		if(stack.getItem() == LightsaberItems.darksaber){
+		if(stack.getItem() == LightsaberItems.darksaber.get()){
 			entityLiving.level.playSound((Player) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.darksaber_swing, SoundSource.HOSTILE, 1.0F, 1.0F);
 		} else {
 			entityLiving.level.playSound((Player) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.lightsaber_swing, SoundSource.HOSTILE, 1.0F, 1.0F);

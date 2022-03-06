@@ -1,34 +1,23 @@
 package net.coolsimulations.Lightsaber.init;
 
+import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.SurvivalPlus.api.SPTabs;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class LightsaberBlocks {
 	
-	public static Block holocron;
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
+	public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 	
-	public static void init() {
-		
-		holocron = new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(3.5F)).setRegistryName("holocron");
-		
-	}
+	public static final RegistryObject<Block> holocron = BLOCKS.register("holocron", () -> new Block(Block.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(3.5F)));
 	
-	public static void register() {
-		
-		registerBlock(holocron);
-	}
-	
-	public static void registerBlock(Block block) {
-		
-		BlockItem BlockItem = new BlockItem(block, new Item.Properties().tab(SPTabs.tabBlocks));
-		BlockItem.setRegistryName(block.getRegistryName());
-		ForgeRegistries.BLOCKS.register(block);
-		ForgeRegistries.ITEMS.register(BlockItem);
-	}
+	public static final RegistryObject<Item> holocron_item = BLOCK_ITEMS.register("holocron", () -> new BlockItem(holocron.get(), new Item.Properties().tab(SPTabs.tabBlocks)));
 
 }

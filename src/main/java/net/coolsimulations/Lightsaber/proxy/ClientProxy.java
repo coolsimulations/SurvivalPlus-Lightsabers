@@ -27,19 +27,19 @@ public class ClientProxy extends CommonProxy{
 	@SubscribeEvent
 	public static void registerProperties(FMLClientSetupEvent event)
 	{
-		ItemProperties.register(LightsaberItems.red_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.red_lightsaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
-		ItemProperties.register(LightsaberItems.blue_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.blue_lightsaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
-		ItemProperties.register(LightsaberItems.green_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.green_lightsaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
-		ItemProperties.register(LightsaberItems.yellow_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.yellow_lightsaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
-		ItemProperties.register(LightsaberItems.purple_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.purple_lightsaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
-		ItemProperties.register(LightsaberItems.white_lightsaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.white_lightsaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
-		ItemProperties.register(LightsaberItems.darksaber, new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
+		ItemProperties.register(LightsaberItems.darksaber.get(), new ResourceLocation(Reference.MOD_ID, "blocking"), (stack, world, player, seed) -> {
 	         return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;});
 	}
 	

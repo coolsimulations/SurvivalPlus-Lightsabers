@@ -101,7 +101,7 @@ public class LightsaberEventHandler {
 	public void onSoundPlay(PlaySoundAtEntityEvent event) {
 		if(event.getSound() == SoundEvents.SHIELD_BLOCK && event.getEntity() != null) {
 			if(event.getEntity() instanceof LivingEntity && ((LivingEntity) event.getEntity()).getUseItem().getItem() instanceof ItemLightsaber) {
-				if(((LivingEntity) event.getEntity()).getUseItem().getItem() == LightsaberItems.darksaber) {
+				if(((LivingEntity) event.getEntity()).getUseItem().getItem() == LightsaberItems.darksaber.get()) {
 					event.setSound(LightsaberSoundHandler.darksaber_hit);
 				} else {
 					event.setSound(LightsaberSoundHandler.lightsaber_hit);
@@ -119,28 +119,28 @@ public class LightsaberEventHandler {
 
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			if(event.getItemStack().getItem() instanceof ItemLightsaber && event.getPlayer().isCrouching()) {
-				ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt);
+				ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt.get());
 				red.setTag(tag);
 
-				ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt);
+				ItemStack blue = new ItemStack(LightsaberItems.blue_lightsaber_hilt.get());
 				blue.setTag(tag);
 
-				ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt);
+				ItemStack green = new ItemStack(LightsaberItems.green_lightsaber_hilt.get());
 				green.setTag(tag);
 
-				ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt);
+				ItemStack yellow = new ItemStack(LightsaberItems.yellow_lightsaber_hilt.get());
 				yellow.setTag(tag);
 
-				ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt);
+				ItemStack purple = new ItemStack(LightsaberItems.purple_lightsaber_hilt.get());
 				purple.setTag(tag);
 
-				ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt);
+				ItemStack white = new ItemStack(LightsaberItems.white_lightsaber_hilt.get());
 				white.setTag(tag);
 
-				ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt);
+				ItemStack dark = new ItemStack(LightsaberItems.darksaber_hilt.get());
 				dark.setTag(tag);
 
-				if(event.getItemStack().getItem() == LightsaberItems.red_lightsaber){
+				if(event.getItemStack().getItem() == LightsaberItems.red_lightsaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
@@ -152,7 +152,7 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 				}
-				if(event.getItemStack().getItem() == LightsaberItems.blue_lightsaber){
+				if(event.getItemStack().getItem() == LightsaberItems.blue_lightsaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
@@ -164,7 +164,7 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 				}
-				if(event.getItemStack().getItem() == LightsaberItems.green_lightsaber){
+				if(event.getItemStack().getItem() == LightsaberItems.green_lightsaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
@@ -176,7 +176,7 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 				}
-				if(event.getItemStack().getItem() == LightsaberItems.yellow_lightsaber){
+				if(event.getItemStack().getItem() == LightsaberItems.yellow_lightsaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
@@ -188,7 +188,7 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 				}
-				if(event.getItemStack().getItem() == LightsaberItems.purple_lightsaber){
+				if(event.getItemStack().getItem() == LightsaberItems.purple_lightsaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
@@ -200,7 +200,7 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 				}
-				if(event.getItemStack().getItem() == LightsaberItems.white_lightsaber){
+				if(event.getItemStack().getItem() == LightsaberItems.white_lightsaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
@@ -212,7 +212,7 @@ public class LightsaberEventHandler {
 					}
 					worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
 				}
-				if(event.getItemStack().getItem() == LightsaberItems.darksaber){
+				if(event.getItemStack().getItem() == LightsaberItems.darksaber.get()){
 
 					if (ItemStack.isSame(playerIn.getOffhandItem(), itemStackIn))
 					{
