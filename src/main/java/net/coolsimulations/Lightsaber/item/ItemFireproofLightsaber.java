@@ -1,5 +1,6 @@
 package net.coolsimulations.Lightsaber.item;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -59,6 +60,14 @@ public class ItemFireproofLightsaber extends ItemLightsaber {
 			}
 			else
 			{
+				Field ageField = ObfuscationReflectionHelper.findField(EntityItem.class, "field_70292_b");
+				int age = 0;
+				try {
+					age = ageField.getInt(entity);
+				} catch (Exception e) {
+					if(entity.world.isRemote)
+						age = entity.getAge();
+				}
 
 				entity.extinguish();
 				this.customOnEntityUpdate(entity);
@@ -136,10 +145,10 @@ public class ItemFireproofLightsaber extends ItemLightsaber {
 					entity.motionY *= -0.5D;
 				}
 
-				if (entity.getAge() != -32768) {
-					int tempAge = entity.getAge(); 
+				if (age != -32768) {
+					int tempAge = age; 
 					ObfuscationReflectionHelper.setPrivateValue(EntityItem.class, entity, ++tempAge, "field_70292_b");
-					var36 = entity.getAge();
+					var36 = age;
 				}
 
 				entity.handleWaterMovement();
@@ -159,7 +168,7 @@ public class ItemFireproofLightsaber extends ItemLightsaber {
 
 				ItemStack item = entity.getItem();
 
-				if (!entity.world.isRemote && entity.getAge() >= entity.lifespan)
+				if (!entity.world.isRemote && age >= entity.lifespan)
 				{
 					int hook = net.minecraftforge.event.ForgeEventFactory.onItemExpire(entity, item);
 					if (hook < 0) entity.setDead();
