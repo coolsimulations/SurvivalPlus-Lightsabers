@@ -41,8 +41,13 @@ import net.minecraft.world.item.crafting.SmokingRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.WetSpongeBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -237,6 +242,10 @@ public class LightsaberEventHandler {
 		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
 			if(block instanceof WetSpongeBlock) {
 				event.getWorld().setBlock(event.getPos(), Blocks.SPONGE.defaultBlockState(), 3);
+				event.getWorld().gameEvent(event.getPlayer(), GameEvent.BLOCK_PLACE, event.getPos());
+			} else if(CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state)) {
+				event.getWorld().setBlock(event.getPos(), state.setValue(BlockStateProperties.LIT, true), 11);
+				event.getWorld().gameEvent(event.getPlayer(), GameEvent.BLOCK_PLACE, event.getPos());
 			}
 		}
 	}
