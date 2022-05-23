@@ -25,5 +25,13 @@
   },
   "result": {
     "item": "lightsaber:darksaber_lens"
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "blockus"
+      ]
+    }
+  ]
 }

@@ -32,8 +32,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.WetSpongeBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class LightsaberEventHandler {
 
@@ -121,6 +126,11 @@ public class LightsaberEventHandler {
 			if(player.getItemInHand(hand).getItem() instanceof ItemLightsaber) {
 				if(block instanceof WetSpongeBlock) {
 					world.setBlock(pos, Blocks.SPONGE.defaultBlockState(), 3);
+					world.gameEvent(player, GameEvent.BLOCK_PLACE, pos);
+					return InteractionResult.SUCCESS;
+				} else if(CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state)) {
+					world.setBlock(pos, state.setValue(BlockStateProperties.LIT, true), 11);
+					world.gameEvent(player, GameEvent.BLOCK_PLACE, pos);
 					return InteractionResult.SUCCESS;
 				}
 			}
