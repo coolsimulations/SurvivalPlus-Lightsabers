@@ -7,12 +7,14 @@ import net.coolsimulations.Lightsaber.Lightsaber;
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.config.LightsaberConfig;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
+import net.coolsimulations.SurvivalPlus.api.SPBlocks;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSponge;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -42,10 +44,12 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
+import thedarkcolour.futuremc.block.villagepillage.CampfireBlock;
 
 public class LightsaberEventHandler {
 
@@ -241,6 +245,12 @@ public class LightsaberEventHandler {
 		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
 			if(block instanceof BlockSponge && state.getValue(BlockSponge.WET)) {
 				event.getWorld().setBlockState(event.getPos(), state.withProperty(BlockSponge.WET, false), 3);
+			} else if(block == SPBlocks.campfire && !state.getValue(PropertyBool.create("burning"))) {
+				event.getWorld().setBlockState(event.getPos(), state.withProperty(PropertyBool.create("burning"), true), 3);
+			} else if(SPCompatibilityManager.isFutureMCLoaded() && block instanceof CampfireBlock) {
+				PropertyBool LIT = ObfuscationReflectionHelper.getPrivateValue(CampfireBlock.class, (CampfireBlock) block, "LIT");
+				if(!state.getValue(LIT))
+					event.getWorld().setBlockState(event.getPos(), state.withProperty(LIT, true), 3);
 			}
 		}
 	}
@@ -253,10 +263,8 @@ public class LightsaberEventHandler {
 					ItemStack itemstack = event.getDrops().get(i).getItem();
 					ItemStack result = FurnaceRecipes.instance().getSmeltingResult(itemstack);
 					int original = result.getCount();
-					result.setCount(result.getCount() * itemstack.getCount());
 					if(result.getItem() instanceof ItemFood || result.getItemUseAction() == EnumAction.EAT || result.getItemUseAction() == EnumAction.DRINK) {
-						event.getDrops().set(i, new EntityItem(event.getEntity().getEntityWorld(), event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, result));
-						result.setCount(original);
+						event.getDrops().set(i, new EntityItem(event.getEntity().getEntityWorld(), event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, new ItemStack(result.getItem(), original * itemstack.getCount())));
 					}
 				}
 			}
