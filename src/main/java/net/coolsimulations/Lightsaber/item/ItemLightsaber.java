@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
 
 public class ItemLightsaber extends Item{
@@ -98,6 +99,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, red);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 			if(item == LightsaberItems.blue_lightsaber.get()){
 
@@ -110,6 +112,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, blue);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 			if(item == LightsaberItems.green_lightsaber.get()){
 
@@ -122,6 +125,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, green);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 			if(item == LightsaberItems.yellow_lightsaber.get()){
 
@@ -134,6 +138,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, yellow);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 
 			if(item == LightsaberItems.purple_lightsaber.get()){
@@ -147,6 +152,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, purple);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 			if(item == LightsaberItems.white_lightsaber.get()){
 
@@ -159,6 +165,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, white);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 			if(item == LightsaberItems.darksaber.get()){
 
@@ -171,6 +178,7 @@ public class ItemLightsaber extends Item{
 					playerIn.setItemInHand(InteractionHand.MAIN_HAND, dark);
 				}
 				worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+				worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			}
 		} else {
 			isSneaking = false;
@@ -247,6 +255,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, red);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 		if(item == LightsaberItems.blue_lightsaber.get()){
@@ -260,6 +269,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, blue);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 		if(item == LightsaberItems.green_lightsaber.get()){
@@ -273,6 +283,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, green);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 		if(item == LightsaberItems.yellow_lightsaber.get()){
@@ -286,6 +297,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, yellow);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 		if(item == LightsaberItems.purple_lightsaber.get()){
@@ -299,6 +311,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, purple);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 		if(item == LightsaberItems.white_lightsaber.get()){
@@ -312,6 +325,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, white);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.lightsaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 		if(item == LightsaberItems.darksaber.get()){
@@ -325,6 +339,7 @@ public class ItemLightsaber extends Item{
 				playerIn.setItemInHand(InteractionHand.MAIN_HAND, dark);
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_off, SoundSource.HOSTILE, 1.0F, 1.0F);
+			worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.blockPosition());
 			return true;
 		}
 
@@ -352,6 +367,7 @@ public class ItemLightsaber extends Item{
 		} else {
 			entityLiving.level.playSound((Player) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.lightsaber_swing, SoundSource.HOSTILE, 1.0F, 1.0F);
 		}
+		entityLiving.getLevel().gameEvent(entityLiving, GameEvent.FISHING_ROD_REEL_IN, entityLiving.blockPosition());
 		return false;
 	}
 
