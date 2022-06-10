@@ -6,21 +6,21 @@ import java.util.Scanner;
 import net.coolsimulations.Lightsaber.Reference;
 import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public class LightsaberUpdateHandler {
 	
 	private static String latestVersion;
 	private static String latestVersionInfo;
 	public static boolean isOld = false;
-	public static TranslatableComponent updateInfo = null;
-	public static TextComponent updateVersionInfo = null;
+	public static MutableComponent updateInfo = null;
+	public static MutableComponent updateVersionInfo = null;
 	
 	public static void init() {
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/versionchecker118.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/versionchecker119.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersion = s.next();
             s.close();
@@ -29,7 +29,7 @@ public class LightsaberUpdateHandler {
         }
 		
 		try {
-            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/updateinfo118.txt");
+            URL url = new URL("https://coolsimulations.net/mcmods/lightsaber-fabric/updateinfo119.txt");
             Scanner s = new Scanner(url.openStream());
             latestVersionInfo = s.nextLine();
             s.close();
@@ -43,16 +43,16 @@ public class LightsaberUpdateHandler {
 				
 				isOld = true;
 				
-				TranslatableComponent lightsaber = new TranslatableComponent("sp.lightsaber.name");
+				MutableComponent lightsaber = Component.translatable("sp.lightsaber.name");
 				lightsaber.withStyle(ChatFormatting.BLUE);
 				
-				TextComponent MCVersion = new TextComponent(SharedConstants.getCurrentVersion().getName());
+				MutableComponent MCVersion = Component.literal(SharedConstants.getCurrentVersion().getName());
 				MCVersion.withStyle(ChatFormatting.BLUE);
 				
-				updateInfo = new TranslatableComponent("sp.update.display3", new Object[] {lightsaber, MCVersion});
+				updateInfo = Component.translatable("sp.update.display3", new Object[] {lightsaber, MCVersion});
 				updateInfo.withStyle(ChatFormatting.YELLOW);
 				
-				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("sp.update.display2")));
+				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("sp.update.display2")));
 				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
 				
 			}
@@ -61,24 +61,24 @@ public class LightsaberUpdateHandler {
 				
 				isOld = true;
 				
-				TranslatableComponent lightsaber = new TranslatableComponent("sp.lightsaber.name");
+				MutableComponent lightsaber = Component.translatable("sp.lightsaber.name");
 				lightsaber.withStyle(ChatFormatting.BLUE);
 				
-				TextComponent version = new TextComponent(latestVersion);
+				MutableComponent version = Component.literal(latestVersion);
 				version.withStyle(ChatFormatting.BLUE);
 				
-				updateInfo = new TranslatableComponent("sp.update.display1", new Object[] {lightsaber, version});
+				updateInfo = Component.translatable("sp.update.display1", new Object[] {lightsaber, version});
 				updateInfo.withStyle(ChatFormatting.YELLOW);
 				
-				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("sp.update.display2")));
+				//updateInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("sp.update.display2")));
 				//updateInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
 				
 				if(latestVersionInfo != null) {
 					
-					updateVersionInfo = new TextComponent(latestVersionInfo);
+					updateVersionInfo = Component.literal(latestVersionInfo);
 					updateVersionInfo.withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.BOLD);
 					
-					//updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("sp.update.display2")));
+					//updateVersionInfo.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("sp.update.display2")));
 					//updateVersionInfo.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://curseforge.com/minecraft/mc-mods/survivalplus-lightsabers-fabric"));
 					
 				}

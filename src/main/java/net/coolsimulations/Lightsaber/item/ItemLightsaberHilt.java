@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class ItemLightsaberHilt extends Item{
 
@@ -131,6 +132,7 @@ public class ItemLightsaberHilt extends Item{
 			}
 			worldIn.playSound(playerIn, playerIn.blockPosition(), LightsaberSoundHandler.darksaber_on, SoundSource.HOSTILE, 1.0F, 1.0F);
 		}
+		worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.position());
 		return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, itemStackIn);
 	}
 }
