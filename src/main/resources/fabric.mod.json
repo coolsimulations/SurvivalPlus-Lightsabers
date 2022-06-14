@@ -28,7 +28,7 @@
     "modmenu": [
       "net.coolsimulations.Lightsaber.config.LSConfigGUI"
     ],
-    "rei_plugins": [
+    "rei_client": [
       "net.coolsimulations.Lightsaber.util.LightsaberREI"
     ]
   },
