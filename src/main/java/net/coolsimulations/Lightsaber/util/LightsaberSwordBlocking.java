@@ -19,7 +19,7 @@ public class LightsaberSwordBlocking {
 
 		for(ResourceLocation location : ForgeRegistries.ITEMS.getKeys()) {
 			Item item = ForgeRegistries.ITEMS.getValue(location);
-			String name = item.getRegistryName().toString();
+			String name = location.toString();
 			if(item instanceof ItemLightsaber && !include.contains(name) && !exclude.contains(name))
 				//include.add(name);
 				ConfigBuildHandler.BLOCKING_INCLUDE.get().add(name);

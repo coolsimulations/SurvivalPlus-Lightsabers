@@ -367,7 +367,7 @@ public class ItemLightsaber extends Item{
 		} else {
 			entityLiving.level.playSound((Player) entityLiving, entityLiving.blockPosition(), LightsaberSoundHandler.lightsaber_swing, SoundSource.HOSTILE, 1.0F, 1.0F);
 		}
-		entityLiving.getLevel().gameEvent(entityLiving, GameEvent.FISHING_ROD_REEL_IN, entityLiving.blockPosition());
+		entityLiving.getLevel().gameEvent(entityLiving, GameEvent.ITEM_INTERACT_FINISH, entityLiving.blockPosition());
 		return false;
 	}
 

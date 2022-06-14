@@ -11,13 +11,12 @@ import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.ServerAdvancementManager;
 import net.minecraft.server.level.ServerPlayer;
@@ -48,7 +47,7 @@ import net.minecraft.world.level.block.WetSpongeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.event.PlayLevelSoundEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -82,9 +81,9 @@ public class LightsaberEventHandler {
 
 			if(!player.level.isClientSide) {
 
-				TranslatableComponent installInfo = new TranslatableComponent("advancements.lightsaber.install.display1");
+				MutableComponent installInfo = Component.translatable("advancements.lightsaber.install.display1");
 				installInfo.withStyle(ChatFormatting.GOLD);
-				player.sendMessage(installInfo, ChatType.SYSTEM, Util.NIL_UUID);
+				player.sendSystemMessage(installInfo);
 
 			}
 		}
@@ -93,8 +92,8 @@ public class LightsaberEventHandler {
 			timer.schedule(new TimerTask() {
 				@Override
 				public void run() {
-					player.sendMessage(LightsaberUpdateHandler.updateInfo.withStyle((style) -> {return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.NIL_UUID);
-					player.sendMessage(LightsaberUpdateHandler.updateVersionInfo.withStyle((style) -> {return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}), ChatType.SYSTEM, Util.NIL_UUID);
+					player.sendSystemMessage(LightsaberUpdateHandler.updateInfo.withStyle((style) -> {return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}));
+					player.sendSystemMessage(LightsaberUpdateHandler.updateVersionInfo.withStyle((style) -> {return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("sp.update.display2"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/survivalplus-lightsabers"));}));
 
 				}
 			}, 17000);
@@ -103,7 +102,7 @@ public class LightsaberEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onSoundPlay(PlaySoundAtEntityEvent event) {
+	public void onSoundPlay(PlayLevelSoundEvent.AtEntity event) {
 		if(event.getSound() == SoundEvents.SHIELD_BLOCK && event.getEntity() != null) {
 			if(event.getEntity() instanceof LivingEntity && ((LivingEntity) event.getEntity()).getUseItem().getItem() instanceof ItemLightsaber) {
 				if(((LivingEntity) event.getEntity()).getUseItem().getItem() == LightsaberItems.darksaber.get()) {

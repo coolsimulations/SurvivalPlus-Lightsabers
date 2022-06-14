@@ -7,6 +7,7 @@ import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance.Attenuation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
@@ -46,7 +47,7 @@ public class ClientProxy extends CommonProxy{
 	@SubscribeEvent
 	public void onPlayerJoinedServer(ClientPlayerNetworkEvent.LoggedInEvent event) {
 		if(!SPConfig.disableClientAudio.get()) {
-			SimpleSoundInstance sound = new SimpleSoundInstance(LightsaberSoundHandler.hello_there.getLocation(), SoundSource.VOICE, 0.25F, 1.0F, false, 0, Attenuation.NONE, 0.0D, 0.0D, 0.0D, true);
+			SimpleSoundInstance sound = new SimpleSoundInstance(LightsaberSoundHandler.hello_there.getLocation(), SoundSource.VOICE, 0.25F, 1.0F, SoundInstance.createUnseededRandom(), false, 0, Attenuation.NONE, 0.0D, 0.0D, 0.0D, true);
 			Minecraft.getInstance().getSoundManager().play(sound);
 		}
 	}

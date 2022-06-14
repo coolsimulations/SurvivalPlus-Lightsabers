@@ -13,7 +13,7 @@
       "tag": "forge:glass/tinted"
     },
     "Q": {
-      "tag": "forge:gems/quartz"
+      "item": "minecraft:echo_shard"
     },
     "E": {
       "item": "minecraft:dragon_egg"
