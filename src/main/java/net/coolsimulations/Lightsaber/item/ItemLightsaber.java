@@ -429,7 +429,7 @@ public class ItemLightsaber extends Item{
 	
 	public boolean isEnchantable(ItemStack stack)
     {
-        return this.getItemStackLimit(stack) == 1;
+        return this.getMaxStackSize(stack) == 1;
     }
 	
 	public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.world.item.enchantment.Enchantment enchantment)

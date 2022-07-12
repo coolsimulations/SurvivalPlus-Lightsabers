@@ -61,7 +61,7 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onplayerLogin(PlayerEvent.PlayerLoggedInEvent event)
 	{
-		ServerPlayer player = (ServerPlayer) event.getPlayer();
+		ServerPlayer player = (ServerPlayer) event.getEntity();
 		CompoundTag entityData = player.getPersistentData();
 
 		ServerAdvancementManager manager = player.getServer().getAdvancements();
@@ -118,11 +118,11 @@ public class LightsaberEventHandler {
 	public void onRightClick(RightClickItem event) {
 		ItemStack itemStackIn = event.getItemStack();
 		CompoundTag tag = event.getItemStack().getItem().getShareTag(itemStackIn);
-		Player playerIn = event.getPlayer();
-		Level worldIn = event.getWorld();
+		Player playerIn = event.getEntity();
+		Level worldIn = event.getLevel();
 
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
-			if(event.getItemStack().getItem() instanceof ItemLightsaber && event.getPlayer().isCrouching()) {
+			if(event.getItemStack().getItem() instanceof ItemLightsaber && event.getEntity().isCrouching()) {
 				ItemStack red = new ItemStack(LightsaberItems.red_lightsaber_hilt.get());
 				red.setTag(tag);
 
@@ -235,16 +235,16 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onLeftClick(LeftClickBlock event) {
 
-		BlockState state = event.getWorld().getBlockState(event.getPos());
+		BlockState state = event.getLevel().getBlockState(event.getPos());
 		Block block = state.getBlock();
 
 		if(event.getItemStack().getItem() instanceof ItemLightsaber) {
 			if(block instanceof WetSpongeBlock) {
-				event.getWorld().setBlock(event.getPos(), Blocks.SPONGE.defaultBlockState(), 3);
-				event.getWorld().gameEvent(event.getPlayer(), GameEvent.BLOCK_PLACE, event.getPos());
+				event.getLevel().setBlock(event.getPos(), Blocks.SPONGE.defaultBlockState(), 3);
+				event.getLevel().gameEvent(event.getEntity(), GameEvent.BLOCK_PLACE, event.getPos());
 			} else if(CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state)) {
-				event.getWorld().setBlock(event.getPos(), state.setValue(BlockStateProperties.LIT, true), 11);
-				event.getWorld().gameEvent(event.getPlayer(), GameEvent.BLOCK_PLACE, event.getPos());
+				event.getLevel().setBlock(event.getPos(), state.setValue(BlockStateProperties.LIT, true), 11);
+				event.getLevel().gameEvent(event.getEntity(), GameEvent.BLOCK_PLACE, event.getPos());
 			}
 		}
 	}
@@ -308,8 +308,8 @@ public class LightsaberEventHandler {
 	@SubscribeEvent
 	public void onDamage(LivingAttackEvent event) {
 
-		if(event.getEntityLiving() instanceof Player) {
-			Player player = (Player) event.getEntityLiving();
+		if(event.getEntity() instanceof Player) {
+			Player player = (Player) event.getEntity();
 
 			if(player.getUseItem().getItem() instanceof ItemLightsaber) {
 				Item lightsaber = player.getUseItem().getItem();
