@@ -39,7 +39,7 @@ public class LightsaberSoundHandler {
 	
 	public static SoundEvent register(String name){
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
-		SoundEvent e = new SoundEvent(location);
+		SoundEvent e = SoundEvent.createVariableRangeEvent(location);
 		
 		ForgeRegistries.SOUND_EVENTS.register(location, e);
 		return e;

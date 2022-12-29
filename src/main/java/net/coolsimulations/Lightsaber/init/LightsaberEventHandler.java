@@ -12,6 +12,7 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -103,12 +104,12 @@ public class LightsaberEventHandler {
 
 	@SubscribeEvent
 	public void onSoundPlay(PlayLevelSoundEvent.AtEntity event) {
-		if(event.getSound() == SoundEvents.SHIELD_BLOCK && event.getEntity() != null) {
+		if(event.getSound().value() == SoundEvents.SHIELD_BLOCK && event.getEntity() != null) {
 			if(event.getEntity() instanceof LivingEntity && ((LivingEntity) event.getEntity()).getUseItem().getItem() instanceof ItemLightsaber) {
 				if(((LivingEntity) event.getEntity()).getUseItem().getItem() == LightsaberItems.darksaber.get()) {
-					event.setSound(LightsaberSoundHandler.darksaber_hit);
+					event.setSound(Holder.direct(LightsaberSoundHandler.darksaber_hit));
 				} else {
-					event.setSound(LightsaberSoundHandler.lightsaber_hit);
+					event.setSound(Holder.direct(LightsaberSoundHandler.lightsaber_hit));
 				}
 			}
 		}

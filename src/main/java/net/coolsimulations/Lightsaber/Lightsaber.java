@@ -15,6 +15,7 @@ import net.coolsimulations.Lightsaber.proxy.ClientProxy;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
 import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
+import net.coolsimulations.SurvivalPlus.api.SPItems;
 import net.coolsimulations.SurvivalPlus.api.SPReference;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
 //import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -80,6 +82,8 @@ public class Lightsaber {
 		if(SPCompatibilityManager.isSwordBlockingLoaded()) {
 			LightsaberSwordBlocking.init();
 		}
+		
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::addToTabs);
 	}
 	
 	private static void clientLoad(final FMLClientSetupEvent event)
@@ -103,6 +107,28 @@ public class Lightsaber {
 			ItemProperties.register(LightsaberItems.darksaber.get(), new ResourceLocation("blocking"), (stack, worldIn, entityIn, seed) -> {
 				return entityIn != null && entityIn.isUsingItem() && entityIn.getUseItem() == stack ? 1.0F : 0.0F;
 			});
+		}
+	}
+	
+	private void addToTabs(CreativeModeTabEvent.BuildContents event) {
+		if (event.getTab().getIconItem().getItem() == SPItems.tin_ingot.get()) {
+			event.accept(LightsaberItems.pommel_cap.get());
+			event.accept(LightsaberItems.focusing_lens.get());
+			event.accept(LightsaberItems.blade_emitter.get());
+			event.accept(LightsaberItems.emitter_matrix.get());
+			event.accept(LightsaberItems.inert_power_insulator.get());
+			event.accept(LightsaberItems.activation_stud.get());
+			event.accept(LightsaberItems.lightsaber_hilt.get());
+			event.accept(LightsaberItems.darksaber_lens.get());
+		}
+		if (event.getTab().getIconItem().getItem() == SPItems.titanium_sword.get()) {
+			event.accept(LightsaberItems.red_lightsaber_hilt.get());
+			event.accept(LightsaberItems.blue_lightsaber_hilt.get());
+			event.accept(LightsaberItems.green_lightsaber_hilt.get());
+			event.accept(LightsaberItems.yellow_lightsaber_hilt.get());
+			event.accept(LightsaberItems.purple_lightsaber_hilt.get());
+			event.accept(LightsaberItems.white_lightsaber_hilt.get());
+			event.accept(LightsaberItems.darksaber_hilt.get());
 		}
 	}
 
