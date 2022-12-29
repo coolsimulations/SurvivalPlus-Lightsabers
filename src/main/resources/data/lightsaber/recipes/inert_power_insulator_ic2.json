@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RBR",
+    "RBR",
+    "RBR"
+  ],
+  "key": {
+    "B": {
+      "item": "ic2:energy_crystal"
+    },
+    "R": {
+      "tag": "ic2:rubber"
+    }
+  },
+  "result": {
+    "item": "lightsaber:inert_power_insulator"
+  },
+  "conditions": [
+    {
+      "modid": "ic2",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

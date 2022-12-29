@@ -315,7 +315,7 @@ public class LightsaberEventHandler {
 				Item lightsaber = player.getUseItem().getItem();
 
 				if(lightsaber.getUseAnimation(player.getUseItem()) == UseAnim.BLOCK) {
-					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource().getDirectEntity() instanceof FireworkRocketEntity || event.getSource().getEntity() instanceof Guardian) {
+					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource().getDirectEntity() instanceof FireworkRocketEntity || event.getSource().getEntity() instanceof Guardian || event.getSource() == DamageSource.DRAGON_BREATH) {
 						event.setCanceled(true);
 					}
 				}

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TGT",
+    "BMB",
+    "TCT"
+  ],
+  "key": {
+    "M": {
+      "item": "lightsaber:emitter_matrix"
+    },
+    "T": {
+      "tag": "forge:plates/dense/titanium"
+    },
+    "G": {
+      "item": "ic2:reinforced_glass"
+    },
+    "B": {
+      "item": "ic2:re_battery"
+    },
+    "C": {
+      "item": "ic2:circuit"
+    }
+  },
+  "result": {
+    "item": "lightsaber:blade_emitter"
+  },
+  "conditions": [
+    {
+      "modid": "ic2",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

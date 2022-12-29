@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:emitter_matrix_ic2"
+    ]
+  },
+  "criteria": {
+    "has_copper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ic2:plate_dense_copper"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:emitter_matrix_ic2 "
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_copper",
+      "has_the_recipe"
+    ]
+  ]
+}

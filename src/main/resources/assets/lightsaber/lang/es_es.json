@@ -27,6 +27,8 @@
   "item.lightsaber.white_lightsaber": "Sable de Luz Blanca",
   "item.lightsaber.darksaber": "Sable Oscuro",
   
+  "block.lightsaber.sconce": "Candelabro de Pared (Sables de Luz)",
+  
   "item.lightsaber.lightsaber_on": "Sable de Luz Encendido",
   "item.lightsaber.lightsaber_off": "Sable de Luz Apagado",
   "item.lightsaber.lightsaber_swing": "Sable de Luz Balanceado",

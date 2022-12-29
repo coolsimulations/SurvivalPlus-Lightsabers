@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lightsaber:inert_power_insulator_ic2"
+    ]
+  },
+  "criteria": {
+    "has_rubber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "ic2:rubber"
+          }
+        ]
+      }
+    },
+    "has_energy_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ic2:energy_crystal"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lightsaber:inert_power_insulator_ic2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rubber",
+      "has_energy_crystal",
+      "has_the_recipe"
+    ]
+  ]
+}

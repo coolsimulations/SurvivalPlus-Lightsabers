@@ -27,6 +27,8 @@
   "item.lightsaber.white_lightsaber": "White Lightsaber",
   "item.lightsaber.darksaber": "Darksaber",
   
+  "block.lightsaber.sconce": "Sconce (Lightsaber)",
+  
   "item.lightsaber.lightsaber_on": "Lightsaber Turned On",
   "item.lightsaber.lightsaber_off": "Lightsaber Turned Off",
   "item.lightsaber.lightsaber_swing": "Lightsaber Swung",

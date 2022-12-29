@@ -24,5 +24,14 @@
   },
   "result": {
     "item": "lightsaber:blade_emitter"
-  }
+  },
+  "conditions": [
+    {
+      "value": {
+        "modid": "ic2",
+        "type": "forge:mod_loaded"
+      },
+      "type": "forge:not"
+    }
+  ]
 }

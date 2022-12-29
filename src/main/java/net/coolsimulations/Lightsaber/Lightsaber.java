@@ -2,8 +2,10 @@ package net.coolsimulations.Lightsaber;
 
 import java.io.File;
 
+import net.coolsimulations.Lightsaber.block.tileentity.TileEntityLightsaberSconce;
 import net.coolsimulations.Lightsaber.config.LightsaberConfig;
 import net.coolsimulations.Lightsaber.config.LightsaberConfigGUI;
+import net.coolsimulations.Lightsaber.init.LightsaberBlocks;
 import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
@@ -16,6 +18,7 @@ import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPReference;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
 //import net.minecraft.world.gen.feature.structure.StructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +29,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 //import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod(value = Reference.MOD_ID)
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -39,6 +45,11 @@ public class Lightsaber {
 	{
 		return instance;
 	}
+	
+	public static final DeferredRegister<BlockEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Reference.MOD_ID);
+	
+	public static final RegistryObject<BlockEntityType<TileEntityLightsaberSconce>> SCONCE = TILE_ENTITY_TYPES.register("sconce",
+            () -> BlockEntityType.Builder.of(TileEntityLightsaberSconce::new, LightsaberBlocks.sconce.get()).build(null));
 
 	public Lightsaber() {
 
@@ -55,7 +66,8 @@ public class Lightsaber {
 		LightsaberUpdateHandler.init();
 		LightsaberItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(Lightsaber::clientLoad);
-		//LightsaberBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus()); //temp till forge issue #6112 is resolved
+		LightsaberBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		Lightsaber.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 		//LightsaberBlocks.BLOCK_ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus()); //temp till forge issue #6112 is resolved
 		//VillagerRegistry.instance().registerVillageCreationHandler(new VillageJediHutHandler()); //temp till forge pull request #6142 is resolved
 		//StructureIO.registerStructureComponent(StructureVillageJediHut.class, Reference.MOD_ID+":jediHutStructure"); //temp till forge pull request #6142 is resolved

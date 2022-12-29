@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ICI",
+    "IBI",
+    "TTT"
+  ],
+  "key": {
+    "B": {
+      "item": "ic2:re_battery"
+    },
+    "I": {
+      "tag": "forge:ingots/refined_iron"
+    },
+    "T": {
+      "tag": "forge:plates/dense/titanium"
+    },
+    "C": {
+      "item": "ic2:advanced_circuit"
+    }
+  },
+  "result": {
+    "item": "lightsaber:pommel_cap"
+  },
+  "conditions": [
+    {
+      "modid": "ic2",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

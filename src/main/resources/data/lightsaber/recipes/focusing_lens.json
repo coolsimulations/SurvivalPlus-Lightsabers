@@ -18,5 +18,14 @@
   },
   "result": {
     "item": "lightsaber:focusing_lens"
-  }
+  },
+  "conditions": [
+    {
+      "value": {
+        "modid": "ic2",
+        "type": "forge:mod_loaded"
+      },
+      "type": "forge:not"
+    }
+  ]
 }

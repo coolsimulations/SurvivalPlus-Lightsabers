@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OSO",
+    "QGQ",
+    "OEO"
+  ],
+  "key": {
+    "O": {
+      "item": "ic2:coal_chunk"
+    },
+    "G": {
+      "item": "ic2:reinforced_glass"
+    },
+    "Q": {
+      "item": "minecraft:echo_shard"
+    },
+    "E": {
+      "item": "minecraft:dragon_egg"
+    },
+    "S": {
+      "tag": "forge:gems/spinel"
+    }
+  },
+  "result": {
+    "item": "lightsaber:darksaber_lens"
+  },
+  "conditions": [
+    {
+      "modid": "ic2",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}
