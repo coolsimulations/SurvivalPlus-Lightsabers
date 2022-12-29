@@ -30,6 +30,9 @@
     ],
     "rei_client": [
       "net.coolsimulations.Lightsaber.util.LightsaberREI"
+    ],
+    "emi": [
+      "net.coolsimulations.Lightsaber.util.LightsaberEMI"
     ]
   },
   
@@ -38,7 +41,7 @@
     ],
 
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": ">=0.14.12",
     "fabric": "*",
     "minecraft": "1.19.x",
     "survivalplus": "*"

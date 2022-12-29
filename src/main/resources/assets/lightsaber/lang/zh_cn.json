@@ -27,6 +27,8 @@
   "item.lightsaber.white_lightsaber": "\u767d\u5149\u5251",
   "item.lightsaber.darksaber": "\u6697\u5251",
   
+  "block.lightsaber.sconce": "\u58c1\u706f\uff08\u5149\u5251\uff09",
+  
   "item.lightsaber.lightsaber_on": "\u5149\u5251\u5f00\u542f",
   "item.lightsaber.lightsaber_off": "\u5149\u5251\u5173\u95ed",
   "item.lightsaber.lightsaber_swing": "\u5149\u5251\u6325\u821e",

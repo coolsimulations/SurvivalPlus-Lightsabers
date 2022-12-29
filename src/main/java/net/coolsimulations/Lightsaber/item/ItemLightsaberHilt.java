@@ -1,8 +1,14 @@
 package net.coolsimulations.Lightsaber.item;
 
+import net.coolsimulations.Lightsaber.block.LightsaberSconce;
+import net.coolsimulations.Lightsaber.block.tileentity.TileEntityLightsaberSconce;
+import net.coolsimulations.Lightsaber.init.LightsaberBlocks;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
+import net.coolsimulations.SurvivalPlus.api.SPBlocks;
+import net.coolsimulations.SurvivalPlus.api.blocks.SPBlockSconce;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -11,7 +17,12 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 public class ItemLightsaberHilt extends Item{
@@ -134,5 +145,37 @@ public class ItemLightsaberHilt extends Item{
 		}
 		worldIn.gameEvent(playerIn, GameEvent.EQUIP, playerIn.position());
 		return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, itemStackIn);
+	}
+	
+	@Override
+	public InteractionResult useOn(UseOnContext context) {
+		Level worldIn = context.getLevel();
+		BlockPos pos = context.getClickedPos();
+		Player player = context.getPlayer();
+		InteractionHand hand = context.getHand();
+		BlockState state = worldIn.getBlockState(pos);
+		Block block = state.getBlock();
+		
+		if (block == SPBlocks.sconce && state.hasBlockEntity()) {
+			BlockEntity te = worldIn.getBlockEntity(pos);
+			CompoundTag tag = te.getUpdateTag();
+			if (tag.contains("torch")) {
+				int torch = tag.getInt("torch");
+				if (torch == 0) {
+					worldIn.removeBlockEntity(pos);
+					worldIn.setBlock(pos, LightsaberBlocks.sconce.defaultBlockState().setValue(LightsaberSconce.FACING, state.getValue(SPBlockSconce.FACING)).setValue(LightsaberSconce.DARKSABER, this == LightsaberItems.darksaber_hilt).setValue(BlockStateProperties.WATERLOGGED, state.getValue(BlockStateProperties.WATERLOGGED)), 3);
+					((LightsaberSconce) worldIn.getBlockState(pos).getBlock()).newBlockEntity(pos, worldIn.getBlockState(pos));
+					TileEntityLightsaberSconce sconce = (TileEntityLightsaberSconce) worldIn.getBlockEntity(pos);
+					sconce.setStack(player.getItemInHand(hand).save(new CompoundTag()));
+					worldIn.playSound(null, pos, LightsaberBlocks.sconce.getSoundType(worldIn.getBlockState(pos)).getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
+					if (!player.isCreative())
+						player.getItemInHand(hand).shrink(1);
+					return InteractionResult.sidedSuccess(worldIn.isClientSide);
+				}
+			}
+		}
+		
+		return InteractionResult.PASS;
+
 	}
 }
