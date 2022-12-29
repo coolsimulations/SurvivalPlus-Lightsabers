@@ -1,5 +1,6 @@
 package net.coolsimulations.Lightsaber.proxy;
 
+import net.coolsimulations.Lightsaber.init.LightsaberBlocks;
 import net.coolsimulations.Lightsaber.init.LightsaberItems;
 import net.coolsimulations.Lightsaber.init.LightsaberSoundHandler;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 public class ClientProxy implements CommonProxy{
 	@Override
 	public void init(){
+		LightsaberBlocks.registerRenders();
 		LightsaberItems.registerRenders();
 		MinecraftForge.EVENT_BUS.register(this);
 	}

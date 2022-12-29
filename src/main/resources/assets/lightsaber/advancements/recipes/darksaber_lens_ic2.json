@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_obsidian": {
+    "has_gem": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -36,7 +36,7 @@
   },
   "requirements": [
     [
-      "has_obsidian",
+      "has_gem",
       "has_egg",
       "has_the_recipe"
     ]

@@ -4,7 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.coolsimulations.Lightsaber.block.tileentity.TileEntityLightsaberSconce;
 import net.coolsimulations.Lightsaber.config.LightsaberConfig;
+import net.coolsimulations.Lightsaber.init.LightsaberBlocks;
 import net.coolsimulations.Lightsaber.init.LightsaberDispenserBehavior;
 import net.coolsimulations.Lightsaber.init.LightsaberEventHandler;
 import net.coolsimulations.Lightsaber.init.LightsaberFutureMCRecipes;
@@ -16,11 +18,14 @@ import net.coolsimulations.Lightsaber.init.VillageJediHutHandler;
 import net.coolsimulations.Lightsaber.proxy.CommonProxy;
 import net.coolsimulations.Lightsaber.util.LightsaberBetterCombat;
 import net.coolsimulations.Lightsaber.util.LightsaberLighting;
+import net.coolsimulations.Lightsaber.util.LightsaberMoBends;
 import net.coolsimulations.Lightsaber.util.LightsaberSkills;
 import net.coolsimulations.Lightsaber.util.LightsaberSwordBlocking;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPReference;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +34,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS, dependencies = Reference.DEPENDENCIES, guiFactory = "net.coolsimulations.Lightsaber.config.LightsaberConfigGUI", updateJSON = "https://coolsimulations.net/mcmods/lightsaber/versionchecker.json")
 
@@ -41,6 +47,7 @@ public class Lightsaber {
 	public static Lightsaber instance;
 	
 	public static final List<Item> ITEMS = new ArrayList<Item>();
+	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -49,6 +56,9 @@ public class Lightsaber {
 		LightsaberConfig.init(new File(event.getModConfigurationDirectory(), Reference.LIGHTSABER_CONFIG_FILE));
 		SPReference.MOD_ADDON_NAMES.add("sp.lightsaber.name");
 		MinecraftForge.EVENT_BUS.register(new LightsaberEventHandler());
+		LightsaberBlocks.init();
+		LightsaberBlocks.register();
+		GameRegistry.registerTileEntity(TileEntityLightsaberSconce.class, new ResourceLocation(Reference.MOD_ID, "sconce"));
 		LightsaberItems.init();
 		LightsaberItems.register(); 
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageJediHutHandler());
@@ -65,6 +75,10 @@ public class Lightsaber {
 		
 		if(SPCompatibilityManager.isReskillableLoaded()) {
 			LightsaberSkills.initReskillable(event);
+		}
+		
+		if(SPCompatibilityManager.isMoBendsLoaded()) {
+			LightsaberMoBends.preInit(event);
 		}
 	}
 	
@@ -83,6 +97,10 @@ public class Lightsaber {
 		
 		if(SPCompatibilityManager.isBetterCombatLoaded()) {
 			LightsaberBetterCombat.init();
+		}
+		
+		if(SPCompatibilityManager.isMoBendsLoaded()) {
+			LightsaberMoBends.init();
 		}
 	}
 	

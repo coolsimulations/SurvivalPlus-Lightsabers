@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "darksaber=false,facing=east": { "model": "lightsaber:sconce_lightsaber" },
+        "darksaber=false,facing=south": { "model": "lightsaber:sconce_lightsaber", "y": 90 },
+        "darksaber=false,facing=west": { "model": "lightsaber:sconce_lightsaber", "y": 180 },
+        "darksaber=false,facing=north": { "model": "lightsaber:sconce_lightsaber", "y": 270 },
+        "darksaber=true,facing=east": { "model": "lightsaber:sconce_darksaber" },
+        "darksaber=true,facing=south": { "model": "lightsaber:sconce_darksaber", "y": 90 },
+        "darksaber=true,facing=west": { "model": "lightsaber:sconce_darksaber", "y": 180 },
+        "darksaber=true,facing=north": { "model": "lightsaber:sconce_darksaber", "y": 270 }
+    }
+}
