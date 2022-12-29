@@ -2,6 +2,7 @@ package net.coolsimulations.Lightsaber.init;
 
 import net.coolsimulations.Lightsaber.Reference;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;;
 
@@ -22,7 +23,7 @@ public class LightsaberSoundHandler {
 	public static SoundEvent hello_there;
 	
 	public static void init() {
-		size = Registry.SOUND_EVENT.entrySet().size();
+		size = BuiltInRegistries.SOUND_EVENT.entrySet().size();
 		
 		lightsaber_on = register("item.lightsaber.lightsaber_on");
 		lightsaber_off = register("item.lightsaber.lightsaber_off");
@@ -39,9 +40,9 @@ public class LightsaberSoundHandler {
 	
 	public static SoundEvent register(String name){
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
-		SoundEvent e = new SoundEvent(location);
+		SoundEvent e = SoundEvent.createVariableRangeEvent(location);
 		
-		Registry.register(Registry.SOUND_EVENT, name, e);
+		Registry.register(BuiltInRegistries.SOUND_EVENT, name, e);
 		return e;
 	}
 

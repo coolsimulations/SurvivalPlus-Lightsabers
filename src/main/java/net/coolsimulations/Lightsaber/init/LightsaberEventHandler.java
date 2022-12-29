@@ -100,7 +100,7 @@ public class LightsaberEventHandler {
 
 		SPPlaySoundAtEntityEvent.EVENT.register((world, entity, pos, sound, category, volume, pitch, seed) -> {
 
-			if(sound == SoundEvents.SHIELD_BLOCK && entity != null) {
+			if(sound.value() == SoundEvents.SHIELD_BLOCK && entity != null) {
 				if(entity instanceof LivingEntity && ((LivingEntity) entity).getUseItem().getItem() instanceof ItemLightsaber) {
 					if(((LivingEntity) entity).getUseItem().getItem() == LightsaberItems.darksaber) {
 						world.playSound((Player) entity, entity.blockPosition(), LightsaberSoundHandler.darksaber_hit, category, volume, pitch);

@@ -4,9 +4,9 @@ import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber.LightsaberTier;
 import net.coolsimulations.Lightsaber.item.ItemLightsaberHilt;
-import net.coolsimulations.SurvivalPlus.api.SPTabs;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
@@ -39,22 +39,22 @@ public class LightsaberItems {
 
 	public static void init() {
 
-		pommel_cap = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		focusing_lens = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		blade_emitter = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		emitter_matrix = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		inert_power_insulator = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		activation_stud = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		lightsaber_hilt = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
-		darksaber_lens = new Item(new FabricItemSettings().group(SPTabs.tabMaterials));
+		pommel_cap = new Item(new FabricItemSettings());
+		focusing_lens = new Item(new FabricItemSettings());
+		blade_emitter = new Item(new FabricItemSettings());
+		emitter_matrix = new Item(new FabricItemSettings());
+		inert_power_insulator = new Item(new FabricItemSettings());
+		activation_stud = new Item(new FabricItemSettings());
+		lightsaber_hilt = new Item(new FabricItemSettings());
+		darksaber_lens = new Item(new FabricItemSettings());
 
-		red_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		blue_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		green_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		yellow_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		purple_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		white_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat));
-		darksaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().group(SPTabs.tabCombat).fireproof());
+		red_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings());
+		blue_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings());
+		green_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings());
+		yellow_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings());
+		purple_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings());
+		white_lightsaber_hilt = new ItemLightsaberHilt(new FabricItemSettings());
+		darksaber_hilt = new ItemLightsaberHilt(new FabricItemSettings().fireproof());
 
 		red_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Lightsaber);
 		blue_lightsaber = new ItemLightsaber(new FabricItemSettings(), LightsaberTier.Lightsaber);
@@ -96,7 +96,7 @@ public class LightsaberItems {
 
 	public static void registerItem(Item item, String registryName) {
 
-		Registry.register(Registry.ITEM, new ResourceLocation(Reference.MOD_ID, registryName), item);
+		Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(Reference.MOD_ID, registryName), item);
 	}
 
 }

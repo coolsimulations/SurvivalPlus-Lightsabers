@@ -3,8 +3,8 @@ package net.coolsimulations.Lightsaber.init;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
-import net.minecraft.core.Registry;
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,8 +19,8 @@ public class LightsaberDispenserBehavior {
 	
 	public static void init() {
 
-		for(ResourceLocation location : Registry.ITEM.keySet()) {
-			Item item = Registry.ITEM.get(location);
+		for(ResourceLocation location : BuiltInRegistries.ITEM.keySet()) {
+			Item item = BuiltInRegistries.ITEM.get(location);
 			if(item instanceof ItemLightsaber) {
 				DispenserBlock.registerBehavior(item, new OptionalDispenseItemBehavior() {
 			         protected ItemStack execute(BlockSource source, ItemStack stack) {
