@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
+import net.coolsimulations.SurvivalPlus.api.SPBlocks;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.coolsimulations.SurvivalPlus.api.events.EntityAccessor;
 import net.coolsimulations.SurvivalPlus.api.events.SPLivingAttackEvent;
@@ -22,7 +23,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.ServerAdvancementManager;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.player.Player;
@@ -35,6 +36,7 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.WetSpongeBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -131,6 +133,22 @@ public class LightsaberEventHandler {
 					world.setBlock(pos, state.setValue(BlockStateProperties.LIT, true), 11);
 					world.gameEvent(player, GameEvent.BLOCK_PLACE, pos);
 					return InteractionResult.SUCCESS;
+				} else if (block == SPBlocks.sconce && state.hasBlockEntity()) {
+					BlockEntity te = world.getBlockEntity(pos);
+					CompoundTag tag = te.getUpdateTag();
+					if (tag.contains("torch") && tag.contains("lit")) {
+						int torch = tag.getInt("torch");
+						boolean lit = tag.getBoolean("lit");
+						if (!lit && torch >= 5 && torch <= 21) {
+							tag.putBoolean("lit", true);
+							te.load(tag);
+							te.saveWithoutMetadata();
+							state.updateIndirectNeighbourShapes(world, pos, 2, 511);
+							state.updateNeighbourShapes(world, pos, 511);
+							world.onBlockStateChange(pos, state, state);
+							world.getLightEngine().checkBlock(pos);
+						}
+					}
 				}
 			}
 			return InteractionResult.PASS;
@@ -147,7 +165,7 @@ public class LightsaberEventHandler {
 					Item lightsaber = player.getUseItem().getItem();
 
 					if(lightsaber.getUseAnimation(player.getUseItem()) == UseAnim.BLOCK) {
-						if(source == DamageSource.LIGHTNING_BOLT || source.getDirectEntity() instanceof FireworkRocketEntity || source.getEntity() instanceof Guardian || source == DamageSource.DRAGON_BREATH) {
+						if(source.typeHolder() == DamageTypes.LIGHTNING_BOLT || source.getDirectEntity() instanceof FireworkRocketEntity || source.getEntity() instanceof Guardian || source.typeHolder() == DamageTypes.DRAGON_BREATH) {
 							return InteractionResult.FAIL;
 						}
 					}

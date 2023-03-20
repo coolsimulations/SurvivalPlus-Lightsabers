@@ -61,7 +61,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 					if(!recipe.isEmpty()) {
 						for(SmokingRecipe smokeingList : recipe) {
-							ItemStack result = smokeingList.getResultItem();
+							ItemStack result = smokeingList.getResultItem(source.getEntity().getLevel().registryAccess());
 							result.setCount(count);
 							newList.remove(newList.get(i));
 							newList.add(result);
@@ -72,7 +72,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 						if(!campfireRecipe.isEmpty()) {
 							for(CampfireCookingRecipe campfireList : campfireRecipe) {
-								ItemStack result = campfireList.getResultItem();
+								ItemStack result = campfireList.getResultItem(source.getEntity().getLevel().registryAccess());
 								result.setCount(count);
 								newList.remove(newList.get(i));
 								newList.add(result);
@@ -83,7 +83,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 							if(!furnaceRecipe.isEmpty()) {
 								for(SmeltingRecipe furnaceList : furnaceRecipe) {
-									ItemStack result = furnaceList.getResultItem();
+									ItemStack result = furnaceList.getResultItem(source.getEntity().getLevel().registryAccess());
 									result.setCount(count);
 									if(result.getItem().isEdible()) {
 										newList.remove(newList.get(i));
