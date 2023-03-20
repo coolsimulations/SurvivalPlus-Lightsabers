@@ -8,6 +8,7 @@ import java.util.TimerTask;
 
 import net.coolsimulations.Lightsaber.Reference;
 import net.coolsimulations.Lightsaber.item.ItemLightsaber;
+import net.coolsimulations.SurvivalPlus.api.SPBlocks;
 import net.coolsimulations.SurvivalPlus.api.SPCompatibilityManager;
 import net.coolsimulations.SurvivalPlus.api.SPConfig;
 import net.minecraft.ChatFormatting;
@@ -25,7 +26,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Guardian;
@@ -45,6 +46,7 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.WetSpongeBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -246,6 +248,20 @@ public class LightsaberEventHandler {
 			} else if(CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state)) {
 				event.getLevel().setBlock(event.getPos(), state.setValue(BlockStateProperties.LIT, true), 11);
 				event.getLevel().gameEvent(event.getEntity(), GameEvent.BLOCK_PLACE, event.getPos());
+			} else if (block == SPBlocks.sconce.get() && state.hasBlockEntity()) {
+				BlockEntity te = event.getLevel().getBlockEntity(event.getPos());
+				CompoundTag tag = te.getUpdateTag();
+				if (tag.contains("torch") && tag.contains("lit")) {
+					int torch = tag.getInt("torch");
+					boolean lit = tag.getBoolean("lit");
+					if (!lit && torch >= 5 && torch <= 21) {
+						tag.putBoolean("lit", true);
+						te.deserializeNBT(tag);
+						te.saveWithoutMetadata();
+						event.getLevel().markAndNotifyBlock(event.getPos(), event.getLevel().getChunkAt(event.getPos()), state, state, 3, 512);
+						event.getLevel().getLightEngine().checkBlock(event.getPos());
+					}
+				}
 			}
 		}
 	}
@@ -269,7 +285,7 @@ public class LightsaberEventHandler {
 
 					if(!recipe.isEmpty()) {
 						for(SmokingRecipe smokeingList : recipe) {
-							ItemStack result = smokeingList.getResultItem();
+							ItemStack result = smokeingList.getResultItem(event.getEntity().getLevel().registryAccess());
 							result.setCount(count);
 							event.getDrops().remove(newList.get(i));
 							event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
@@ -280,7 +296,7 @@ public class LightsaberEventHandler {
 
 						if(!campfireRecipe.isEmpty()) {
 							for(CampfireCookingRecipe campfireList : campfireRecipe) {
-								ItemStack result = campfireList.getResultItem();
+								ItemStack result = campfireList.getResultItem(event.getEntity().getLevel().registryAccess());
 								result.setCount(count);
 								event.getDrops().remove(newList.get(i));
 								event.getDrops().add(new ItemEntity(event.getEntity().getCommandSenderWorld(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), result));
@@ -291,7 +307,7 @@ public class LightsaberEventHandler {
 
 							if(!furnaceRecipe.isEmpty()) {
 								for(SmeltingRecipe furnaceList : furnaceRecipe) {
-									ItemStack result = furnaceList.getResultItem();
+									ItemStack result = furnaceList.getResultItem(event.getEntity().getLevel().registryAccess());
 									result.setCount(count);
 									if(result.getItem().isEdible()) {
 										event.getDrops().remove(newList.get(i));
@@ -316,7 +332,7 @@ public class LightsaberEventHandler {
 				Item lightsaber = player.getUseItem().getItem();
 
 				if(lightsaber.getUseAnimation(player.getUseItem()) == UseAnim.BLOCK) {
-					if(event.getSource() == DamageSource.LIGHTNING_BOLT || event.getSource().getDirectEntity() instanceof FireworkRocketEntity || event.getSource().getEntity() instanceof Guardian || event.getSource() == DamageSource.DRAGON_BREATH) {
+					if(event.getSource().typeHolder() == DamageTypes.LIGHTNING_BOLT || event.getSource().getDirectEntity() instanceof FireworkRocketEntity || event.getSource().getEntity() instanceof Guardian || event.getSource().typeHolder() == DamageTypes.DRAGON_BREATH) {
 						event.setCanceled(true);
 					}
 				}
