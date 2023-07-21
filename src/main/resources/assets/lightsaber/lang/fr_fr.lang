@@ -1,0 +1,42 @@
+item.pommel_cap.name=Capuchon de pommeau
+item.focusing_lens.name=Lentille de mise au point
+item.blade_emitter.name=Émetteur de lame
+item.inert_power_insulator.name=Isolateur de puissance inerte
+item.lightsaber_hilt.name=Poignée de sabre laser
+item.activation_stud.name=Goupille d'activation
+item.blade_matrix.name=Matrice de lame
+item.emitter_matrix.name=Matrice d'émetteur
+item.darksaber_lens.name=Lentille du Darksaber
+
+item.red_lightsaber_hilt.name=Poignée de sabre laser rouge
+item.blue_lightsaber_hilt.name=Poignée de sabre laser bleu
+item.green_lightsaber_hilt.name=Poignée de sabre laser vert
+item.purple_lightsaber_hilt.name=Poignée de sabre laser violet
+item.white_lightsaber_hilt.name=Poignée de sabre laser blanc
+item.darksaber_hilt.name=Poignée du Darksaber
+
+item.red_lightsaber.name=Sabre laser rouge
+item.blue_lightsaber.name=Sabre Laser Bleu
+item.green_lightsaber.name=Sabre Laser Vert
+item.purple_lightsaber.name=Sabre Laser Violet
+item.white_lightsaber.name=Sabre Laser Blanc
+item.darksaber.name=Darksaber
+
+item.lightsaber.lightsaber_on=Sabre laser activé
+item.lightsaber.lightsaber_off=Sabre laser éteint
+item.lightsaber.lightsaber_swing=Coup de sabre laser
+item.lightsaber.darksaber_on=Darksaber activé
+item.lightsaber.darksaber_off=Darksaber étient
+item.lightsaber.darksaber_swing=Coup de Darksaber
+misc.hello_there=Hello There
+
+entity.Villager.jedi=Jedi
+entity.Villager.sith=Sith
+
+achievement.lightsaber.install=Hello There!
+achievement.lightsaber.install.desc=Télécharger et installer SurvivalPlus Lightsabers
+achievement.lightsaber.install.display1=coolsim vous remercie d'avoir téléchargé les sabres laser SurvivalPlus!
+achievement.lightsaber.lightsaber=Une arme élégante
+achievement.lightsaber.lightsaber.desc=Fabriquer un sabre laser
+achievement.lightsaber.darksaber=C'est un sabre laser ?
+achievement.lightsaber.darksaber.desc=Fabriquer une lentille du Darksaber
